@@ -25,7 +25,7 @@
     "path": "folders/Objects.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_person_controller",
+  "name": "objPersonController",
   "tags": [],
   "resourceType": "GMObject",
 }

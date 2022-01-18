@@ -6,7 +6,7 @@
     "path": "folders/Scripts.yy",
   },
   "resourceVersion": "1.0",
-  "name": "scr_global_colors",
+  "name": "scrColors",
   "tags": [],
   "resourceType": "GMScript",
 }
