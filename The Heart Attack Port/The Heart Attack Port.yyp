@@ -1,6 +1,7 @@
 {
   "resources": [
     {"id":{"name":"spr_tutorial_text_03","path":"sprites/spr_tutorial_text_03/spr_tutorial_text_03.yy",},"order":10,},
+    {"id":{"name":"scrGlobal","path":"scripts/scrGlobal/scrGlobal.yy",},"order":1,},
     {"id":{"name":"objDarkMask","path":"objects/objDarkMask/objDarkMask.yy",},"order":1,},
     {"id":{"name":"objPersonController","path":"objects/objPersonController/objPersonController.yy",},"order":0,},
     {"id":{"name":"spr_clouds","path":"sprites/spr_clouds/spr_clouds.yy",},"order":4,},
@@ -22,7 +23,7 @@
     {"id":{"name":"spr_heartbeat_down_2","path":"sprites/spr_heartbeat_down_2/spr_heartbeat_down_2.yy",},"order":17,},
     {"id":{"name":"spr_boy_walking","path":"sprites/spr_boy_walking/spr_boy_walking.yy",},"order":1,},
     {"id":{"name":"spr_tutorial_text_02","path":"sprites/spr_tutorial_text_02/spr_tutorial_text_02.yy",},"order":8,},
-    {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},"order":0,},
+    {"id":{"name":"rmMain","path":"rooms/rmMain/rmMain.yy",},"order":0,},
   ],
   "Options": [
     {"name":"Main","path":"options/main/options_main.yy",},
@@ -44,7 +45,7 @@
     "children": [],
   },
   "RoomOrderNodes": [
-    {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
+    {"roomId":{"name":"rmMain","path":"rooms/rmMain/rmMain.yy",},},
   ],
   "Folders": [
     {"folderPath":"folders/Sprites.yy","order":1,"resourceVersion":"1.0","name":"Sprites","tags":[],"resourceType":"GMFolder",},

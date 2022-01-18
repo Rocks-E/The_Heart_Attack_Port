@@ -24,8 +24,8 @@
   "sequenceId": null,
   "roomSettings": {
     "inheritRoomSettings": false,
-    "Width": 1366,
-    "Height": 768,
+    "Width": 640,
+    "Height": 480,
     "persistent": false,
   },
   "viewSettings": {
@@ -46,7 +46,7 @@
     "path": "folders/Rooms.yy",
   },
   "resourceVersion": "1.0",
-  "name": "Room1",
+  "name": "rmMain",
   "tags": [],
   "resourceType": "GMRoom",
 }
