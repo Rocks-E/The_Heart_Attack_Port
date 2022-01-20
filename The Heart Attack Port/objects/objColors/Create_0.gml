@@ -1,3 +1,4 @@
+/// @description Color constant class
 #macro WHITE			$FFFFFF
 #macro OFF_WHITE		$E5E5E5
 #macro BLOOD_RED		$A70303
