@@ -1,5 +1,7 @@
 #macro TEST_MODE false;
+globalvar SUCCESS_COUNT;
 SUCCESS_COUNT = 0;
+globalvar FAILURE_COUNT;
 FAILURE_COUNT = 0;
 
 // Gameplay Settings
@@ -48,34 +50,57 @@ FAILURE_COUNT = 0;
 
 
 // Variables
+globalvar heartbeatUpWidth;
 heartbeatUpWidth = 0;
+globalvar heartbeatDownWidth;
 heartbeatDownWidth = 0;
+globalvar phase;
 phase = 0;				// 1. American born, 2. Viet born, 3. American to war, 4. Both at war
 
 // Game over
+globalvar gameOver;
 gameOver = false;
+globalvar dieTogether;
 dieTogether = false;
+globalvar bothDead;
 bothDead = false;		
+globalvar increaseAlphaAmount;
 increaseAlphaAmount = 0.05;		
 
 // Photo pixelation
+globalvar startPixelating;
 startPixelating = false;
+globalvar startDepixelating;
 startDepixelating = false;
+globalvar pixelatePerPhoto;
 pixelatePerPhoto = 0.25;		// 0.3 Once startPixelating is true, how much to increase pixelation with each photo?
+globalvar depixelatePerPhoto;
 depixelatePerPhoto = 0.5;
+globalvar photoCellSize;
 photoCellSize = 1;
+globalvar alphaIncreasing;
 alphaIncreasing = false;
 
 // Screen quake
+globalvar quakeScreenOnBeat;
 quakeScreenOnBeat = false;
+globalvar quakeDuration;
 quakeDuration = 0.01;
+globalvar quakeIntensity;
 quakeIntensity = 0.01;		
+globalvar quakeDurationIncreaseBy;
 quakeDurationIncreaseBy = 0.01;
+globalvar quakeIntensityIncreaseBy;
 quakeIntensityIncreaseBy = 0.01;
 
 // Global entities
+globalvar cheater;
 cheater = noone;
+globalvar quake;
 quake = noone;
+globalvar americanController;
 americanController = noone;
+globalvar vietController;
 vietController = noone;
+globalvar soundController;
 soundController = noone;
