@@ -1,47 +1,47 @@
-#macro TEST_MODE false;
+#macro TEST_MODE false
 globalvar SUCCESS_COUNT;
 SUCCESS_COUNT = 0;
 globalvar FAILURE_COUNT;
 FAILURE_COUNT = 0;
 
 // Gameplay Settings
-#macro CONSTANT_HEART_SOUND false;	// FIX ME - get rid of before release
-#macro COMBINE_UP_DOWN_BEATS true;
+#macro CONSTANT_HEART_SOUND false	// FIX ME - get rid of before release
+#macro COMBINE_UP_DOWN_BEATS true
 
 // Constants
-#macro FRAME_RATE 60;
-#macro INPUT_KEY_TOP ord("X");
-#macro INPUT_KEY_BOTTOM ord("M");
-#macro HOT_ZONE_WIDTH 60;
-#macro HOT_ZONE_X 113;
-#macro PERSON_IMAGE_X 200;
-#macro HOT_ZONE_COLOR_DEFAULT BLACK;
-#macro HOT_ZONE_COLOR_ACTIVE WHITE;
-#macro PULSE_COLOR_DEFAULT BLACK;
-#macro PULSE_COLOR_HIT WHITE;
-#macro PULSE_COLOR_MISSED BLOOD_RED;
+#macro FRAME_RATE 60
+#macro INPUT_KEY_TOP ord("X")
+#macro INPUT_KEY_BOTTOM ord("M")
+#macro HOT_ZONE_WIDTH 60
+#macro HOT_ZONE_X 113
+#macro PERSON_IMAGE_X 200
+#macro HOT_ZONE_COLOR_DEFAULT BLACK
+#macro HOT_ZONE_COLOR_ACTIVE WHITE
+#macro PULSE_COLOR_DEFAULT BLACK
+#macro PULSE_COLOR_HIT WHITE
+#macro PULSE_COLOR_MISSED BLOOD_RED
 
-#macro PHOTO_MAX_ALPHA 0.5;
-#macro PHOTO_MAX_ALPHA_END_SLIDESHOW 1;
+#macro PHOTO_MAX_ALPHA 0.5
+#macro PHOTO_MAX_ALPHA_END_SLIDESHOW 1
 
 
 // Constants - heart controller
-#macro STARTING_HEALTH 1;
-#macro LOSE_HEALTH_AMOUNT 0.1;			// 0.1
-#macro HEALTH_DIF_TO_DIE_TOGETHER 0.3;
+#macro STARTING_HEALTH 1
+#macro LOSE_HEALTH_AMOUNT 0.1			// 0.1
+#macro HEALTH_DIF_TO_DIE_TOGETHER 0.3
 
 #macro HEART_RATE_01 (5 * FRAME_RATE)	// 5
-#macro PULSE_SPEED_01 1;					// 1
+#macro PULSE_SPEED_01 1					// 1
 
 #macro HEART_RATE_02 (3 * FRAME_RATE)		// 3
-#macro PULSE_SPEED_02 1.5;				// 1.5
+#macro PULSE_SPEED_02 1.5				// 1.5
 
 #macro HEART_RATE_03 (2 * FRAME_RATE)		// 2
-#macro PULSE_SPEED_03 2;					// 2
+#macro PULSE_SPEED_03 2					// 2
 
 #macro FINAL_HEART_RATE_TWEEN_DURATION (60 * FRAME_RATE)
 #macro HEART_RATE_04 (0.2 * FRAME_RATE)
-#macro PULSE_SPEED_04 8;			
+#macro PULSE_SPEED_04 8			
 
 // Photo display times - no longer used.
 #macro PHOTO_DISPLAY_TIME_01 (3 * FRAME_RATE)	// 7
