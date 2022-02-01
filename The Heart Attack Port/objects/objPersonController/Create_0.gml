@@ -36,7 +36,7 @@ fadingOut = false;
 fadingIn = false;
 markedForFadeIn = false;
 
-paused = false;
+personPaused = false;
 markedForPause = false;
 darkMask = noone; //objDarkMask
 
@@ -51,5 +51,37 @@ function objPersonController(isTop, inputKey) constructor {
 }
 
 function added() {
-	room_instance_add(room, x, y, new objHeartController())	
+	self.heartController = new objHeartController(self, self.x, self.y, self.hotZoneX, self.isTop, HEART_RATE_01, PAUSE_SPEED_01);
+	room_instance_add(room, self.x, self.y, self.heartController);
+	self.inputController = new objInputController(self.inputKey, self.heartController);
+	room_instance_add(room, self.x, self.y, self.inputController);
 }
+
+function pause(makeDark = false) {
+	if(!self.personPaused) {
+		if(makeDark) {
+			self.darkMask = new DarkMask(self.x, self.y, false);
+			room_instance_add(room, self.x, self.y, self.darkMask);
+		}
+		self.heartController.pause();
+		//self.photoController.pause();
+		if(self.personImage != noone) self.personImage.pause();	
+		self.personPaused = true;
+		self.active = false;
+	}
+}
+
+function unpause() {
+	if(self.personPaused) {
+		if(self.darkMask != noone) {
+			instance_destroy(self.darkMask);
+			self.darkMask = noone;
+		}
+		self.heartController.unpause();
+		self.photoController.unpause();
+		if(self.personImage != noone) self.personImage.unpause();
+		self.personPaused = false;
+		self.active = true;
+	}
+}
+
