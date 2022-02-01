@@ -85,3 +85,51 @@ function unpause() {
 	}
 }
 
+function fadeOut(duration = 180) {
+	self.fadingOut = true;
+	self.inputController.active = false;
+	self.heartController.fadeOut(duration);
+	if(self.personImage != noone) self.personImage.pause();
+	self.darkMask = new objDarkMask(self.x, self.y, true, duration, duration);
+	room_instance_add(room, self.x, self.y, self.darkMask);
+	self.heartController.hotZone.fadeOut(duration);
+	alarm[1] = duration; //fadeOutCompleteAlarm(duration, fadeOutComplete)
+	//addTween(alarm[1], true)???
+}
+
+function fadeOutComplete() {
+	self.fadingOut = false;
+	self.pause();
+	self.heartController.reset();
+	if(self.markedForFadeIn) {
+		self.markedForFadeIn = false;
+		self.fadeIn();
+	}
+}
+
+function fadeIn() {
+	self.fadingIn = true;
+	self.active = true;
+	self.inputController.active = true;
+	self.heartController.hotZone.fadeIn(ACTIVATE_DURATION);
+	if(self.darkMask != noone) {
+		alarm[2] = ACTIVATE_DURATION; //newPhaseReadyAlarm(ACTIVATE_DURATION, fadeInComplete)
+		//addTween(alarm[2], true)???
+		self.darkMask.fadeOut(ACTIVATE_DURATION);
+	}
+	else {
+		self.unpause();	
+	}
+}
+
+function fadeInComplete() {
+	self.fadingIn = false;
+	self.unpause();
+	self.heartController.beat();
+}
+
+function replacePhotoController() {
+	self.oldPhotoController = self.photoController;
+	self.photoController = new objPhotoController(self.photoArray, self.x, self.y, self.photoDisplayTime, self.photoDisplayTime, self.loopPhotos, true, PHOTO_MAX_ALPHA, self.photoFlipped);
+	room_instance_add(room, self.x, self.y, self.photoController);
+}

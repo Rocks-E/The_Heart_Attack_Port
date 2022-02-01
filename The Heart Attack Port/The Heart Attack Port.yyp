@@ -1,5 +1,6 @@
 {
   "resources": [
+    {"id":{"name":"objPhotoController","path":"objects/objPhotoController/objPhotoController.yy",},"order":20,},
     {"id":{"name":"objFlatLine","path":"objects/objFlatLine/objFlatLine.yy",},"order":9,},
     {"id":{"name":"objEntityFader","path":"objects/objEntityFader/objEntityFader.yy",},"order":8,},
     {"id":{"name":"spr_tutorial_text_03","path":"sprites/spr_tutorial_text_03/spr_tutorial_text_03.yy",},"order":10,},
