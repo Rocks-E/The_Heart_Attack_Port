@@ -84,14 +84,128 @@ beat = function() {
 }
 
 getHeartbeats = function(_upBeats = true, _downBeats = true, _flatBeats = true) {
+	
+	var myHeartbeats = array_create(0);
+	
+	var c = 0; //Needed in for loops to replace for each functionality
+	
 	if(_upBeats) {
 		var heartbeatUpList = instance_find(objHeartbeatUp, all);
-		for
+		var u = noone;
+		for(c = 0; c < array_length_1d(heartbeatUpList); c++) {
+			u = heartbeatUpList[c];
+			if(u.heartController == self) {
+				array_push(myHeartbeats, u);
+			}
+		}
 	}
 	if(_downBeats) {
-		
+		var heartbeatDownList = instance_find(objHeartbeatDown, all);
+		var d = noone;
+		for(c = 0; c < array_length_1d(heartbeatDownList); c++) {
+			d = heartbeatDownList[c];
+			if(d.heartController == self) {
+				array_push(myHeartbeats, d);
+			}
+		}
 	}
 	if(_flatBeats) {
-		
+		var heartbeatFlatList = instance_find(objHeartbeatFlat, all);
+		var f = noone;
+		for(c = 0; c < array_length(heartbeatFlatList); c++) {
+			f = heartbeatFlatList[c];
+			if(f.heartController == self) {
+				array_push(myHeartbeats, f);
+			}
+		}
 	}
+	
+	return myHeartbeats;
+}
+
+pause = function() {
+	self.heartSoundController.beatLoop.stop();
+	self.hotZone.active = false;
+	
+	var heartBeats = self.getHeartbeats();
+	for(var c = 0; c < array_length(heartBeats); c++) {
+		heartBeats[c].pause();
+	}
+	
+	self.active = false;
+}
+
+unpause = function() {
+	self.active = true;
+	self.hotZone.active = true;
+	
+	if(global.CONSTANT_HEART_SOUND)
+		if(!self.heartSoundController.beatLoop.playing) self.heartSoundController.beatLoop.resume();
+		
+	var heartBeats = self.getHeartbeats();
+	for(var c = 0; c < array_length(heartBeats); c++) {
+		heartBeats[c].unpause();	
+	}
+}
+
+fadeOut = function(_duration) {
+	
+	var heartBeats = self.getHeartbeats();
+	for(var c = 0; c < array_length(heartBeats); c++) {
+		if(heartBeats[c].heartController == self) {
+			heartBeats[c].pause();
+			heartBeats[c].fadeOut(_duration);
+		}
+	}
+	
+	self.heartSoundController.fadeOut();
+	
+	self.active = false;
+	
+}
+
+tweenHeartRate = function(_targetHeartRate, _duration) {
+	//self.heartRateTween.tween(self.heartRate, _targetHeartRate, _duration);
+	self.tweeningHeartRate = true;
+}
+
+finishedTweeningHeartRate = function() {
+	self.tweeningHeartRate = false;
+}
+
+tweenPulseSpeed = function(_targetPulseSpeed, _duration) {
+	//self.pulseSpeedTween.tween(self.pulseSpeed, _targetPulseSpeed, _duration);
+	self.tweeningPulseSpeed = true;
+}
+
+finishedTweeningPulseSpeed = function() {
+	self.tweeningPulseSpeed = false;
+}
+
+setHeartRatePulseSpeed = function(_heartRate, _pulseSpeed) {
+	self.heartRate = _heartRate;
+	self.pulseSpeed = _pulseSpeed;
+}
+
+loseHealth = function() {
+	
+	self.heartHealth -= global.LOSE_HEALTH_AMOUNT;
+	
+	self.heartSoundController.updateVolume(self.heartHealth);
+	
+	var heartbeatList = self.getHeartbeats();
+	if(self.heartHealth <= 0.1) {
+		self.flatLine = instance_create_depth(0, 0, 0, objFlatLine(self));
+		
+		for(var c = 0; c < array_length(heartbeatList); c++) {
+			instance_destroy(heartbeatList[c]);	
+		}
+		self.personController.dead = true;
+	}
+	else {
+		for(var c = 0; c < array_length(heartbeatList); c++) {
+			heartbeatList[c].shrink();	
+		}
+	}
+	
 }
