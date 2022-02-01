@@ -1,27 +1,27 @@
 if(keyboard_key_press(ord("P"))) {
-	americanController.pause();
+	global.americanController.pause();
 }
 else if(keyboard_key_press(ord("R"))) {
-	americanController.unpause();
+	global.americanController.unpause();
 }
 else if(keyboard_key_press(ord("I"))) {
-	americanController.fadeIn();
+	global.americanController.fadeIn();
 }
 else if(keyboard_key_press(ord("O"))) {
-	americanController.fadeOut();
+	global.americanController.fadeOut();
 }
 else if(keyboard_key_press(ord("Y"))) {
-	americanController.heartController.heartSoundController.fadeOut();
+	global.americanController.heartController.heartSoundController.fadeOut();
 }
 
 if(keyboard_key_press(vk_f2)) {
-	//americanController.heartController.tweenHeartRate(61, 1200);
-	//vietController.heartController.tweenHeartRate(61, 1200);
+	//global.americanController.heartController.tweenHeartRate(61, 1200);
+	//global.vietController.heartController.tweenHeartRate(61, 1200);
 }
 
 if(keyboard_key_press(vk_f4)) {
-	//americanController.heartController.tweenHeartRate(60, 5 * FP.assignedFrameRate);
-	//vietController.heartController.tweenHeartRate(60, 5 * FP.assignedFrameRate);
+	//global.americanController.heartController.tweenHeartRate(60, 5 * FP.assignedFrameRate);
+	//global.vietController.heartController.tweenHeartRate(60, 5 * FP.assignedFrameRate);
 }
 
 if(keyboard_key_press(vk_f1)) {
@@ -30,30 +30,30 @@ if(keyboard_key_press(vk_f1)) {
 }
 
 if(keyboard_key_press(vk_f10)) {
-	americanController.heartController.health = 0.2;
-	vietController.heartController.health = 0.2;
+	global.americanController.heartController.health = 0.2;
+	global.vietController.heartController.health = 0.2;
 }
 
 if(keyboard_key_press(vk_f11)) {
-	phase = 2;
-	americanController.fadeOut();
-	vietController.fadeIn();
-	phase++;
+	global.phase = 2;
+	global.americanController.fadeOut();
+	global.vietController.fadeIn();
+	global.phase++;
 }
 
 if(keyboard_key_press(vk_f12)) {
-	switch(phase) {
+	switch(global.phase) {
 		case 0:
 		case 2:
-			americanController.fadeOut();
-			vietController.fadeIn();
-			phase++;
+			global.americanController.fadeOut();
+			global.vietController.fadeIn();
+			global.phase++;
 			break;
 		case 1:
 		case 3:
-			vietController.fadeOut();
-			americanController.fadeIn();
-			phase++;
+			global.vietController.fadeOut();
+			global.americanController.fadeIn();
+			global.phase++;
 			break;
 		default:
 			break;

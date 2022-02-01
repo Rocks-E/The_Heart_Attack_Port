@@ -40,28 +40,31 @@ personPaused = false;
 markedForPause = false;
 darkMask = noone; //objDarkMask
 
-function objPersonController(isTop, inputKey) constructor {
-	self.inputKey = inputKey;
-	self.isTop = isTop;
-	self.photoFlipped = !isTop;
-	self.heartbeatDirection = isTop;
-	if(!isTop) y = room_height * 0.5; //y = FP.halfHeight
-	if(isTop) self.hotZoneX = HOT_ZONE_X;
-	else self.hotZoneX = room_width - HOT_ZONE_X - HOT_ZONE_WIDTH;
+function objPersonController(_isTop, _inputKey) constructor {
+	self.inputKey = _inputKey;
+	self.isTop = _isTop;
+	self.photoFlipped = !_isTop;
+	self.heartbeatDirection = _isTop;
+	if(!_isTop) y = room_height * 0.5; //y = FP.halfHeight
+	if(_isTop) self.hotZoneX = global.HOT_ZONE_X;
+	else self.hotZoneX = room_width - global.HOT_ZONE_X - global.HOT_ZONE_WIDTH;
 }
 
-function added() {
-	self.heartController = new objHeartController(self, self.x, self.y, self.hotZoneX, self.isTop, HEART_RATE_01, PAUSE_SPEED_01);
-	room_instance_add(room, self.x, self.y, self.heartController);
-	self.inputController = new objInputController(self.inputKey, self.heartController);
-	room_instance_add(room, self.x, self.y, self.inputController);
+added = function() {
+	//self.heartController = new objHeartController(self, self.x, self.y, self.hotZoneX, self.isTop, HEART_RATE_01, PULSE_SPEED_01);
+	//room_instance_add(room, self.x, self.y, self.heartController);
+	self.heartController = instance_create_depth(self.x, self.y, 0, objHeartController(self, self.x, self.y, self.hotZoneX, self.isTop, global.HEART_RATE_01, global.PULSE_SPEED_01));
+	//self.inputController = new objInputController(self.inputKey, self.heartController);
+	//room_instance_add(room, self.x, self.y, self.inputController);
+	self.inputController = instance_create_depth(self.x, self.y, 0, objInputController(self.inputKey, self.heartController));
 }
 
-function pause(makeDark = false) {
+pause = function(_makeDark = false) {
 	if(!self.personPaused) {
-		if(makeDark) {
-			self.darkMask = new DarkMask(self.x, self.y, false);
-			room_instance_add(room, self.x, self.y, self.darkMask);
+		if(_makeDark) {
+			//self.darkMask = new objDarkMask(self.x, self.y, false);
+			//room_instance_add(room, self.x, self.y, self.darkMask);
+			self.darkMask = instance_create_depth(self.x, self.y, 0, objDarkMask(self.x, self.y, false));
 		}
 		self.heartController.pause();
 		//self.photoController.pause();
@@ -71,7 +74,7 @@ function pause(makeDark = false) {
 	}
 }
 
-function unpause() {
+unpause = function() {
 	if(self.personPaused) {
 		if(self.darkMask != noone) {
 			instance_destroy(self.darkMask);
@@ -85,19 +88,20 @@ function unpause() {
 	}
 }
 
-function fadeOut(duration = 180) {
+fadeOut = function(_duration = 180) {
 	self.fadingOut = true;
 	self.inputController.active = false;
-	self.heartController.fadeOut(duration);
+	self.heartController.fadeOut(_duration);
 	if(self.personImage != noone) self.personImage.pause();
-	self.darkMask = new objDarkMask(self.x, self.y, true, duration, duration);
-	room_instance_add(room, self.x, self.y, self.darkMask);
-	self.heartController.hotZone.fadeOut(duration);
-	alarm[1] = duration; //fadeOutCompleteAlarm(duration, fadeOutComplete)
+	//self.darkMask = new objDarkMask(self.x, self.y, true, duration, duration);
+	//room_instance_add(room, self.x, self.y, self.darkMask);
+	self.darkMask = instance_create_depth(self.x, self.y, 0, objDarkMask(self.x, self.y, true, _duration, _duration));
+	self.heartController.hotZone.fadeOut(_duration);
+	alarm[1] = _duration; //fadeOutCompleteAlarm(duration, fadeOutComplete)
 	//addTween(alarm[1], true)???
 }
 
-function fadeOutComplete() {
+fadeOutComplete = function() {
 	self.fadingOut = false;
 	self.pause();
 	self.heartController.reset();
@@ -107,7 +111,7 @@ function fadeOutComplete() {
 	}
 }
 
-function fadeIn() {
+fadeIn = function() {
 	self.fadingIn = true;
 	self.active = true;
 	self.inputController.active = true;
@@ -122,14 +126,15 @@ function fadeIn() {
 	}
 }
 
-function fadeInComplete() {
+fadeInComplete = function() {
 	self.fadingIn = false;
 	self.unpause();
 	self.heartController.beat();
 }
 
-function replacePhotoController() {
+replacePhotoController = function() {
 	self.oldPhotoController = self.photoController;
-	self.photoController = new objPhotoController(self.photoArray, self.x, self.y, self.photoDisplayTime, self.photoDisplayTime, self.loopPhotos, true, PHOTO_MAX_ALPHA, self.photoFlipped);
-	room_instance_add(room, self.x, self.y, self.photoController);
+	//self.photoController = new objPhotoController(self.photoArray, self.x, self.y, self.photoDisplayTime, self.photoDisplayTime, self.loopPhotos, true, PHOTO_MAX_ALPHA, self.photoFlipped);
+	//room_instance_add(room, self.x, self.y, self.photoController);
+	self.photoController = instance_create_depth(self.x, self.y, 0, objPhotoController(self.photoArray, self.x, self.y, self.photoDisplayTime, self.photoDisplayTime, self.loopPhotos, true, global.PHOTO_MAX_ALPHA, self.photoFlipped));
 }
