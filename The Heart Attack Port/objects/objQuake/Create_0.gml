@@ -6,7 +6,7 @@ spr_layer_id = layer_get_id("Sprites");
 function start(intensity = 0.5, duration = 0.5) {
 	stop();
 	self.intensity = intensity * 0.05;
-	self.timer = duration * room_speed; //Multiplied by room speed to get seconds to emulate FP.elapsed usage
+	self.timer = duration * ELAPSED;
 }
 
 function stop() {

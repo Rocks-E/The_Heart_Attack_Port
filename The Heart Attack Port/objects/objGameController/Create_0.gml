@@ -41,8 +41,3 @@ if(!TEST_MODE) {
 	room_instance_add(new Tutorial(americanController));
 	room_instance_add(new Tutorial(vietController));
 }
-
-function quakeScreen() {
-	objGlobal.quake.start(quakeIntensity, quakeDuration);
-	alarm[0] = quakeInterval; //quakeAlarm.reset(quakeInterval)
-}
