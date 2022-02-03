@@ -34,7 +34,7 @@ function objHeartController(_personController, _x = 0, _y = 0, _hotZoneX = 100, 
 	self.pulseSpeed = _pulseSpeed;
 }
 
-added = function() {
+function added() {
 	room_instance_add(room, self.hotZone.x, self.hotZone.y, self.hotZone);
 	//addTween(beatAlarm)
 	//addTween(heartRateTween)
@@ -44,7 +44,7 @@ added = function() {
 	}
 }
 
-reset = function() {
+function reset() {
 	self.heartSoundController.reset();
 	if(self.tweeningHeartRate) self.finishedTweeningHeartRate();
 	if(self.tweeningPulseSpeed) self.finishedTweeningPulseSpeed();
@@ -52,7 +52,7 @@ reset = function() {
 	self.lastFlatHeartbeat = noone;
 }
 
-beat = function() {
+function beat() {
 	self.personController.photoController.fadeInDuration = self.heartRate / 2;
 	self.personController.photoController.fadeOutDuration = self.heartRate / 2;
 	
@@ -83,7 +83,7 @@ beat = function() {
 	
 }
 
-getHeartbeats = function(_upBeats = true, _downBeats = true, _flatBeats = true) {
+function getHeartbeats(_upBeats = true, _downBeats = true, _flatBeats = true) {
 	
 	var myHeartbeats = array_create(0);
 	
@@ -123,7 +123,7 @@ getHeartbeats = function(_upBeats = true, _downBeats = true, _flatBeats = true) 
 	return myHeartbeats;
 }
 
-pause = function() {
+function pause() {
 	self.heartSoundController.beatLoop.stop();
 	self.hotZone.active = false;
 	
@@ -135,7 +135,7 @@ pause = function() {
 	self.active = false;
 }
 
-unpause = function() {
+function unpause() {
 	self.active = true;
 	self.hotZone.active = true;
 	
@@ -148,7 +148,7 @@ unpause = function() {
 	}
 }
 
-fadeOut = function(_duration) {
+function fadeOut(_duration) {
 	
 	var heartBeats = self.getHeartbeats();
 	for(var c = 0; c < array_length(heartBeats); c++) {
@@ -164,30 +164,30 @@ fadeOut = function(_duration) {
 	
 }
 
-tweenHeartRate = function(_targetHeartRate, _duration) {
+function tweenHeartRate(_targetHeartRate, _duration) {
 	//self.heartRateTween.tween(self.heartRate, _targetHeartRate, _duration);
 	self.tweeningHeartRate = true;
 }
 
-finishedTweeningHeartRate = function() {
+function finishedTweeningHeartRate() {
 	self.tweeningHeartRate = false;
 }
 
-tweenPulseSpeed = function(_targetPulseSpeed, _duration) {
+function tweenPulseSpeed(_targetPulseSpeed, _duration) {
 	//self.pulseSpeedTween.tween(self.pulseSpeed, _targetPulseSpeed, _duration);
 	self.tweeningPulseSpeed = true;
 }
 
-finishedTweeningPulseSpeed = function() {
+function finishedTweeningPulseSpeed() {
 	self.tweeningPulseSpeed = false;
 }
 
-setHeartRatePulseSpeed = function(_heartRate, _pulseSpeed) {
+function setHeartRatePulseSpeed(_heartRate, _pulseSpeed) {
 	self.heartRate = _heartRate;
 	self.pulseSpeed = _pulseSpeed;
 }
 
-loseHealth = function() {
+function loseHealth() {
 	
 	self.heartHealth -= global.LOSE_HEALTH_AMOUNT;
 	

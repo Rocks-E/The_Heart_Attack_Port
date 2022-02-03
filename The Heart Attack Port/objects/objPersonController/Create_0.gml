@@ -50,7 +50,7 @@ function objPersonController(_isTop, _inputKey) constructor {
 	else self.hotZoneX = room_width - global.HOT_ZONE_X - global.HOT_ZONE_WIDTH;
 }
 
-added = function() {
+function added() {
 	//self.heartController = new objHeartController(self, self.x, self.y, self.hotZoneX, self.isTop, HEART_RATE_01, PULSE_SPEED_01);
 	//room_instance_add(room, self.x, self.y, self.heartController);
 	self.heartController = instance_create_depth(self.x, self.y, 0, objHeartController(self, self.x, self.y, self.hotZoneX, self.isTop, global.HEART_RATE_01, global.PULSE_SPEED_01));
@@ -59,7 +59,7 @@ added = function() {
 	self.inputController = instance_create_depth(self.x, self.y, 0, objInputController(self.inputKey, self.heartController));
 }
 
-pause = function(_makeDark = false) {
+function pause(_makeDark = false) {
 	if(!self.personPaused) {
 		if(_makeDark) {
 			//self.darkMask = new objDarkMask(self.x, self.y, false);
@@ -74,7 +74,7 @@ pause = function(_makeDark = false) {
 	}
 }
 
-unpause = function() {
+function unpause() {
 	if(self.personPaused) {
 		if(self.darkMask != noone) {
 			instance_destroy(self.darkMask);
@@ -88,7 +88,7 @@ unpause = function() {
 	}
 }
 
-fadeOut = function(_duration = 180) {
+function fadeOut(_duration = 180) {
 	self.fadingOut = true;
 	self.inputController.active = false;
 	self.heartController.fadeOut(_duration);
@@ -101,7 +101,7 @@ fadeOut = function(_duration = 180) {
 	//addTween(alarm[1], true)???
 }
 
-fadeOutComplete = function() {
+function fadeOutComplete() {
 	self.fadingOut = false;
 	self.pause();
 	self.heartController.reset();
@@ -111,7 +111,7 @@ fadeOutComplete = function() {
 	}
 }
 
-fadeIn = function() {
+function fadeIn() {
 	self.fadingIn = true;
 	self.active = true;
 	self.inputController.active = true;
@@ -126,13 +126,13 @@ fadeIn = function() {
 	}
 }
 
-fadeInComplete = function() {
+function fadeInComplete() {
 	self.fadingIn = false;
 	self.unpause();
 	self.heartController.beat();
 }
 
-replacePhotoController = function() {
+function replacePhotoController() {
 	self.oldPhotoController = self.photoController;
 	//self.photoController = new objPhotoController(self.photoArray, self.x, self.y, self.photoDisplayTime, self.photoDisplayTime, self.loopPhotos, true, PHOTO_MAX_ALPHA, self.photoFlipped);
 	//room_instance_add(room, self.x, self.y, self.photoController);
