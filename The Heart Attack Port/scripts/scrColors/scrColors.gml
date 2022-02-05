@@ -1,10 +1,11 @@
-#macro WHITE			$FFFFFF
-#macro OFF_WHITE		$E5E5E5
-#macro BLOOD_RED		$A70303
-#macro BLACK			$000000
-#macro BEACH_YELLOW		$FFD823
-#macro BEACH_BLUE		$144C91
-#macro DESERT_ORANGE	$ED7B00
-#macro FOREST_BROWN		$9D841A
-#macro PLAINS_GREEN		$006B3E
-#macro SNOW_WHITE		$FFFFFF
+function Colors() {
+	global.WHITE = make_color_rgb(0xFF, 0xFF, 0xFF);
+	global.OFF_WHITE = make_color_rgb(0xE5, 0xE5, 0xE5);
+	global.BLOOD_RED = make_color_rgb(0xA7, 0x03, 0x03);
+	global.BLACK = make_color_rgb(0x00, 0x00, 0x00);
+	global.BEACH_YELLOW = make_color_rgb(0xFF, 0xD8, 0x23);
+	global.DESERT_ORANGE = make_color_rgb(0xED, 0x7B, 0x00);
+	global.FOREST_BROWN = make_color_rgb(0x9D, 0x84, 0x1A);
+	global.PLAINS_GREEN = make_color_rgb(0x00, 0x6B, 0x3E);
+	global.SNOW_WHITE = global.WHITE;
+}
