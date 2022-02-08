@@ -20,7 +20,7 @@ tweeningHeartRate = false;
 pulseSpeedTween = noone; //NumTween(finishedTweeningPulseSpeed)
 tweeningPulseSpeed = false;
 
-function objHeartController(_personController, _x = 0, _y = 0, _hotZoneX = 100, _direction = true, _heartRate = 120, _pulseSpeed = 2) constructor {
+function construct(_personController, _x = 0, _y = 0, _hotZoneX = 100, _direction = true, _heartRate = 120, _pulseSpeed = 2) {
 	//super(x, y)
 	x = _x;
 	y = _y;

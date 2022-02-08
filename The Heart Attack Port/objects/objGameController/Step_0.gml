@@ -1,3 +1,11 @@
+self.heartbeatSound.playHeartbeat();
+
+if(keyboard_check_pressed(ord("M"))) {
+	self.heartbeatSound.stopHeartbeat();	
+}
+
+
+/*
 if(global.americanController.dead || global.vietController.dead) {
 	if(!global.gameOver) {
 		global.gameOver = true;
@@ -41,3 +49,4 @@ switch(global.phase) {
 	default:
 		break;
 }
+*/

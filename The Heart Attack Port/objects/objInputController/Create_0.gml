@@ -3,7 +3,7 @@ personController = noone;
 inputKeyString = "";
 lastPressCounter = 0;
 
-function InputController(_inputKey, _heartController) {
+function construct(_inputKey, _heartController) {
 	self.heartController = _heartController;
 	self.personController = _heartController.personController;
 	self.inputKeyString = chr(_inputKey); //Convert the passed number to its letter equivalent

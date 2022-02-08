@@ -40,7 +40,7 @@ personPaused = false;
 markedForPause = false;
 darkMask = noone; //objDarkMask
 
-function objPersonController(_isTop, _inputKey) constructor {
+function construct(_isTop, _inputKey) {
 	self.inputKey = _inputKey;
 	self.isTop = _isTop;
 	self.photoFlipped = !_isTop;

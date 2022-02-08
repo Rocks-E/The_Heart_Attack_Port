@@ -1,5 +1,11 @@
-Colors(); //Initialize global colors
+ColorsInit(); //Initialize global colors
+GlobalInit(); //Initialize global vars/consts
 
+heartbeatSound = instance_create_depth(0,0,0, objHeartSoundController);
+self.heartbeatSound.construct(noone);
+self.heartbeatSound.added();
+
+/*
 quakeInterval = 3 * room_speed;
 quakeDuration = 0.5;
 quakeIntensity = 0.5;
@@ -51,3 +57,4 @@ if(!global.TEST_MODE) {
 	//room_instance_add(new objTutorial(global.americanController));
 	//room_instance_add(new objTutorial(global.vietController));
 }
+*/

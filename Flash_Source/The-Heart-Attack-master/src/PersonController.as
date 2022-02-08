@@ -170,7 +170,7 @@ package
 			else
 			{
 				trace('startNewPhase = unpause');
-				unpause(); 
+				unpause();
 			}
 		}
 		
