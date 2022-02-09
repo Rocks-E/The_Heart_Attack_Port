@@ -22,25 +22,28 @@ tweeningPulseSpeed = false;
 
 function construct(_personController, _x = 0, _y = 0, _hotZoneX = 100, _direction = true, _heartRate = 120, _pulseSpeed = 2) {
 	//super(x, y)
-	x = _x;
-	y = _y;
+	self.x = _x;
+	self.y = _y;
 	self.personController = _personController;
 	self.heartbeatDirection = _direction;
-	//self.hotZone = instance_create_depth(_x, _y, 0, objHotZone(_hotZoneX, _y, self));
-	self.hotZone = objHotZone(_hotZoneX, _y, self);
-	//self.heartSoundController = instance_create_depth(_x, _y, 0, objHeartSoundController(self));
-	self.heartSoundController = objHeartSoundController(self);
+	//self.hotZone = instance_create_depth(_x, _y, 0, objHotZone);
+	//self.hotZone.construct(_hotZoneX, _y, self);
+	//self.hotZone.added();
+	self.heartSoundController = instance_create_depth(_x, _y, 0, objHeartSoundController);
+	self.heartSoundController.construct(self);
+	self.heartSoundController.added();
 	self.heartRate = _heartRate;
 	self.pulseSpeed = _pulseSpeed;
 }
 
 function added() {
-	room_instance_add(room, self.hotZone.x, self.hotZone.y, self.hotZone);
+	//room_instance_add(room, 0, 0, self.hotZone);
+	//room_instance_add(room, 0, 0, self.heartSoundController);
 	//addTween(beatAlarm)
 	//addTween(heartRateTween)
 	//addTween(pulseSpeedTween)
 	if(!self.personController.markedForPause) {
-		self.beat();	
+		//self.beat();	
 	}
 }
 
@@ -57,7 +60,7 @@ function beat() {
 	self.personController.photoController.fadeOutDuration = self.heartRate / 2;
 	
 	if(global.CONSTANT_HEART_SOUND && self.beatCount == 0) {
-		room_instance_add(room, self.heartSoundController.x, self.heartSoundController.y, self.heartSoundController);	
+		self.heartSoundController = instance_create_depth(0, 0, 0, self.heartSoundController);	
 	}
 	
 	if(self.lastFlatHeartbeat != noone) {
@@ -89,10 +92,20 @@ function getHeartbeats(_upBeats = true, _downBeats = true, _flatBeats = true) {
 	
 	var c = 0; //Needed in for loops to replace for each functionality
 	
+	var hbeats = getInstancesOf(objHeartbeat);
+	var h = noone;
+	for(c = 0; c < array_length(hbeats); c++) {
+		h = hbeats[c];
+		if(h.heartController == self) {
+			array_push(myHeartbeats, h);	
+		}
+	}
+	
+	/*
 	if(_upBeats) {
 		var heartbeatUpList = instance_find(objHeartbeatUp, all);
 		var u = noone;
-		for(c = 0; c < array_length_1d(heartbeatUpList); c++) {
+		for(c = 0; c < array_length(heartbeatUpList); c++) {
 			u = heartbeatUpList[c];
 			if(u.heartController == self) {
 				array_push(myHeartbeats, u);
@@ -102,7 +115,7 @@ function getHeartbeats(_upBeats = true, _downBeats = true, _flatBeats = true) {
 	if(_downBeats) {
 		var heartbeatDownList = instance_find(objHeartbeatDown, all);
 		var d = noone;
-		for(c = 0; c < array_length_1d(heartbeatDownList); c++) {
+		for(c = 0; c < array_length(heartbeatDownList); c++) {
 			d = heartbeatDownList[c];
 			if(d.heartController == self) {
 				array_push(myHeartbeats, d);
@@ -119,6 +132,7 @@ function getHeartbeats(_upBeats = true, _downBeats = true, _flatBeats = true) {
 			}
 		}
 	}
+	*/
 	
 	return myHeartbeats;
 }
@@ -140,7 +154,7 @@ function unpause() {
 	self.hotZone.active = true;
 	
 	if(global.CONSTANT_HEART_SOUND)
-		if(!self.heartSoundController.beatLoop.playing) self.heartSoundController.beatLoop.resume();
+		if(!audio_is_playing(self.heartSoundController.curBeatLoop)) self.heartSoundController.curBeatLoop = audio_play_sound_on(self.heartSoundController.beatLoop, snd_heart_beat_full, true, 1);
 		
 	var heartBeats = self.getHeartbeats();
 	for(var c = 0; c < array_length(heartBeats); c++) {
@@ -193,14 +207,15 @@ function loseHealth() {
 	
 	self.heartSoundController.updateVolume(self.heartHealth);
 	
+	
 	var heartbeatList = self.getHeartbeats();
 	if(self.heartHealth <= 0.1) {
-		self.flatLine = instance_create_depth(0, 0, 0, objFlatLine(self));
+		//self.flatLine = instance_create_depth(0, 0, 0, objFlatLine(self));
 		
 		for(var c = 0; c < array_length(heartbeatList); c++) {
 			instance_destroy(heartbeatList[c]);	
 		}
-		self.personController.dead = true;
+		//self.personController.dead = true;
 	}
 	else {
 		for(var c = 0; c < array_length(heartbeatList); c++) {

@@ -1,6 +1,7 @@
 {
   "resources": [
     {"id":{"name":"objPhotoController","path":"objects/objPhotoController/objPhotoController.yy",},"order":20,},
+    {"id":{"name":"spr_white_pixel","path":"sprites/spr_white_pixel/spr_white_pixel.yy",},"order":21,},
     {"id":{"name":"objFlatLine","path":"objects/objFlatLine/objFlatLine.yy",},"order":9,},
     {"id":{"name":"objEntityFader","path":"objects/objEntityFader/objEntityFader.yy",},"order":8,},
     {"id":{"name":"snd_heartbeat_down","path":"sounds/snd_heartbeat_down/snd_heartbeat_down.yy",},"order":5,},
@@ -22,6 +23,7 @@
     {"id":{"name":"spr_tutorial_text_01b","path":"sprites/spr_tutorial_text_01b/spr_tutorial_text_01b.yy",},"order":7,},
     {"id":{"name":"objInputController","path":"objects/objInputController/objInputController.yy",},"order":19,},
     {"id":{"name":"objHeartbeatFlat","path":"objects/objHeartbeatFlat/objHeartbeatFlat.yy",},"order":23,},
+    {"id":{"name":"objHeartbeat","path":"objects/objHeartbeat/objHeartbeat.yy",},"order":26,},
     {"id":{"name":"spr_heartbeat_down","path":"sprites/spr_heartbeat_down/spr_heartbeat_down.yy",},"order":16,},
     {"id":{"name":"spr_block_mask_black","path":"sprites/spr_block_mask_black/spr_block_mask_black.yy",},"order":3,},
     {"id":{"name":"snd_incompetech_Cattails","path":"sounds/snd_incompetech_Cattails/snd_incompetech_Cattails.yy",},"order":0,},
@@ -38,6 +40,7 @@
     {"id":{"name":"snd_missed","path":"sounds/snd_missed/snd_missed.yy",},"order":7,},
     {"id":{"name":"objGameOverSequence","path":"objects/objGameOverSequence/objGameOverSequence.yy",},"order":17,},
     {"id":{"name":"objGround","path":"objects/objGround/objGround.yy",},"order":15,},
+    {"id":{"name":"scrInstanceIterator","path":"scripts/scrInstanceIterator/scrInstanceIterator.yy",},"order":2,},
     {"id":{"name":"spr_hearbeat_up_2","path":"sprites/spr_hearbeat_up_2/spr_hearbeat_up_2.yy",},"order":15,},
     {"id":{"name":"spr_loading_background","path":"sprites/spr_loading_background/spr_loading_background.yy",},"order":19,},
     {"id":{"name":"spr_tutorial_text_02b","path":"sprites/spr_tutorial_text_02b/spr_tutorial_text_02b.yy",},"order":9,},

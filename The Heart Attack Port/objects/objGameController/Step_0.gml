@@ -1,9 +1,43 @@
-self.heartbeatSound.playHeartbeat();
+//self.heartbeatSound.playHeartbeat();
 
-if(keyboard_check_pressed(ord("M"))) {
-	self.heartbeatSound.stopHeartbeat();	
+if(keyboard_check_pressed(ord("C"))) {
+	//self.testHeartbeat.image_blend = make_color_hsv(255, 255, random(255));	
 }
-
+if(keyboard_check_pressed(ord("P"))) {
+	//self.heartbeatSound.playHeartbeat();	
+	if(self.testHeartbeat.heartbeatPaused) {
+		self.testHeartbeat.unpause();	
+	}
+	else {
+		self.testHeartbeat.pause();	
+	}
+}
+if(keyboard_check_pressed(ord("S"))) {
+	//self.heartbeatSound.stopHeartbeat();	
+	self.testHeartbeat.shrink();
+}
+if(keyboard_check_pressed(ord("O"))) {
+	//self.heartbeatSound.fadeOut();
+}
+if(keyboard_check_pressed(ord("I"))) {
+	//self.heartbeatSound.fadeIn();	
+}
+if(keyboard_check_pressed(ord("F"))) {
+	self.testHeartbeat.fadeOut(180);	
+}
+if(keyboard_check_pressed(ord("T"))) {
+	self.testHeart.heartbeatDirection = !self.testHeart.heartbeatDirection;
+	self.testHeartbeat.reset();
+}
+if(keyboard_check_pressed(ord("N"))) {
+	self.testHeartbeat = instance_create_depth(0, 0, 0, objHeartbeat);
+	self.testHeartbeat.heartController = self.testHeart;
+	self.testHeartbeat.construct(room_width / 2, room_height / 2, spr_hearbeat_up, true);
+	self.testHeartbeat.added();	
+}
+if(keyboard_check_pressed(ord("H"))) {
+	self.testHeart.loseHealth();
+}
 
 /*
 if(global.americanController.dead || global.vietController.dead) {

@@ -1,9 +1,28 @@
 ColorsInit(); //Initialize global colors
 GlobalInit(); //Initialize global vars/consts
 
+
+testHeart = instance_create_depth(0, 0, 0, objHeartController);
+self.testHeart.construct(noone);
+//self.testHeart.added();
+
+
+testHeartbeat = instance_create_depth(0, 0, 0, objHeartbeat);
+self.testHeartbeat.heartController = self.testHeart;
+self.testHeartbeat.construct(0, room_height / 2, spr_hearbeat_up, true);
+self.testHeartbeat.added();
+
+
+
+
+
+
+/*
 heartbeatSound = instance_create_depth(0,0,0, objHeartSoundController);
 self.heartbeatSound.construct(noone);
 self.heartbeatSound.added();
+*/
+
 
 /*
 quakeInterval = 3 * room_speed;

@@ -4,7 +4,10 @@
   "visible": true,
   "spriteMaskId": null,
   "persistent": false,
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "objHeartbeat",
+    "path": "objects/objHeartbeat/objHeartbeat.yy",
+  },
   "physicsObject": false,
   "physicsSensor": false,
   "physicsShape": 1,
