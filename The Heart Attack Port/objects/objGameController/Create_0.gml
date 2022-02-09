@@ -1,6 +1,7 @@
 ColorsInit(); //Initialize global colors
 GlobalInit(); //Initialize global vars/consts
 
+heartPaused = false;
 
 testHeart = instance_create_depth(0, 0, 0, objHeartController);
 self.testHeart.construct(noone);

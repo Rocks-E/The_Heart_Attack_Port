@@ -40,7 +40,7 @@
     {"id":{"name":"snd_missed","path":"sounds/snd_missed/snd_missed.yy",},"order":7,},
     {"id":{"name":"objGameOverSequence","path":"objects/objGameOverSequence/objGameOverSequence.yy",},"order":17,},
     {"id":{"name":"objGround","path":"objects/objGround/objGround.yy",},"order":15,},
-    {"id":{"name":"scrInstanceIterator","path":"scripts/scrInstanceIterator/scrInstanceIterator.yy",},"order":2,},
+    {"id":{"name":"scrExtensionFunctions","path":"scripts/scrExtensionFunctions/scrExtensionFunctions.yy",},"order":2,},
     {"id":{"name":"spr_hearbeat_up_2","path":"sprites/spr_hearbeat_up_2/spr_hearbeat_up_2.yy",},"order":15,},
     {"id":{"name":"spr_loading_background","path":"sprites/spr_loading_background/spr_loading_background.yy",},"order":19,},
     {"id":{"name":"spr_tutorial_text_02b","path":"sprites/spr_tutorial_text_02b/spr_tutorial_text_02b.yy",},"order":9,},

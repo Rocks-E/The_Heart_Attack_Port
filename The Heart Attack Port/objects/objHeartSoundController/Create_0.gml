@@ -5,7 +5,7 @@
 
 heartController = noone; //objHeartController
 beatLoop = audio_emitter_create();
-audio_emitter_gain(beatLoop, 0);
+audio_emitter_gain(beatLoop, 1);
 curBeatLoop = noone;
 fadeDuration = 0;
 fading = 0;

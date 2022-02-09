@@ -14,11 +14,13 @@ alarm[0] = -1; //beatAlarm(heartRate, beat)
 
 beatCount = 0;
 
-heartRateTween = noone; //NumTween(finishedTweeningHeartRate)
-tweeningHeartRate = false;
+heartRateTweenDuration = 0; //NumTween(finishedTweeningHeartRate)
+tweeningHeartRate = 0;
+heartRateChange = 0;
 
-pulseSpeedTween = noone; //NumTween(finishedTweeningPulseSpeed)
-tweeningPulseSpeed = false;
+pulseSpeedTweenDuration = 0; //NumTween(finishedTweeningPulseSpeed)
+tweeningPulseSpeed = 0;
+pulseSpeedChange = 0;
 
 function construct(_personController, _x = 0, _y = 0, _hotZoneX = 100, _direction = true, _heartRate = 120, _pulseSpeed = 2) {
 	//super(x, y)
@@ -37,9 +39,7 @@ function construct(_personController, _x = 0, _y = 0, _hotZoneX = 100, _directio
 }
 
 function added() {
-	//room_instance_add(room, 0, 0, self.hotZone);
-	//room_instance_add(room, 0, 0, self.heartSoundController);
-	//addTween(beatAlarm)
+	self.alarm[0] = self.heartRate;
 	//addTween(heartRateTween)
 	//addTween(pulseSpeedTween)
 	if(!self.personController.markedForPause) {
@@ -92,54 +92,54 @@ function getHeartbeats(_upBeats = true, _downBeats = true, _flatBeats = true) {
 	
 	var c = 0; //Needed in for loops to replace for each functionality
 	
+	
 	var hbeats = getInstancesOf(objHeartbeat);
 	var h = noone;
 	for(c = 0; c < array_length(hbeats); c++) {
 		h = hbeats[c];
-		if(h.heartController == self) {
+		if(h.heartController.instance_id == self.instance_id) {
 			array_push(myHeartbeats, h);	
 		}
 	}
 	
-	/*
+	
 	if(_upBeats) {
-		var heartbeatUpList = instance_find(objHeartbeatUp, all);
+		var heartbeatUpList = getInstancesOf(objHeartbeatUp);
 		var u = noone;
 		for(c = 0; c < array_length(heartbeatUpList); c++) {
 			u = heartbeatUpList[c];
-			if(u.heartController == self) {
+			if(u.heartController.instance_id == self.instance_id) {
 				array_push(myHeartbeats, u);
 			}
 		}
 	}
 	if(_downBeats) {
-		var heartbeatDownList = instance_find(objHeartbeatDown, all);
+		var heartbeatDownList = getInstancesOf(objHeartbeatDown);
 		var d = noone;
 		for(c = 0; c < array_length(heartbeatDownList); c++) {
 			d = heartbeatDownList[c];
-			if(d.heartController == self) {
+			if(d.heartController.instance_id == self.instance_id) {
 				array_push(myHeartbeats, d);
 			}
 		}
 	}
 	if(_flatBeats) {
-		var heartbeatFlatList = instance_find(objHeartbeatFlat, all);
+		var heartbeatFlatList = getInstancesOf(objHeartbeatFlat);
 		var f = noone;
 		for(c = 0; c < array_length(heartbeatFlatList); c++) {
 			f = heartbeatFlatList[c];
-			if(f.heartController == self) {
+			if(f.heartController.instance_id == self.instance_id) {
 				array_push(myHeartbeats, f);
 			}
 		}
 	}
-	*/
 	
 	return myHeartbeats;
 }
 
 function pause() {
-	self.heartSoundController.beatLoop.stop();
-	self.hotZone.active = false;
+	audio_stop_sound(self.heartSoundController.curBeatLoop);
+	//self.hotZone.active = false;
 	
 	var heartBeats = self.getHeartbeats();
 	for(var c = 0; c < array_length(heartBeats); c++) {
@@ -151,7 +151,7 @@ function pause() {
 
 function unpause() {
 	self.active = true;
-	self.hotZone.active = true;
+	//self.hotZone.active = true;
 	
 	if(global.CONSTANT_HEART_SOUND)
 		if(!audio_is_playing(self.heartSoundController.curBeatLoop)) self.heartSoundController.curBeatLoop = audio_play_sound_on(self.heartSoundController.beatLoop, snd_heart_beat_full, true, 1);
@@ -166,7 +166,7 @@ function fadeOut(_duration) {
 	
 	var heartBeats = self.getHeartbeats();
 	for(var c = 0; c < array_length(heartBeats); c++) {
-		if(heartBeats[c].heartController == self) {
+		if(heartBeats[c].heartController.instance_id == self.instance_id) {
 			heartBeats[c].pause();
 			heartBeats[c].fadeOut(_duration);
 		}
@@ -179,21 +179,23 @@ function fadeOut(_duration) {
 }
 
 function tweenHeartRate(_targetHeartRate, _duration) {
-	//self.heartRateTween.tween(self.heartRate, _targetHeartRate, _duration);
-	self.tweeningHeartRate = true;
+	self.heartRateTweenDuration = _duration;
+	self.heartRateChange = _targetHeartRate - self.heartRate;
+	self.tweeningHeartRate = _duration;
 }
 
 function finishedTweeningHeartRate() {
-	self.tweeningHeartRate = false;
+	self.tweeningHeartRate = 0;
 }
 
 function tweenPulseSpeed(_targetPulseSpeed, _duration) {
-	//self.pulseSpeedTween.tween(self.pulseSpeed, _targetPulseSpeed, _duration);
-	self.tweeningPulseSpeed = true;
+	self.pulseSpeedTweenDuration = _duration;
+	self.pulseSpeedChange = _targetPulseSpeed - self.pulseSpeed;
+	self.tweeningPulseSpeed = _duration;
 }
 
 function finishedTweeningPulseSpeed() {
-	self.tweeningPulseSpeed = false;
+	self.tweeningPulseSpeed = 0;
 }
 
 function setHeartRatePulseSpeed(_heartRate, _pulseSpeed) {

@@ -5,11 +5,13 @@ if(keyboard_check_pressed(ord("C"))) {
 }
 if(keyboard_check_pressed(ord("P"))) {
 	//self.heartbeatSound.playHeartbeat();	
-	if(self.testHeartbeat.heartbeatPaused) {
-		self.testHeartbeat.unpause();	
+	if(self.heartPaused) {
+		self.testHeart.unpause();
+		self.heartPaused = false;
 	}
 	else {
-		self.testHeartbeat.pause();	
+		self.testHeart.pause();	
+		self.heartPaused = true;
 	}
 }
 if(keyboard_check_pressed(ord("S"))) {
@@ -23,7 +25,7 @@ if(keyboard_check_pressed(ord("I"))) {
 	//self.heartbeatSound.fadeIn();	
 }
 if(keyboard_check_pressed(ord("F"))) {
-	self.testHeartbeat.fadeOut(180);	
+	self.testHeart.fadeOut(180);	
 }
 if(keyboard_check_pressed(ord("T"))) {
 	self.testHeart.heartbeatDirection = !self.testHeart.heartbeatDirection;
@@ -37,6 +39,12 @@ if(keyboard_check_pressed(ord("N"))) {
 }
 if(keyboard_check_pressed(ord("H"))) {
 	self.testHeart.loseHealth();
+}
+if(keyboard_check_pressed(ord("U"))) {
+	self.testHeart.setHeartRatePulseSpeed(self.testHeart.heartRate * 2, self.testHeart.pulseSpeed * 2);
+}
+if(keyboard_check_pressed(ord("D"))) {
+	self.testHeart.setHeartRatePulseSpeed(self.testHeart.heartRate / 2, self.testHeart.pulseSpeed / 2);
 }
 
 /*
