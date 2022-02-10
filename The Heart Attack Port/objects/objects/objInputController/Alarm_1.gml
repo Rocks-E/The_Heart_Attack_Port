@@ -1,2 +1,0 @@
-/// @description bugFailure
-self.bugFailure();
