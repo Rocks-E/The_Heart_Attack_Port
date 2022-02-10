@@ -49,7 +49,9 @@ function missedAction() {
 	audio_emitter_gain(self.heartController.heartSoundController.sndMissed, (1 - self.heartController.heartHealth + 0.1) * 0.2)
 	audio_play_sound_on(self.heartController.heartSoundController.sndMissed, snd_missed, false, 1);
 	
-	instance_create_depth(self.heartController.x, self.heartController.y, 0, objRedMask);
+	var tempMask = instance_create_depth(self.heartController.x, self.heartController.y, 0, objRedMask);
+	tempMask.construct();
+	tempMask.added();
 	
 	if(global.COMBINE_UP_DOWN_BEATS)
 		//self.pairedHeartbeatDown.image_blend = global.PULSE_COLOR_MISSED;

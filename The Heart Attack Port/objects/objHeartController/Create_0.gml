@@ -139,7 +139,7 @@ function getHeartbeats(_upBeats = true, _downBeats = true, _flatBeats = true) {
 
 function pause() {
 	audio_stop_sound(self.heartSoundController.curBeatLoop);
-	//self.hotZone.active = false;
+	self.hotZone.active = false;
 	
 	var heartBeats = self.getHeartbeats();
 	for(var c = 0; c < array_length(heartBeats); c++) {
@@ -151,7 +151,7 @@ function pause() {
 
 function unpause() {
 	self.active = true;
-	//self.hotZone.active = true;
+	self.hotZone.active = true;
 	
 	if(global.CONSTANT_HEART_SOUND)
 		if(!audio_is_playing(self.heartSoundController.curBeatLoop)) self.heartSoundController.curBeatLoop = audio_play_sound_on(self.heartSoundController.beatLoop, snd_heart_beat_full, true, 1);
@@ -212,7 +212,7 @@ function loseHealth() {
 	
 	var heartbeatList = self.getHeartbeats();
 	if(self.heartHealth <= 0.1) {
-		//self.flatLine = instance_create_depth(0, 0, 0, objFlatLine(self));
+		//self.flatLine = instance_create_depth(0, 0, 0, objFlatLine);
 		
 		for(var c = 0; c < array_length(heartbeatList); c++) {
 			instance_destroy(heartbeatList[c]);	
