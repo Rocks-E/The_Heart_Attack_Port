@@ -1,4 +1,4 @@
-function Colors() {
+function ColorsInit() {
 	global.WHITE = make_color_rgb(0xFF, 0xFF, 0xFF);
 	global.OFF_WHITE = make_color_rgb(0xE5, 0xE5, 0xE5);
 	global.BLOOD_RED = make_color_rgb(0xA7, 0x03, 0x03);
