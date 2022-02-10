@@ -53,6 +53,7 @@
     {"id":{"name":"spr_hearbeat_up","path":"sprites/spr_hearbeat_up/spr_hearbeat_up.yy",},"order":14,},
     {"id":{"name":"spr_tutorial_text_01","path":"sprites/spr_tutorial_text_01/spr_tutorial_text_01.yy",},"order":6,},
     {"id":{"name":"spr_heartbeat_down_2","path":"sprites/spr_heartbeat_down_2/spr_heartbeat_down_2.yy",},"order":17,},
+    {"id":{"name":"objRedMask","path":"objects/objRedMask/objRedMask.yy",},"order":27,},
     {"id":{"name":"objAmericanController","path":"objects/objAmericanController/objAmericanController.yy",},"order":3,},
     {"id":{"name":"spr_tutorial_text_02","path":"sprites/spr_tutorial_text_02/spr_tutorial_text_02.yy",},"order":8,},
     {"id":{"name":"rmGame","path":"rooms/rmGame/rmGame.yy",},"order":0,},

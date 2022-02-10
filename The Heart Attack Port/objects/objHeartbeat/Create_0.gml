@@ -42,7 +42,7 @@ function reset() {
 function checkMissed() {
 	if(self.hit || self.missed)
 		return false;	
-	else if(self.heartbeatDirection && (self.x + self.width < self.heartController.hotZone.x))
+	else if(self.heartbeatDirection && (self.x + self.sprite_width < self.heartController.hotZone.x))
 		return true;
 	else if(!self.heartbeatDirection && (self.x > self.heartController.hotZone.x + global.HOT_ZONE_WIDTH))
 		return true;

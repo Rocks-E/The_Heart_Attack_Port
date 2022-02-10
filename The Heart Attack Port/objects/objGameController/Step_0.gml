@@ -2,9 +2,9 @@ if(keyboard_check_pressed(ord("F"))) {
 	self.testHeart.fadeOut(180);	
 }
 if(keyboard_check_pressed(ord("N"))) {
-	self.testHeartbeat = instance_create_depth(0, 0, 0, objHeartbeatFlat);
+	self.testHeartbeat = instance_create_depth(0, 0, 0, objHeartbeatUp);
 	self.testHeartbeat.heartController = self.testHeart;
-	self.testHeartbeat.constructExt(room_width / 2, room_height / 2);
+	self.testHeartbeat.construct(room_width / 2, room_height / 2);
 	self.testHeartbeat.added();	
 	self.testHeartbeat.reset();
 }
