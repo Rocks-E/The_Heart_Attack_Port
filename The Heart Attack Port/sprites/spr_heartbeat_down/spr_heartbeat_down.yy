@@ -2,7 +2,7 @@
   "bboxMode": 0,
   "collisionKind": 1,
   "type": 0,
-  "origin": 0,
+  "origin": 5,
   "preMultiplyAlpha": false,
   "edgeFiltering": false,
   "collisionTolerance": 0,
@@ -27,6 +27,9 @@
     {"compositeImage":{"FrameId":{"name":"0882df7f-6690-409c-8ac0-812b15075e02","path":"sprites/spr_heartbeat_down/spr_heartbeat_down.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
         {"FrameId":{"name":"0882df7f-6690-409c-8ac0-812b15075e02","path":"sprites/spr_heartbeat_down/spr_heartbeat_down.yy",},"LayerId":{"name":"3fd10b35-b910-4526-a9df-9b37db3795c4","path":"sprites/spr_heartbeat_down/spr_heartbeat_down.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
       ],"parent":{"name":"spr_heartbeat_down","path":"sprites/spr_heartbeat_down/spr_heartbeat_down.yy",},"resourceVersion":"1.0","name":"0882df7f-6690-409c-8ac0-812b15075e02","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"ec47a2e5-964c-4765-af12-a9215c84ada4","path":"sprites/spr_heartbeat_down/spr_heartbeat_down.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"ec47a2e5-964c-4765-af12-a9215c84ada4","path":"sprites/spr_heartbeat_down/spr_heartbeat_down.yy",},"LayerId":{"name":"3fd10b35-b910-4526-a9df-9b37db3795c4","path":"sprites/spr_heartbeat_down/spr_heartbeat_down.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"spr_heartbeat_down","path":"sprites/spr_heartbeat_down/spr_heartbeat_down.yy",},"resourceVersion":"1.0","name":"ec47a2e5-964c-4765-af12-a9215c84ada4","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
     "spriteId": {"name":"spr_heartbeat_down","path":"sprites/spr_heartbeat_down/spr_heartbeat_down.yy",},
@@ -36,12 +39,13 @@
     "playbackSpeedType": 0,
     "autoRecord": true,
     "volume": 1.0,
-    "length": 1.0,
+    "length": 2.0,
     "events": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MessageEventKeyframe>",},
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
             {"id":"7067c349-5b6a-4b7d-9f78-5970fa8fb680","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"0882df7f-6690-409c-8ac0-812b15075e02","path":"sprites/spr_heartbeat_down/spr_heartbeat_down.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"288c3dce-c7f7-4d37-ad6b-a6e99a370a01","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"ec47a2e5-964c-4765-af12-a9215c84ada4","path":"sprites/spr_heartbeat_down/spr_heartbeat_down.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
     ],
     "visibleRange": null,
@@ -54,8 +58,8 @@
     "backdropHeight": 768,
     "backdropXOffset": 0.0,
     "backdropYOffset": 0.0,
-    "xorigin": 0,
-    "yorigin": 0,
+    "xorigin": 11,
+    "yorigin": 41,
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_heartbeat_down","path":"sprites/spr_heartbeat_down/spr_heartbeat_down.yy",},
