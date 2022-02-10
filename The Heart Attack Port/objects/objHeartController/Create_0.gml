@@ -28,9 +28,9 @@ function construct(_personController, _x = 0, _y = 0, _hotZoneX = 100, _directio
 	self.y = _y;
 	self.personController = _personController;
 	self.heartbeatDirection = _direction;
-	//self.hotZone = instance_create_depth(_x, _y, 0, objHotZone);
-	//self.hotZone.construct(_hotZoneX, _y, self);
-	//self.hotZone.added();
+	self.hotZone = instance_create_depth(_x, _y, 0, objHotZone);
+	self.hotZone.construct(_hotZoneX, _y, self);
+	self.hotZone.added();
 	self.heartSoundController = instance_create_depth(_x, _y, 0, objHeartSoundController);
 	self.heartSoundController.construct(self);
 	self.heartSoundController.added();

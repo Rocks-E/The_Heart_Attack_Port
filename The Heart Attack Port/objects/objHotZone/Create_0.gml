@@ -1,58 +1,46 @@
-/*
 HOT_ZONE_FADE_IN_DURATION = 2 * room_speed;		
-public const FADE_OUT_DURATION:Number = 2 * FP.assignedFrameRate;
-public const MAX_ALPHA:Number = 0.5;	
-public const GLOW_OFFSET:Number = 9;
-		
-public var fadeTween:ColorTween;
-public var fading:Boolean = false;
-		
-public var heartController:HeartController;
-		
-//public var image:Image = Image.createRect(Global.HOT_ZONE_WIDTH, FP.halfHeight, Global.HOT_ZONE_COLOR_DEFAULT, 0.5);
-public var image:Image = new Image(Assets.HOTZONE);
+HOT_ZONE_FADE_OUT_DURATION = 2 * room_speed;
+MAX_ALPHA = 0.5;	
+GLOW_OFFSET = 9;
 
-public function HotZone(x:Number = 0, y:Number = 0, heartController:HeartController = null) 
-{
-	super(x, y, image);
-	this.heartController = heartController;
+fadeTweenDuration = 0; //ColorTween
+fading = 0;
+		
+heartController = noone; //objHeartController
 
-	image.originX = 0;
-	image.originY = 0;
-	image.x = -GLOW_OFFSET;
-	image.y = 0;	
-	setHitbox(image.width - 2*GLOW_OFFSET, image.height, image.originX, image.originY);				
+function construct(_x = 0, _y = 0, _heartController = noone) {
+	self.x = _x;
+	self.y = _y;
+	self.heartController = _heartController;
+
+	sprite_set_offset(self.sprite_index, 0, 0);
+	sprite_set_bbox(self.sprite_index, -GLOW_OFFSET, 0, self.sprite_width, self.sprite_height);				
 }
 		
-override public function added():void
-{
-	fadeTween = new ColorTween();
-	fadeTween.alpha = 0;
+function added() {
 	fadeIn();
 }
 
-public function fadeIn(duration:Number = 120):void
-{
-	fadeTween = new ColorTween();
-	addTween(fadeTween);		
-	fadeTween.tween(duration, Colors.WHITE, Colors.WHITE, 0, MAX_ALPHA);				
+function fadeIn(_duration = 120) {
+	self.fading = 1;
+	self.fadeTweenDuration = _duration;
 }
 		
-public function fadeOut(duration:Number = 120):void
-{
-	fadeTween = new ColorTween();
-	addTween(fadeTween);		
-	fadeTween.tween(duration, Colors.WHITE, Colors.WHITE, (graphic as Image).alpha, 0);					
+function fadeOut(_duration = 120) {
+	self.fading = -1;
+	self.fadeTweenDuration = _duration;
 }
 		
-public function checkActive():Boolean
-{
-	var heartBeats:Array = heartController.getHeartbeats(true, false, false);
-	for each (var h:Heartbeat in heartBeats)
-	{
+function checkActive() {
+	var heartBeats = self.heartController.getHeartbeats(true, false, false);
+	
+	var c = 0;
+	var h = noone;
+	
+	for(c = 0; c < array_length(heartBeats); c++) {
+		h = heartBeats[c];
 		if (h.checkOverlapHotZone())
 			return true;
 	}				
 	return false;
 }
-*/

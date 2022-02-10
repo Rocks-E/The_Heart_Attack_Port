@@ -1,1 +1,2 @@
+/// @description fadeIn()
 self.fadeIn();
