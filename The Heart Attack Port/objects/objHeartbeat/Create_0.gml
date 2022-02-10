@@ -16,7 +16,7 @@ function construct(_x = 0, _y = 0, _image = noone, _direction = true) {
 	self.sprite_index = _image;
 	self.image_xscale = 2;
 	self.image_yscale = 2;
-	sprite_set_offset(self.sprite_index, 0, self.sprite_height / 2);
+	sprite_set_offset(self.sprite_index, 0, sprite_get_height(self.sprite_index) / 2);
 	//sprite_set_offset(self.sprite_index, 0, 0);
 	sprite_set_bbox(self.sprite_index, self.sprite_xoffset, self.sprite_yoffset, self.sprite_width, self.sprite_height);
 }
@@ -67,12 +67,13 @@ function unpause() {
 function fadeOut(_duration) {
 	self.fading = true;
 	self.fadingDuration = _duration;
+
 }
 
 function shrink() {
 	self.image_xscale = 2;
 	self.image_yscale = 2 * self.heartController.heartHealth;
-	sprite_set_offset(self.sprite_index, 0, self.sprite_height / 2);
+	sprite_set_offset(self.sprite_index, 0, sprite_get_height(self.sprite_index) / 2);//self.sprite_height / 2);
 	sprite_set_bbox(self.sprite_index, self.sprite_xoffset, self.sprite_yoffset, self.sprite_width, self.sprite_height);
 }
 

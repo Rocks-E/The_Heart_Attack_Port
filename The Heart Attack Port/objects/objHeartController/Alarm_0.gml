@@ -1,0 +1,2 @@
+/// @description beat()
+self.beat();

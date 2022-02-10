@@ -1,6 +1,6 @@
 //Constants
-#macro ACTIVATE_DURATION 3 * room_speed
-#macro DEACTIVATE_DURATION 3 * room_speed
+ACTIVATE_DURATION = 3 * room_speed;
+DEACTIVATE_DURATION = 3 * room_speed;
 
 // Whether the person should be on top or bottom
 isTop = false;

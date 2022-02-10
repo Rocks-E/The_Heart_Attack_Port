@@ -39,11 +39,11 @@ function construct(_personController, _x = 0, _y = 0, _hotZoneX = 100, _directio
 }
 
 function added() {
-	self.alarm[0] = self.heartRate;
+	//self.alarm[0] = self.heartRate;
 	//addTween(heartRateTween)
 	//addTween(pulseSpeedTween)
 	if(!self.personController.markedForPause) {
-		//self.beat();	
+		self.beat();	
 	}
 }
 
@@ -56,28 +56,36 @@ function reset() {
 }
 
 function beat() {
-	self.personController.photoController.fadeInDuration = self.heartRate / 2;
-	self.personController.photoController.fadeOutDuration = self.heartRate / 2;
+	//self.personController.photoController.fadeInDuration = self.heartRate / 2;
+	//self.personController.photoController.fadeOutDuration = self.heartRate / 2;
 	
 	if(global.CONSTANT_HEART_SOUND && self.beatCount == 0) {
-		self.heartSoundController = instance_create_depth(0, 0, 0, self.heartSoundController);	
+		self.heartSoundController = instance_create_depth(0, 0, 0, self.heartSoundController);
+		self.heartSoundController.construct(self);
+		self.heartSoundController.added();
 	}
 	
-	if(self.lastFlatHeartbeat != noone) {
+	if(instance_exists(self.lastFlatHeartbeat)) {
 		self.lastFlatHeartbeat.updateLength();
 	}
 	
-	var u = instance_create_depth(self.x, self.y, 0, objHeartbeatUp);
+	var u = instance_create_depth(0, 0, 0, objHeartbeatUp);
 	u.heartController = self;
+	u.construct(self.x, self.y);
+	u.added();
 	u.reset();
 	
-	var d = instance_create_depth(self.x, self.y, 0, objHeartbeatDown);
+	var d = instance_create_depth(0, 0, 0, objHeartbeatDown);
 	d.heartController = self;
+	d.construct(self.x, self.y);
+	d.added();
 	d.reset();
 	u.pairedHeartbeatDown = d;
 	
-	var f = instance_create_depth(self.x, self.y, 0, objHeartbeatFlat);
+	var f = instance_create_depth(0, 0, 0, objHeartbeatFlat);
 	f.heartController = self;
+	f.construct(self.x, self.y);
+	f.added();
 	f.reset();
 	self.lastFlatHeartbeat = f;
 	
@@ -90,18 +98,7 @@ function getHeartbeats(_upBeats = true, _downBeats = true, _flatBeats = true) {
 	
 	var myHeartbeats = array_create(0);
 	
-	var c = 0; //Needed in for loops to replace for each functionality
-	
-	
-	var hbeats = getInstancesOf(objHeartbeat);
-	var h = noone;
-	for(c = 0; c < array_length(hbeats); c++) {
-		h = hbeats[c];
-		if(h.heartController.instance_id == self.instance_id) {
-			array_push(myHeartbeats, h);	
-		}
-	}
-	
+	var c = 0;
 	
 	if(_upBeats) {
 		var heartbeatUpList = getInstancesOf(objHeartbeatUp);

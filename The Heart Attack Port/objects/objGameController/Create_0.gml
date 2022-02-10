@@ -3,16 +3,18 @@ GlobalInit(); //Initialize global vars/consts
 
 heartPaused = false;
 
+testPerson = instance_create_depth(0, 0, 0, objPersonController);
+
 testHeart = instance_create_depth(0, 0, 0, objHeartController);
-self.testHeart.construct(noone);
-//self.testHeart.added();
+self.testHeart.construct(testPerson, 0, 0, global.HOT_ZONE_X, true, global.HEART_RATE_02, global.PULSE_SPEED_02);
+self.testHeart.added();
 
-
+/*
 testHeartbeat = instance_create_depth(0, 0, 0, objHeartbeat);
 self.testHeartbeat.heartController = self.testHeart;
 self.testHeartbeat.construct(0, room_height / 2, spr_hearbeat_up, true);
 self.testHeartbeat.added();
-
+*/
 
 
 

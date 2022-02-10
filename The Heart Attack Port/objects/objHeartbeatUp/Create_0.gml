@@ -30,7 +30,7 @@ function hitAction() {
 	self.image_blend = global.PULSE_COLOR_HIT;
 	
 	if(global.COMBINE_UP_DOWN_BEATS)
-		//self.pairedHeartbeatDown.image_blend = global.PULSE_COLOR_HIT;
+		self.pairedHeartbeatDown.image_blend = global.PULSE_COLOR_HIT;
 		
 	if(global.quakeScreenOnBeat) {
 		global.quake.start(global.quakeIntensity, global.quakeDuration);
@@ -49,12 +49,12 @@ function missedAction() {
 	audio_emitter_gain(self.heartController.heartSoundController.sndMissed, (1 - self.heartController.heartHealth + 0.1) * 0.2)
 	audio_play_sound_on(self.heartController.heartSoundController.sndMissed, snd_missed, false, 1);
 	
-	var tempMask = instance_create_depth(self.heartController.x, self.heartController.y, 0, objRedMask);
-	tempMask.construct();
+	var tempMask = instance_create_depth(0, 0, 0, objRedMask);
+	tempMask.construct(self.heartController.x, self.heartController.y);
 	tempMask.added();
 	
 	if(global.COMBINE_UP_DOWN_BEATS)
-		//self.pairedHeartbeatDown.image_blend = global.PULSE_COLOR_MISSED;
+		self.pairedHeartbeatDown.image_blend = global.PULSE_COLOR_MISSED;
 		
 	if(global.dieTogether) {
 		if(self.heartController.personController.personType == "american")
