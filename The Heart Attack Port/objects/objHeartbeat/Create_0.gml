@@ -71,10 +71,16 @@ function fadeOut(_duration) {
 }
 
 function shrink() {
-	self.image_xscale = 2;
 	self.image_yscale = 2 * self.heartController.heartHealth;
-	sprite_set_offset(self.sprite_index, 0, sprite_get_height(self.sprite_index) / 2);//self.sprite_height / 2);
-	sprite_set_bbox(self.sprite_index, self.sprite_xoffset, self.sprite_yoffset, self.sprite_width, self.sprite_height);
+	if(self.heartController.heartbeatDirection) {
+		self.image_xscale = 2;
+		sprite_set_offset(self.sprite_index, 0, sprite_get_height(self.sprite_index) / 2);
+	}
+	else {
+		self.image_xscale = -2;
+		sprite_set_offset(self.sprite_index, sprite_get_width(self.sprite_index), sprite_get_height(self.sprite_index) / 2);	
+	}
+	sprite_set_bbox(self.sprite_index, self.sprite_xoffset, self.sprite_yoffset, sprite_get_width(self.sprite_index)/*self.sprite_width*/, sprite_get_height(self.sprite_index)/*self.sprite_height*/);
 }
 
 function checkOverlapHotZone() {

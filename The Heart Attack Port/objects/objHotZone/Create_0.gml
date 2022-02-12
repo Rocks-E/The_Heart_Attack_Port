@@ -14,7 +14,7 @@ function construct(_x = 0, _y = 0, _heartController = noone) {
 	self.heartController = _heartController;
 
 	sprite_set_offset(self.sprite_index, 0, 0);
-	sprite_set_bbox(self.sprite_index, -GLOW_OFFSET, 0, self.sprite_width, self.sprite_height);				
+	sprite_set_bbox(self.sprite_index, 0, 0, self.sprite_width, self.sprite_height);				
 }
 		
 function added() {

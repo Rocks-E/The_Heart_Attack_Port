@@ -70,22 +70,23 @@ function beat() {
 	}
 	
 	var u = instance_create_depth(0, 0, 0, objHeartbeatUp);
+	u.construct(self.x, self.y);
 	u.heartController = self;
 	u.construct(self.x, self.y);
-	u.added();
+	//u.added();
 	u.reset();
 	
 	var d = instance_create_depth(0, 0, 0, objHeartbeatDown);
-	d.heartController = self;
 	d.construct(self.x, self.y);
-	d.added();
+	d.heartController = self;
+	//d.added();
 	d.reset();
 	u.pairedHeartbeatDown = d;
 	
 	var f = instance_create_depth(0, 0, 0, objHeartbeatFlat);
-	f.heartController = self;
 	f.construct(self.x, self.y);
-	f.added();
+	f.heartController = self;
+	//f.added();
 	f.reset();
 	self.lastFlatHeartbeat = f;
 	

@@ -12,7 +12,7 @@ function construct(_x = 0, _y = 0) {
 	self.sprite_index = spr_hearbeat_up;
 	self.image_xscale = 2;
 	self.image_yscale = 2;
-	sprite_set_offset(self.sprite_index, 0, self.sprite_height / 2);
+	sprite_set_offset(self.sprite_index, 0, sprite_get_height(self.sprite_index) / 2);
 	sprite_set_bbox(self.sprite_index, self.sprite_xoffset, self.sprite_yoffset, self.sprite_width, self.sprite_height);
 	//super end
 	
@@ -50,7 +50,7 @@ function missedAction() {
 	audio_play_sound_on(self.heartController.heartSoundController.sndMissed, snd_missed, false, 1);
 	
 	var tempMask = instance_create_depth(0, 0, 0, objRedMask);
-	tempMask.construct(self.heartController.x, self.heartController.y);
+	tempMask.construct(self.heartController.x, self.heartController.y + room_height / 4);
 	tempMask.added();
 	
 	if(global.COMBINE_UP_DOWN_BEATS)
@@ -76,17 +76,24 @@ function reset() {
 	self.fading = false;
 	self.heartbeatPaused = false;
 	
+	if(self.heartController.heartbeatDirection) {
+		self.sprite_index = spr_hearbeat_up;	
+	}
+	else {
+		self.sprite_index = spr_hearbeat_up_2;
+	}
+	
 	self.shrink();
 	
 	self.y = self.heartController.y + room_height / 4;
 	//super end
 	
 	if(self.heartbeatDirection) {
-		self.image_xscale = self.image_xscale;
+		self.image_xscale = abs(self.image_xscale);
 		self.x = room_width;
 	}
 	else {
-		self.image_xscale = -self.image_xscale;
+		self.image_xscale = -abs(self.image_xscale);
 		self.x = 0 - global.heartbeatUpWidth;
 	}
 }

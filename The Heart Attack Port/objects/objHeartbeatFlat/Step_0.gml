@@ -7,7 +7,7 @@ if(!self.heartbeatPaused) {
 	}
 }
 
-if(self.x < (0 - self.image_xscale * 3) || self.x > (room_width + self.image_xscale * 2)) {
+if(self.x < (0 - abs(self.image_xscale) * 3) || self.x > (room_width + abs(self.image_xscale) * 2)) {
 	self.offscreenAction();
 }
 

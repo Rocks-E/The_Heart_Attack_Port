@@ -29,7 +29,7 @@ function construct(_x = 0, _y = 0, _shouldFadeIn = true, _fadeInDuration = 0, _f
 		self.sprite_index = spr_block_mask;
 		self.image_blend = global.BLOOD_RED;
 	}
-	self.x = _y;
+	self.x = _x;
 	self.y = _y;
 	self.depth = -100;
 	
@@ -51,8 +51,6 @@ function construct(_x = 0, _y = 0, _shouldFadeIn = true, _fadeInDuration = 0, _f
 	
 	if (_liveDuration == 0) self.liveDuration = self.RED_MASK_LIVE_DURATION;
 	else self.liveDuration = _liveDuration;
-	
-	//alarm[0] = _liveDuration;
 	
 	self.maxAlpha = _maxAlpha;
 	

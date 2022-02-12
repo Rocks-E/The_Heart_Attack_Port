@@ -5,9 +5,15 @@ heartPaused = false;
 
 testPerson = instance_create_depth(0, 0, 0, objPersonController);
 
+testPersonBottom = instance_create_depth(0,0,0, objPersonController);
+
 testHeart = instance_create_depth(0, 0, 0, objHeartController);
 self.testHeart.construct(testPerson, 0, 0, global.HOT_ZONE_X, true, global.HEART_RATE_02, global.PULSE_SPEED_02);
 self.testHeart.added();
+
+testHeartBottom = instance_create_depth(0, 0, 0, objHeartController);
+self.testHeartBottom.construct(testPersonBottom, 0, room_height / 2, room_width - global.HOT_ZONE_X - global.HOT_ZONE_WIDTH, false, global.HEART_RATE_02, global.PULSE_SPEED_02);
+self.testHeartBottom.added();
 
 /*
 testHeartbeat = instance_create_depth(0, 0, 0, objHeartbeat);
