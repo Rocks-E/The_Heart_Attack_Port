@@ -24,7 +24,7 @@ function reset() {
 	self.heartbeatDirection = self.heartController.heartbeatDirection;
 	self.hit = false;
 	self.missed = false;
-	self.image_blend = global.WHITE;
+	self.image_blend = global.PULSE_COLOR_DEFAULT;
 	self.image_alpha = 1;
 	self.fading = false;
 	self.heartbeatPaused = false;
