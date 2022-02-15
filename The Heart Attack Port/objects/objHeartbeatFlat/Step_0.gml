@@ -1,20 +1,19 @@
-/// @description Insert description here
-// You can write your code in this editor
-
-if (!paused){			
-			//trace('heartbeatflat not paused');
-	if (heartbeatDirection)
-		x -= heartController.pulseSpeed;
-	else
-		x += heartController.pulseSpeed;
+if(!self.heartbeatPaused) {
+	if(self.heartbeatDirection) {
+		self.x -= self.heartController.pulseSpeed;	
+	}
+	else {
+		self.x += self.heartController.pulseSpeed;
+	}
 }
-			
-			// Off screen
-	if (x < (0 - sprite_width * 3) || x > (room_width + sprite_width * 2)){
-		offscreenAction();}
-			
-			// Fade out?
-	if (fading){
-	//	image_alpha = fadeTween.alpha;
-	}	
-	
+
+if(self.x < (0 - abs(self.image_xscale) * 3) || self.x > (room_width + abs(self.image_xscale) * 2)) {
+	self.offscreenAction();
+}
+
+if(self.fading) {
+	image_alpha -= 1 / self.fadingDuration;
+	if(image_alpha <= 0) {
+		self.fading = false;
+	}
+}

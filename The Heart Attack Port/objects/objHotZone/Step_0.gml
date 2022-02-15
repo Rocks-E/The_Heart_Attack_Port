@@ -1,5 +1,3 @@
-/// @description Insert description here
-// You can write your code in this editor
 if(self.fading > 0) {
 	self.image_alpha += (1 / self.fadeTweenDuration) * self.MAX_ALPHA;
 	if(self.image_alpha >= self.MAX_ALPHA) {
@@ -18,4 +16,4 @@ if(self.checkActive()) {
 }
 else {
 	self.image_blend = global.HOT_ZONE_COLOR_DEFAULT;
-} 
+}

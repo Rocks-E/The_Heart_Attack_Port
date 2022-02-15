@@ -1,6 +1,6 @@
 //Constants
-#macro ACTIVATE_DURATION 3 * room_speed
-#macro DEACTIVATE_DURATION 3 * room_speed
+ACTIVATE_DURATION = 3 * room_speed;
+DEACTIVATE_DURATION = 3 * room_speed;
 
 // Whether the person should be on top or bottom
 isTop = false;
@@ -22,7 +22,7 @@ photoArrayNumber = 1;
 photoDisplayTime = 0;
 alarm[0] = -1; //newPhotoControllerAlarm;
 loopPhotos = false;
-active=true;
+
 photoArray01 = noone; //Array
 photoArray02 = noone; //Array
 photoArray03 = noone; //Array
@@ -48,14 +48,11 @@ function construct(_isTop, _inputKey) {
 	if(!_isTop) y = room_height * 0.5; //y = FP.halfHeight
 	if(_isTop) self.hotZoneX = global.HOT_ZONE_X;
 	else self.hotZoneX = room_width - global.HOT_ZONE_X - global.HOT_ZONE_WIDTH;
-	event_user(2);
-
 }
 
 function added() {
 	//self.heartController = new objHeartController(self, self.x, self.y, self.hotZoneX, self.isTop, HEART_RATE_01, PULSE_SPEED_01);
 	//room_instance_add(room, self.x, self.y, self.heartController);
-
 	self.heartController = instance_create_depth(self.x, self.y, 0, objHeartController(self, self.x, self.y, self.hotZoneX, self.isTop, global.HEART_RATE_01, global.PULSE_SPEED_01));
 	//self.inputController = new objInputController(self.inputKey, self.heartController);
 	//room_instance_add(room, self.x, self.y, self.inputController);
@@ -67,8 +64,7 @@ function pause(_makeDark = false) {
 		if(_makeDark) {
 			//self.darkMask = new objDarkMask(self.x, self.y, false);
 			//room_instance_add(room, self.x, self.y, self.darkMask);
-			self.darkMask = instance_create_depth(self.x, self.y, 0, objDarkMask);
-			self.darkMask.construct(self.x, self.y, false);
+			self.darkMask = instance_create_depth(self.x, self.y, 0, objDarkMask(self.x, self.y, false));
 		}
 		self.heartController.pause();
 		//self.photoController.pause();
@@ -85,12 +81,10 @@ function unpause() {
 			self.darkMask = noone;
 		}
 		self.heartController.unpause();
-		//self.photoController.unpause();
+		self.photoController.unpause();
 		if(self.personImage != noone) self.personImage.unpause();
 		self.personPaused = false;
-
 		self.active = true;
-		show_message("Suupp");
 	}
 }
 
@@ -101,8 +95,7 @@ function fadeOut(_duration = 180) {
 	if(self.personImage != noone) self.personImage.pause();
 	//self.darkMask = new objDarkMask(self.x, self.y, true, duration, duration);
 	//room_instance_add(room, self.x, self.y, self.darkMask);
-	self.darkMask = instance_create_depth(self.x, self.y, 0, objDarkMask);
-	self.darkMask.construct(self.x,self.y,true,_duration,_duration);
+	self.darkMask = instance_create_depth(self.x, self.y, 0, objDarkMask(self.x, self.y, true, _duration, _duration));
 	self.heartController.hotZone.fadeOut(_duration);
 	alarm[1] = _duration; //fadeOutCompleteAlarm(duration, fadeOutComplete)
 	//addTween(alarm[1], true)???
@@ -119,10 +112,8 @@ function fadeOutComplete() {
 }
 
 function fadeIn() {
-	show_message("ok")
 	self.fadingIn = true;
 	self.active = true;
-	event_user(14);
 	self.inputController.active = true;
 	self.heartController.hotZone.fadeIn(ACTIVATE_DURATION);
 	if(self.darkMask != noone) {
@@ -136,13 +127,8 @@ function fadeIn() {
 }
 
 function fadeInComplete() {
-	
 	self.fadingIn = false;
 	self.unpause();
-	show_message("hello")
-	with(self.heartController){
-		event_user(0);
-	}
 	self.heartController.beat();
 }
 
