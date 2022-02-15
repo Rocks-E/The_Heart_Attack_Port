@@ -29,10 +29,10 @@ function construct(_personController, _x = 0, _y = 0, _hotZoneX = 100, _directio
 	self.personController = _personController;
 	self.heartbeatDirection = _direction;
 	self.hotZone = instance_create_depth(_x, _y, 0, objHotZone);
-	self.hotZone.construct(_hotZoneX, _y, self);
+	self.hotZone.construct(_hotZoneX, _y, self.id);
 	self.hotZone.added();
 	self.heartSoundController = instance_create_depth(_x, _y, 0, objHeartSoundController);
-	self.heartSoundController.construct(self);
+	self.heartSoundController.construct(self.id);
 	self.heartSoundController.added();
 	self.heartRate = _heartRate;
 	self.pulseSpeed = _pulseSpeed;
@@ -61,7 +61,7 @@ function beat() {
 	
 	if(global.CONSTANT_HEART_SOUND && self.beatCount == 0) {
 		self.heartSoundController = instance_create_depth(0, 0, 0, self.heartSoundController);
-		self.heartSoundController.construct(self);
+		self.heartSoundController.construct(self.id);
 		self.heartSoundController.added();
 	}
 	
@@ -71,21 +71,21 @@ function beat() {
 	
 	var u = instance_create_depth(0, 0, 0, objHeartbeatUp);
 	u.construct(self.x, self.y);
-	u.heartController = self;
+	u.heartController = self.id;
 	u.construct(self.x, self.y);
 	//u.added();
 	u.reset();
 	
 	var d = instance_create_depth(0, 0, 0, objHeartbeatDown);
 	d.construct(self.x, self.y);
-	d.heartController = self;
+	d.heartController = self.id;
 	//d.added();
 	d.reset();
 	u.pairedHeartbeatDown = d;
 	
 	var f = instance_create_depth(0, 0, 0, objHeartbeatFlat);
 	f.construct(self.x, self.y);
-	f.heartController = self;
+	f.heartController = self.id;
 	//f.added();
 	f.reset();
 	self.lastFlatHeartbeat = f;
@@ -106,7 +106,7 @@ function getHeartbeats(_upBeats = true, _downBeats = true, _flatBeats = true) {
 		var u = noone;
 		for(c = 0; c < array_length(heartbeatUpList); c++) {
 			u = heartbeatUpList[c];
-			if(u.heartController.instance_id == self.instance_id) {
+			if(u.heartController.id == self.id) {
 				array_push(myHeartbeats, u);
 			}
 		}
@@ -116,7 +116,7 @@ function getHeartbeats(_upBeats = true, _downBeats = true, _flatBeats = true) {
 		var d = noone;
 		for(c = 0; c < array_length(heartbeatDownList); c++) {
 			d = heartbeatDownList[c];
-			if(d.heartController.instance_id == self.instance_id) {
+			if(d.heartController.id == self.id) {
 				array_push(myHeartbeats, d);
 			}
 		}
@@ -126,7 +126,7 @@ function getHeartbeats(_upBeats = true, _downBeats = true, _flatBeats = true) {
 		var f = noone;
 		for(c = 0; c < array_length(heartbeatFlatList); c++) {
 			f = heartbeatFlatList[c];
-			if(f.heartController.instance_id == self.instance_id) {
+			if(f.heartController.id == self.id) {
 				array_push(myHeartbeats, f);
 			}
 		}
@@ -164,7 +164,7 @@ function fadeOut(_duration) {
 	
 	var heartBeats = self.getHeartbeats();
 	for(var c = 0; c < array_length(heartBeats); c++) {
-		if(heartBeats[c].heartController.instance_id == self.instance_id) {
+		if(heartBeats[c].heartController.id == self.id) {
 			heartBeats[c].pause();
 			heartBeats[c].fadeOut(_duration);
 		}

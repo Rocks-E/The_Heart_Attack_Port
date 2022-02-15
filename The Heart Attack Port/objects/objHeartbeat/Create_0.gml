@@ -86,7 +86,7 @@ function shrink() {
 function checkOverlapHotZone() {
 	if (self.x > self.heartController.hotZone.x + global.HOT_ZONE_WIDTH)
 		return false;
-	else if (self.x + self.sprite_width < self.heartController.hotZone.x)
+	else if (self.x + abs(self.sprite_width) < self.heartController.hotZone.x)
 		return false;
 	else
 		return true;
@@ -95,7 +95,7 @@ function checkOverlapHotZone() {
 function checkOverlapForgivingHotZone() {
 	if (self.x > self.heartController.hotZone.x + global.HOT_ZONE_WIDTH + global.HOT_ZONE_WIDTH * 0.4)
 		return false;
-	else if (self.x + self.sprite_width < self.heartController.hotZone.x - global.HOT_ZONE_WIDTH * 0.4)
+	else if (self.x + abs(self.sprite_width) < self.heartController.hotZone.x - global.HOT_ZONE_WIDTH * 0.4)
 		return false;
 	else
 		return true;

@@ -15,10 +15,27 @@ if(keyboard_check_pressed(ord("H"))) {
 	self.testHeart.loseHealth();
 }
 if(keyboard_check_pressed(ord("U"))) {
-	self.testHeart.setHeartRatePulseSpeed(self.testHeart.heartRate * 2, self.testHeart.pulseSpeed * 2);
+	var c, u;
+	var beats = getInstancesOf(objHeartbeatUp);
+	for(c = 0; c < array_length(beats); c++) {
+		u = beats[c];
+		if(u.heartController.id == testHeart.id) {
+			u.reset();	
+		}
+	}
 }
 if(keyboard_check_pressed(ord("D"))) {
-	self.testHeart.setHeartRatePulseSpeed(self.testHeart.heartRate / 2, self.testHeart.pulseSpeed / 2);
+	
+	//show_message(self.testHeart + " " + self.testHeartBottom);
+	
+	var c, u;
+	var beats = getInstancesOf(objHeartbeatUp);
+	for(c = 0; c < array_length(beats); c++) {
+		u = beats[c];
+		if(u.heartController.id == testHeartBottom.id) {
+			u.reset();	
+		}
+	}
 }
 
 

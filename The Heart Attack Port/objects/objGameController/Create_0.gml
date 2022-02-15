@@ -8,12 +8,20 @@ testPerson = instance_create_depth(0, 0, 0, objPersonController);
 testPersonBottom = instance_create_depth(0,0,0, objPersonController);
 
 testHeart = instance_create_depth(0, 0, 0, objHeartController);
-self.testHeart.construct(testPerson, 0, 0, global.HOT_ZONE_X, true, global.HEART_RATE_02, global.PULSE_SPEED_02);
+self.testHeart.construct(self.testPerson, 0, 0, global.HOT_ZONE_X, true, global.HEART_RATE_03, global.PULSE_SPEED_03);
 self.testHeart.added();
 
 testHeartBottom = instance_create_depth(0, 0, 0, objHeartController);
-self.testHeartBottom.construct(testPersonBottom, 0, room_height / 2, room_width - global.HOT_ZONE_X - global.HOT_ZONE_WIDTH, false, global.HEART_RATE_02, global.PULSE_SPEED_02);
+self.testHeartBottom.construct(self.testPersonBottom, 0, room_height / 2, room_width - global.HOT_ZONE_X - global.HOT_ZONE_WIDTH, false, global.HEART_RATE_02, global.PULSE_SPEED_02);
 self.testHeartBottom.added();
+
+testInputTop = instance_create_depth(0, 0, 0, objInputController);
+self.testInputTop.construct(ord("X"), self.testHeart);
+self.testInputTop.added();
+
+testInputBottom = instance_create_depth(0, 0, 0, objInputController);
+self.testInputBottom.construct(ord("M"), self.testHeartBottom);
+self.testInputBottom.added();
 
 /*
 testHeartbeat = instance_create_depth(0, 0, 0, objHeartbeat);
