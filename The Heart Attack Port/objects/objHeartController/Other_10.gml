@@ -1,10 +1,15 @@
 /// @description Insert description here
 // You can write your code in this editor
-if(global.phase<3){
-	alarm[0]=heartRate;
+//callled after phase increments in game controller
+
+
+if(global.phase<4){
+	alarm[0]=self.heartRate;
 }
-if(global.phase==3){
-	alarm[1]=heartRate;}
-if(global.phase==5){
-	alarm[2]=heartRate;
+if(global.phase==4){
+	//show_message("Apres")
+	alarm[1]=self.heartRate;}
+if(global.phase==6){
+	//show_message("bann")
+	alarm[2]=self.heartRate;
 }

@@ -2,9 +2,19 @@ heartController = noone;
 personController = noone;
 inputKeyString = "";
 lastPressCounter = 0;
+up=noone;
+down=noone;
+combine=noone;
+active=false;
+state=0;
+showmsg=0;
+go=0;
+heartbeatDirection=true;
+firstpass=true;
 
-function construct(_inputKey, _heartController) {
+function construct(_inputKey, _heartController, _heartbeatDirection) {
 	self.heartController = _heartController;
+	self.heartbeatDirection=_heartbeatDirection;
 	self.personController = _heartController.personController;
 	self.inputKeyString = chr(_inputKey); //Convert the passed number to its letter equivalent
 	//Input.define(inputKeyString, inputKey);
@@ -14,7 +24,15 @@ function added() {
 	if (global.TEST_MODE)
 		alarm[0] = 5; //FP.alarm(5, checkOverlapUpBeat, 1); -> 5 second delay, run checkOverlapUpBeat, loop
 }
-			
+
+function beatSet(_u, _d, _c){
+	up=_u;
+	down=_d;
+	combine=_c;
+
+
+}
+			/*
 function checkOverlapUpBeat() {	
 	var heartbeatUpList = getInstancesOf(objHeartbeatUp);
 	var u;
