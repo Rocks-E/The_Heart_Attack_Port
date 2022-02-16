@@ -34,8 +34,8 @@ function GlobalInit() {
 	global.HEART_RATE_01 = (5 * global.FRAME_RATE);
 	global.PULSE_SPEED_01 = 1;
 
-	global.HEART_RATE_02 = (1 * global.FRAME_RATE);
-	global.PULSE_SPEED_02 = 4;
+	global.HEART_RATE_02 = (3 * global.FRAME_RATE);
+	global.PULSE_SPEED_02 = 1.5;
 
 	global.HEART_RATE_03 = (2 * global.FRAME_RATE);
 	global.PULSE_SPEED_03 = 2;
@@ -86,14 +86,24 @@ function GlobalInit() {
 	
 	global.stepcount=0
 	global.tweenh=global.HEART_RATE_01
+	global.tweenhv=global.HEART_RATE_03
+	global.tweenha=global.HEART_RATE_03
+	global.tweenpv=global.PULSE_SPEED_03
+	global.tweenpa=global.PULSE_SPEED_03
 	global.tweenp=global.PULSE_SPEED_01
-	global.goal=7
+	global.push=0;
+	global.goal=1
 	global.countHotZone=0
 	global.timeout=false
 	global.hitcounter=0;
 	global.checkbeat=-1;//instance id of a overlapping heartbeat
 	global.pushups=0;
+	global.pushupa=0
+	global.pushupv=0
 	global.pushdowns=0;
+	global.pushdownv=0;
+	global.pushdowna=0;
 	global.fix=-1
 	global.ready=0
+	
 }
