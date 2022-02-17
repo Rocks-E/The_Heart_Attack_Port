@@ -13,7 +13,7 @@ function added() {
 	if (global.TEST_MODE)
 		alarm[0] = 5; //FP.alarm(5, checkOverlapUpBeat, 1); -> 5 second delay, run checkOverlapUpBeat, loop
 }
-			
+
 function checkOverlapUpBeat() {	
 	var heartbeatUpList = getInstancesOf(objHeartbeatUp);
 	var u;
@@ -36,7 +36,7 @@ function checkOverlapUpBeat() {
 						
 				// Next photo
 				self.personController.photoController.nextPhoto();
-				if (self.personController.oldPhotoController) self.personController.oldPhotoController.fadeOut();
+				if (noone != self.personController.oldPhotoController) self.personController.oldPhotoController.fadeOut();
 						
 				u.hitAction();
 							

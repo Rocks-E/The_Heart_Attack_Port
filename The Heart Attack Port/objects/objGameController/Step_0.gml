@@ -16,7 +16,7 @@ if(global.americanController.dead || global.vietController.dead) {
 switch(global.phase) {
 	case 0:
 	case 2:
-		if(global.americanController.photoController.photoFinished) {
+		if(global.americanController.photoController.photosFinished) {
 			global.americanController.fadeOut();
 			global.vietController.fadeIn();
 			global.phase++;
@@ -24,14 +24,14 @@ switch(global.phase) {
 		break;
 	case 1:
 	case 3:
-		if(global.vietController.photoController.photoFinished) {
+		if(global.vietController.photoController.photosFinished) {
 			global.vietController.fadeOut();
 			global.americanController.fadeIn();
 			global.phase++;
 		}
 		break;
 	case 5:
-		if(global.americanController.heartController.beatAlarm.percent <= 0.05) {
+		if(global.americanController.heartController.alarm[0] >= (0.95 * global.americanController.heartController.heartRate)) {
 			global.vietController.fadeIn();
 			global.startPixelating = true;
 			global.quakeScreenOnBeat = true;

@@ -30,6 +30,8 @@ function reset(_source = noone, _x = 0, _y = 0, _shouldFadeIn = true, _fadeInDur
 	self.maxAlpha = _maxAlpha;
 	self.backdrop = instance_create_depth(0, 0, 100, objMosaicImage);
 	self.backdrop.construct(_source, noone, _cellSize);
+	self.backdrop.x = _x;
+	self.backdrop.y = _y;
 	if(_flipped) {
 		self.backdrop.image_xscale = -self.backdrop.image_xscale; //Flip image
 	}
@@ -50,5 +52,6 @@ function fadeOut() {
 }
 
 function removed() {
+	instance_destroy(self.backdrop);
 	self.backdrop = noone;	
 }
