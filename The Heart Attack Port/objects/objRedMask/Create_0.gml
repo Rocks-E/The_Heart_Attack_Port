@@ -31,7 +31,7 @@ function construct(_x = 0, _y = 0, _shouldFadeIn = true, _fadeInDuration = 0, _f
 	}
 	self.x = _x;
 	self.y = _y;
-	self.depth = -100;
+	self.depth = -300;
 	
 	self.shouldFadeIn = _shouldFadeIn;
 	if(_shouldFadeIn)
