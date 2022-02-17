@@ -6,8 +6,7 @@ lastPressCounter = 0;
 function construct(_inputKey, _heartController) {
 	self.heartController = _heartController;
 	self.personController = _heartController.personController;
-	self.inputKeyString = chr(_inputKey); //Convert the passed number to its letter equivalent
-	//Input.define(inputKeyString, inputKey);
+	self.inputKeyString = chr(_inputKey); 
 }
 
 function added() {

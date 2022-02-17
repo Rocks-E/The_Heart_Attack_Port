@@ -1,3 +1,5 @@
+//fx_create("_filter_screenshake") <- Look into this
+
 intensity = 0;
 timer = 0;
 
