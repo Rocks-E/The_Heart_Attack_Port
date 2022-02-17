@@ -12,6 +12,10 @@ if(!self.heartbeatPaused) {
 }
 }
 */
+
+
+
+
 if(self.x < (0 - abs(self.sprite_width) * 4) || x > (room_width + abs(self.sprite_width) * 4)) {
 	self.offscreenAction();	
 }

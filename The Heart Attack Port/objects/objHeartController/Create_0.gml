@@ -67,6 +67,7 @@ function reset() {
 function beat() {
 //	self.personController.photoController.fadeInDuration = self.heartRate / 2;
 //	self.personController.photoController.fadeOutDuration = self.heartRate / 2;
+	if(!global.gameOver){
 	shift=0;
 	if(global.CONSTANT_HEART_SOUND && self.beatCount == 0) {
 		self.heartSoundController = instance_create_depth(0, 0, 0, self.heartSoundController);	
@@ -108,6 +109,7 @@ function beat() {
 
 	d.reset();
 	u.pairedHeartbeatDown = d;
+	d.pairedHeartbeatUp= u;
 //		show_message("downmade");
 	uu=u
 	dd=d
@@ -123,7 +125,10 @@ function beat() {
 	//f.speed=self.pulseSpeed
 	f.reset();
 	self.lastFlatHeartbeat = f;
+	if(global.COMBINE_UP_DOWN_BEATS){
 	
+		u.combine=true
+		d.combine=true}
 	self.beatCount++;
 	if(aphase==1){
 		self.alarm[1]= self.heartRate;}	
@@ -134,7 +139,7 @@ function beat() {
 		self.alarm[2]=self.heartRate;}
 	if(aphase=0 and vphase=0){
 		self.alarm[0] = self.heartRate;}
-	
+}
 }
 
 function getHeartbeats(_upBeats = true, _downBeats = true, _flatBeats = true) {

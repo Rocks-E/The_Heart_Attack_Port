@@ -12,7 +12,7 @@ if(self.tweeningPulseSpeed > 0) {
 */
 
 
-if(global.phase < 4 and active){
+if(global.phase >=0 and active){
 	
 	
 if(self.tweeningHeartRate) {
@@ -42,7 +42,7 @@ while(in< array_length(beatList)){
 
 
 
-
+/*
 else if(active){
 if(self.tweeningHeartRate) {
 //	self.heartRate = self.heartRateTween.value;

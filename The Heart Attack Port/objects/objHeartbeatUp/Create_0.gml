@@ -4,7 +4,7 @@ event_inherited();
 up=true
 down=false
 combine=false
-
+pairedHeartbeatDown=noone
 function construct(_x = 0, _y = 0, _image = noone, _direction = true, _heartController = noone){
 	self.heartController=_heartController
 	self.sprite_index = _image;
@@ -34,7 +34,12 @@ function construct(_x = 0, _y = 0, _image = noone, _direction = true, _heartCont
 
 
 function hitAction() {
-	show_message("Hiiiii "+ string(self.heartController.pulseSpeed))
+	self.heartController.personController.firstpass++;
+	self.heartController.personController.photoController.nextPhoto();
+	
+	
+	
+	
 //	show_message("up made it");
 	if(!global.CONSTANT_HEART_SOUND) {
 		self.heartController.heartSoundController.playHeartbeat(self.heartController.heartHealth);
@@ -44,7 +49,8 @@ function hitAction() {
 	self.image_blend = global.PULSE_COLOR_HIT;
 	
 	if(global.COMBINE_UP_DOWN_BEATS)
-		self.pairedHeartbeatDown.image_blend = global.PULSE_COLOR_HIT;
+		with(self.pairedHeartbeatDown){
+			image_blend = global.PULSE_COLOR_HIT;}
 		
 	if(global.quakeScreenOnBeat) {
 		global.quake.start(global.quakeIntensity, global.quakeDuration);
@@ -65,16 +71,17 @@ function missedAction() {
 	
 	var tempMask = instance_create_depth(0, 0, 0, objRedMask);
 	if(heartbeatDirection){
-		tempMask.construct(self.heartController.x, room_height / 4);}
+		tempMask.construct(self.heartController.x, 0);}
 	else{
-		tempMask.construct(self.heartController.x, room_height / 2 + room_height/4);}
+		tempMask.construct(self.heartController.x, room_height / 2);}
 	tempMask.added();
 	
 	
 	
 	
 	if(global.COMBINE_UP_DOWN_BEATS)
-		self.pairedHeartbeatDown.image_blend = global.PULSE_COLOR_MISSED;
+		with(self.pairedHeartbeatDown){
+			image_blend = global.PULSE_COLOR_MISSED;}
 		
 	if(global.dieTogether) {
 

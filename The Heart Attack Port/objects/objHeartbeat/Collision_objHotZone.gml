@@ -7,23 +7,34 @@ if(state==2){
 
 }
 */
+
+
 if(state!=2 and self.heartController.active){
 	//	objHotZoneTemp.image_blend=c_red;
 	
-	if(self.up=true){
+	if(self.down=false){
 		global.checkbeat=id;}
 	self.coll=true;
+	self.collision=true
 	self.state=1;
-	
+
+	if(collision=true and up=true){
+		with(self.pairedHeartbeatDown){
+			lock=true}
+	}
 	self.heartController.personController.inputController.beatSet(up,down,combine);
-	if (global.phase<4){
+	
+	if (global.phase<4 and lock=false){
+		
 	with(self.heartController.personController.inputController){
 		self.state=1;
 
 		event_user(0);
 	}
+	
+	
 	}
-	else{
+	else if (lock=false){
 		if(self.heartController.personController.personType="american"){
 			with(self.heartController.personController.inputController){
 				event_user(1);}}
