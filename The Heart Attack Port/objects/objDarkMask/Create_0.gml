@@ -8,7 +8,8 @@ fadeOutDuration = 0.0;
 maxAlpha = 0.0;
 
 fadeTweenDuration = 0;
-isFading = false;
+fadeInTweenDuration = 0;
+fadeOutTweenDuration = 0;
 
 function construct(_x = 0, _y = 0, _shouldFadeIn = true, _fadeInDuration = 2, _fadeOutDuration = 2, _maxAlpha = 0.8, _pixelated = false) {
 	if(!_pixelated) {
