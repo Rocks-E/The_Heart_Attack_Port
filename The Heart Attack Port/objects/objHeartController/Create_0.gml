@@ -28,7 +28,7 @@ function construct(_personController, _x = 0, _y = 0, _hotZoneX = 100, _directio
 	self.y = _y;
 	self.personController = _personController;
 	self.heartbeatDirection = _direction;
-	self.hotZone = instance_create_depth(_x, _y, 0, objHotZone);
+	self.hotZone = instance_create_depth(_x, _y, -100, objHotZone);
 	self.hotZone.construct(_hotZoneX, _y, self.id);
 	self.hotZone.added();
 	self.heartSoundController = instance_create_depth(_x, _y, 0, objHeartSoundController);
@@ -39,7 +39,7 @@ function construct(_personController, _x = 0, _y = 0, _hotZoneX = 100, _directio
 }
 
 function added() {
-	//self.alarm[0] = self.heartRate;
+	self.alarm[0] = self.heartRate;
 	//addTween(heartRateTween)
 	//addTween(pulseSpeedTween)
 	if(!self.personController.markedForPause) {
@@ -56,8 +56,8 @@ function reset() {
 }
 
 function beat() {
-	//self.personController.photoController.fadeInDuration = self.heartRate / 2;
-	//self.personController.photoController.fadeOutDuration = self.heartRate / 2;
+	self.personController.photoController.fadeInDuration = self.heartRate / 2;
+	self.personController.photoController.fadeOutDuration = self.heartRate / 2;
 	
 	if(global.CONSTANT_HEART_SOUND && self.beatCount == 0) {
 		self.heartSoundController = instance_create_depth(0, 0, 0, self.heartSoundController);
@@ -69,20 +69,20 @@ function beat() {
 		self.lastFlatHeartbeat.updateLength();
 	}
 	
-	var u = instance_create_depth(0, 0, 0, objHeartbeatUp);
+	var u = instance_create_depth(0, 0, -200, objHeartbeatUp);
 	u.construct(self.x, self.y);
 	u.heartController = self.id;
 	u.added();
 	u.reset();
 	
-	var d = instance_create_depth(0, 0, 0, objHeartbeatDown);
+	var d = instance_create_depth(0, 0, -200, objHeartbeatDown);
 	d.construct(self.x, self.y);
 	d.heartController = self.id;
 	d.added();
 	d.reset();
 	u.pairedHeartbeatDown = d;
 	
-	var f = instance_create_depth(0, 0, 0, objHeartbeatFlat);
+	var f = instance_create_depth(0, 0, -200, objHeartbeatFlat);
 	f.construct(self.x, self.y);
 	f.heartController = self.id;
 	f.added();
@@ -214,7 +214,7 @@ function loseHealth() {
 		for(var c = 0; c < array_length(heartbeatList); c++) {
 			instance_destroy(heartbeatList[c]);	
 		}
-		//self.personController.dead = true;
+		self.personController.dead = true;
 	}
 	else {
 		for(var c = 0; c < array_length(heartbeatList); c++) {

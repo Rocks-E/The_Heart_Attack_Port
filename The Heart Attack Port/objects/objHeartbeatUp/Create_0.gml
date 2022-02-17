@@ -5,7 +5,7 @@ pairedHeartbeatDown = noone;
 
 function construct(_x = 0, _y = 0) {
 	
-	//super(x, y, image)
+	//super
 	self.x = _x;
 	self.y = _y;
 	self.heartbeatDirection = true;
@@ -67,7 +67,7 @@ function missedAction() {
 
 function reset() {
 	
-	//super.reset()
+	//super
 	self.heartbeatDirection = self.heartController.heartbeatDirection;
 	self.hit = false;
 	self.missed = false;

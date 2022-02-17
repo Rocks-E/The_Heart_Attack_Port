@@ -35,8 +35,8 @@ function checkOverlapUpBeat() {
 				}
 						
 				// Next photo
-				//self.personController.photoController.nextPhoto();
-				//if (self.personController.oldPhotoController) self.personController.oldPhotoController.fadeOut();
+				self.personController.photoController.nextPhoto();
+				if (self.personController.oldPhotoController) self.personController.oldPhotoController.fadeOut();
 						
 				u.hitAction();
 							

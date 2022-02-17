@@ -7,8 +7,6 @@ backdrop = noone; //objMosaicImage
 fadeTweenDuration = 0; //ColorTween
 isFading = false;
 
-backdrop = noone;
-
 function construct(_source = noone, _x = 0, _y = 0, _shouldFadeIn = true, _fadeInDuration = 120, _fadeOutDuration = 120, _maxAlpha = 0, _flipped = false, _cellSize = 1) {
 	if(noone != _source) {
 		self.reset(_source, _x, _y, _shouldFadeIn, _fadeInDuration, _fadeOutDuration, _maxAlpha, _flipped, _cellSize);	

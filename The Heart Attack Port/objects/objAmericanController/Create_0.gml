@@ -23,6 +23,13 @@ function construct(_isTop, _inputKey) {
 
 function added() {
 	
+	self.photoArray = self.photoArray01;
+	self.photoDisplayTime = global.PHOTO_DISPLAY_TIME_01;
+	self.photoController = instance_create_depth(0, 0, 0, objPhotoController);
+	self.photoController.construct(self.photoArray, self.x, self.y, self.photoDisplayTime, false, false, global.PHOTO_MAX_ALPHA, self.photoFlipped);
+	self.photoController.added();
+	self.photoController.nextPhoto(false);
+	
 	//super
 	self.heartController = instance_create_depth(0, 0, 0, objHeartController);
 	self.heartController.construct(self.id, self.x, self.y, self.hotZoneX, self.isTop, HEART_RATE_01, PULSE_SPEED_01);
@@ -32,16 +39,10 @@ function added() {
 	self.inputController.added();
 	//super end
 	
-	self.photoArray = self.photoArray01;
-	self.photoDisplayTime = global.PHOTO_DISPLAY_TIME_01;
-	self.photoController = instance_create_depth(0, 0, 0, objPhotoController);
-	self.photoController.construct(self.photoArray, self.x, self.y, self.photoDisplayTime, false, false, global.PHOTO_MAX_ALPHA, self.photoFlipped);
-	self.photoController.added();
-	self.photoController.nextPhoto(false);
 	self.heartController.hotZone.fadeIn();
 	
 	self.heartController.tweenHeartRate(global.HEART_RATE_02, self.heartController.heartRate * array_length(self.photoArray));
-	self.tweenPulseSpeed(global.PULSE_SPEED_02, self.heartController.heartRate * array_length(self.photoArray));
+	self.heartController.tweenPulseSpeed(global.PULSE_SPEED_02, self.heartController.heartRate * array_length(self.photoArray));
 	
 }
 

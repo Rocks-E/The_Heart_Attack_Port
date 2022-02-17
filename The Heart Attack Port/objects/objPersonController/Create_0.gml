@@ -64,9 +64,9 @@ function added() {
 function pause(_makeDark = false) {
 	if(!self.personPaused) {
 		if(_makeDark) {
-			self.darkMask = instance_create_depth(self.x, self.y, 0, objDarkMask);
-			self.darkMask.construct(self.x, self.y, false);
-			self.darkMask.added();
+			//self.darkMask = instance_create_depth(self.x, self.y, 0, objDarkMask);
+			//self.darkMask.construct(self.x, self.y, false);
+			//self.darkMask.added();
 		}
 		self.heartController.pause();
 		self.photoController.pause();
@@ -95,9 +95,9 @@ function fadeOut(_duration = 180) {
 	self.inputController.active = false;
 	self.heartController.fadeOut(_duration);
 	if(noone != self.personImage) self.personImage.pause();
-	self.darkMask = instance_create_depth(self.x, self.y, 0, objDarkMask);
-	self.darkMask.construct(self.x, self.y, true, _duration, _duration);
-	self.darkMask.added();
+	//self.darkMask = instance_create_depth(self.x, self.y, 0, objDarkMask);
+	//self.darkMask.construct(self.x, self.y, true, _duration, _duration);
+	//self.darkMask.added();
 	self.heartController.hotZone.fadeOut(_duration);
 	alarm[1] = _duration; //fadeOutCompleteAlarm(duration, fadeOutComplete)
 }

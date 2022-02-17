@@ -1,8 +1,10 @@
 ColorsInit(); //Initialize global colors
 GlobalInit(); //Initialize global vars/consts
 
+
 heartPaused = false;
 
+/*
 testPerson = instance_create_depth(0, 0, 0, objPersonController);
 
 testPersonBottom = instance_create_depth(0,0,0, objPersonController);
@@ -23,25 +25,18 @@ testInputBottom = instance_create_depth(0, 0, 0, objInputController);
 self.testInputBottom.construct(ord("M"), self.testHeartBottom);
 self.testInputBottom.added();
 
-/*
-testHeartbeat = instance_create_depth(0, 0, 0, objHeartbeat);
-self.testHeartbeat.heartController = self.testHeart;
-self.testHeartbeat.construct(0, room_height / 2, spr_hearbeat_up, true);
-self.testHeartbeat.added();
+
+global.vietController = instance_create_depth(0, 0, 0, objVietController);
+global.vietController.construct(false, global.INPUT_KEY_BOTTOM);
+global.vietController.added();
+
+global.vietController.markedForPause = true;
+
+global.americanController = instance_create_depth(0, 0, 0, objAmericanController);
+global.americanController.construct(true, global.INPUT_KEY_TOP);
+global.americanController.added();
 */
 
-
-
-
-
-/*
-heartbeatSound = instance_create_depth(0,0,0, objHeartSoundController);
-self.heartbeatSound.construct(noone);
-self.heartbeatSound.added();
-*/
-
-
-/*
 quakeInterval = 3 * room_speed;
 quakeDuration = 0.5;
 quakeIntensity = 0.5;
@@ -60,31 +55,29 @@ if(TEST_MODE) {
 }
 
 
-//room_instance_add(room, 0, 0, new objGround());
-instance_create_depth(0, 0, 0, objGround);
-//quake = new objQuake();
-//room_instance_add(room, 0, 0, quake);
-global.quake = instance_create_depth(0, 0, 0, objQuake);
-//cheater = new objCheater
-//soundController = new objSoundController();
-//room_instance_add(room, 0, 0, soundController);
-global.soundController = instance_create_depth(0, 0, 0, objSoundController);
+//instance_create_depth(0, 0, 0, objGround);
+//global.quake = instance_create_depth(0, 0, 0, objQuake);
+//global.soundController = instance_create_depth(0, 0, 0, objSoundController);
 
-if(random(1) > 0.5) {
-	//americanController = new objAmericanController(true, INPUT_KEY_TOP);
-	//room_instance_add(room, 0, 0, americanController);
-	global.americanController = instance_create_depth(0, 0, 0, objAmericanController(true, global.INPUT_KEY_TOP));
-	//vietController = new objVietController(false, INPUT_KEY_BOTTOM);
-	//room_instance_add(room, 0, 0, vietController);
-	global.vietController = instance_create_depth(0, 0, 0, objVietController(false, global.INPUT_KEY_BOTTOM));
+if(true || random(1) > 0.5) {
+	global.americanController = instance_create_depth(0, 0, 0, objAmericanController);
+	global.americanController.construct(true, global.INPUT_KEY_TOP);
+	global.americanController.added();
+
+	
+	global.vietController = instance_create_depth(0, 0, 0, objVietController);
+	global.vietController.construct(false, global.INPUT_KEY_BOTTOM);
+	global.vietController.added();
+	
 }
 else {
-	//vietController = new objVietController(true, INPUT_KEY_TOP);
-	//room_instance_add(room, 0, 0, vietController);
-	global.vietController = instance_create_depth(0, 0, 0, objVietController(true, global.INPUT_KEY_TOP));
-	//americanController = new objAmericanController(false, INPUT_KEY_BOTTOM);
-	//room_instance_add(room, 0, 0, americanController);
-	global.americanController = instance_create_depth(0, 0, 0, objAmericanController(false, global.INPUT_KEY_BOTTOM));
+	global.vietController = instance_create_depth(0, 0, 0, objVietController);
+	global.vietController.construct(true, global.INPUT_KEY_TOP);
+	global.vietController.added();
+
+	global.americanController = instance_create_depth(0, 0, 0, objAmericanController);
+	global.americanController.construct(false, global.INPUT_KEY_BOTTOM);
+	global.americanController.added();
 }
 
 global.vietController.markedForPause = true;
@@ -93,4 +86,3 @@ if(!global.TEST_MODE) {
 	//room_instance_add(new objTutorial(global.americanController));
 	//room_instance_add(new objTutorial(global.vietController));
 }
-*/

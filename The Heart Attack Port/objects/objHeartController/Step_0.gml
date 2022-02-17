@@ -4,7 +4,6 @@ if(self.tweeningHeartRate > 0) {
 }
 
 if(self.tweeningPulseSpeed > 0) {
-	self.x = self.tweeningPulseSpeed;
 	self.pulseSpeed += self.pulseSpeedChange / self.pulseSpeedTweenDuration;
 	self.tweeningPulseSpeed--;
 }
