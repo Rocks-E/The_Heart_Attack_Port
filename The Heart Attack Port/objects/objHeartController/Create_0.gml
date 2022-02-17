@@ -22,16 +22,18 @@ pulseSpeedTweenDuration = 0; //NumTween(finishedTweeningPulseSpeed)
 tweeningPulseSpeed = 0;
 pulseSpeedChange = 0;
 
+active = true;
+
 function construct(_personController, _x = 0, _y = 0, _hotZoneX = 100, _direction = true, _heartRate = 120, _pulseSpeed = 2) {
 	//super(x, y)
 	self.x = _x;
 	self.y = _y;
 	self.personController = _personController;
 	self.heartbeatDirection = _direction;
-	self.hotZone = instance_create_depth(_x, _y, -100, objHotZone);
+	self.hotZone = instance_create_depth(0, 0, -100, objHotZone);
 	self.hotZone.construct(_hotZoneX, _y, self.id);
 	self.hotZone.added();
-	self.heartSoundController = instance_create_depth(_x, _y, 0, objHeartSoundController);
+	self.heartSoundController = instance_create_depth(0, 0, 0, objHeartSoundController);
 	self.heartSoundController.construct(self.id);
 	self.heartSoundController.added();
 	self.heartRate = _heartRate;
@@ -209,7 +211,9 @@ function loseHealth() {
 	
 	var heartbeatList = self.getHeartbeats();
 	if(self.heartHealth <= 0.1) {
-		//self.flatLine = instance_create_depth(0, 0, 0, objFlatLine);
+		self.flatLine = instance_create_depth(0, 0, 0, objFlatLine);
+		self.flatLine.construct(self, self.x, self.y);
+		self.flatLine.added();
 		
 		for(var c = 0; c < array_length(heartbeatList); c++) {
 			instance_destroy(heartbeatList[c]);	

@@ -24,6 +24,8 @@ flipped = false;
 
 pixelateCellSize = 1;
 
+active = true;
+
 function construct(_photoArray, _x = 0, _y = 0, _displayTime = 300, _startDelay = 0, _loop = false, _fadeIn = true, _maxAlpha = 0.5, _flipped = false) {
 	self.x = _x;
 	self.y = _y;
@@ -74,7 +76,7 @@ function nextPhoto(_fadeIn = true) {
 	}
 	else {
 		self.photosFinished = true;
-		self.currendIndex = 0;
+		self.currentIndex = 0;
 		if(self.loop) {
 			self.lastPhoto = self.currentPhoto;
 			self.lastPhoto.fadeOut();

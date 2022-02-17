@@ -1,2 +1,4 @@
 /// @description beat()
-self.beat();
+if(self.active) {
+	self.beat();
+}

@@ -8,7 +8,7 @@ function construct(_isTop, _inputKey) {
 	self.isTop = _isTop;
 	self.photoFlipped = !_isTop;
 	self.heartbeatDirection = _isTop;
-	if(!_isTop) self.y = room_height * 0.5; //y = FP.halfHeight
+	if(!_isTop) self.y = room_height / 2; //y = FP.halfHeight
 	if(_isTop) self.hotZoneX = global.HOT_ZONE_X;
 	else self.hotZoneX = room_width - global.HOT_ZONE_X - global.HOT_ZONE_WIDTH;
 	//super end
@@ -26,7 +26,7 @@ function added() {
 	self.photoArray = self.photoArray01;
 	self.photoDisplayTime = global.PHOTO_DISPLAY_TIME_01;
 	self.photoController = instance_create_depth(0, 0, 0, objPhotoController);
-	self.photoController.construct(self.photoArray, self.x, self.y, self.photoDisplayTime, false, false, global.PHOTO_MAX_ALPHA, self.photoFlipped);
+	self.photoController.construct(self.photoArray, self.x, self.y, self.photoDisplayTime, self.photoDisplayTime, false, false, global.PHOTO_MAX_ALPHA, self.photoFlipped);
 	self.photoController.added();
 	self.photoController.nextPhoto(false);
 	
@@ -34,7 +34,7 @@ function added() {
 	self.heartController = instance_create_depth(0, 0, 0, objHeartController);
 	self.heartController.construct(self.id, self.x, self.y, self.hotZoneX, self.isTop, HEART_RATE_01, PULSE_SPEED_01);
 	self.heartController.added();
-	self.inputController = instance_create_depth(self.x, self.y, 0, objInputController);
+	self.inputController = instance_create_depth(0, 0, 0, objInputController);
 	self.inputController.construct(self.inputKey, self.heartController);
 	self.inputController.added();	
 	//super end

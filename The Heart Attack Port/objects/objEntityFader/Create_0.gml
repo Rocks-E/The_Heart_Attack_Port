@@ -1,7 +1,9 @@
 fadeTweenDuration = 0; //ColorTween
 fadeDuration = 0;
 
-maxAlpha = 0;
+maxAlpha = 1;
+
+active = true;
 
 function construct(_x = 0, _y = 0, _graphic = noone) {
 	self.sprite_index = _graphic;

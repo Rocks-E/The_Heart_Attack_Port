@@ -57,7 +57,7 @@ function hitAction() {}
 function missedAction() {}
 
 function pause() {
-	self.heartbeatPaused = true;	
+	self.heartbeatPaused = true;
 }
 
 function unpause() {
@@ -80,7 +80,7 @@ function shrink() {
 		self.image_xscale = -2;
 		sprite_set_offset(self.sprite_index, sprite_get_width(self.sprite_index), sprite_get_height(self.sprite_index) / 2);	
 	}
-	sprite_set_bbox(self.sprite_index, self.sprite_xoffset, self.sprite_yoffset, sprite_get_width(self.sprite_index)/*self.sprite_width*/, sprite_get_height(self.sprite_index)/*self.sprite_height*/);
+	sprite_set_bbox(self.sprite_index, self.sprite_xoffset, self.sprite_yoffset, sprite_get_width(self.sprite_index), sprite_get_height(self.sprite_index));
 }
 
 function checkOverlapHotZone() {

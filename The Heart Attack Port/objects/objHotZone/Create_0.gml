@@ -8,6 +8,8 @@ fading = 0;
 		
 heartController = noone; //objHeartController
 
+active = true;
+
 function construct(_x = 0, _y = 0, _heartController = noone) {
 	self.x = _x;
 	self.y = _y;

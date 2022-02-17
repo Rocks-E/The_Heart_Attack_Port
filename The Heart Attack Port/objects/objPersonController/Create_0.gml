@@ -40,14 +40,19 @@ personPaused = false;
 markedForPause = false;
 darkMask = noone; //objDarkMask
 
+alarm[1] = -1;
+alarm[2] = -1;
+
 objType = "";
+
+active = true;
 
 function construct(_isTop, _inputKey) {
 	self.inputKey = _inputKey;
 	self.isTop = _isTop;
 	self.photoFlipped = !_isTop;
 	self.heartbeatDirection = _isTop;
-	if(!_isTop) self.y = room_height * 0.5; //y = FP.halfHeight
+	if(!_isTop) self.y = room_height / 2; //y = FP.halfHeight
 	if(_isTop) self.hotZoneX = global.HOT_ZONE_X;
 	else self.hotZoneX = room_width - global.HOT_ZONE_X - global.HOT_ZONE_WIDTH;
 }
@@ -56,7 +61,7 @@ function added() {
 	self.heartController = instance_create_depth(0, 0, 0, objHeartController);
 	self.heartController.construct(self.id, self.x, self.y, self.hotZoneX, self.isTop, HEART_RATE_01, PULSE_SPEED_01);
 	self.heartController.added();
-	self.inputController = instance_create_depth(self.x, self.y, 0, objInputController);
+	self.inputController = instance_create_depth(0, 0, 0, objInputController);
 	self.inputController.construct(self.inputKey, self.heartController);
 	self.inputController.added();
 }
@@ -64,9 +69,9 @@ function added() {
 function pause(_makeDark = false) {
 	if(!self.personPaused) {
 		if(_makeDark) {
-			//self.darkMask = instance_create_depth(self.x, self.y, 0, objDarkMask);
-			//self.darkMask.construct(self.x, self.y, false);
-			//self.darkMask.added();
+			self.darkMask = instance_create_depth(0, 0, 0, objDarkMask);
+			self.darkMask.construct(self.heartController.x, self.heartController.y + room_height / 4, false);
+			self.darkMask.added();
 		}
 		self.heartController.pause();
 		self.photoController.pause();
@@ -95,9 +100,9 @@ function fadeOut(_duration = 180) {
 	self.inputController.active = false;
 	self.heartController.fadeOut(_duration);
 	if(noone != self.personImage) self.personImage.pause();
-	//self.darkMask = instance_create_depth(self.x, self.y, 0, objDarkMask);
-	//self.darkMask.construct(self.x, self.y, true, _duration, _duration);
-	//self.darkMask.added();
+	self.darkMask = instance_create_depth(0, 0, 0, objDarkMask);
+	self.darkMask.construct(self.x, self.y, true, _duration, _duration);
+	self.darkMask.added();
 	self.heartController.hotZone.fadeOut(_duration);
 	alarm[1] = _duration; //fadeOutCompleteAlarm(duration, fadeOutComplete)
 }
@@ -134,7 +139,7 @@ function fadeInComplete() {
 
 function replacePhotoController() {
 	self.oldPhotoController = self.photoController;
-	self.photoController = instance_create_depth(self.x, self.y, 0, objPhotoController);
+	self.photoController = instance_create_depth(0, 0, 0, objPhotoController);
 	self.photoController.construct(self.photoArray, self.x, self.y, self.photoDisplayTime, self.photoDisplayTime, self.loopPhotos, true, global.PHOTO_MAX_ALPHA, self.photoFlipped);
 	self.photoController.added();
 }
