@@ -1,0 +1,2 @@
+/// @description bugFailure
+self.bugFailure();

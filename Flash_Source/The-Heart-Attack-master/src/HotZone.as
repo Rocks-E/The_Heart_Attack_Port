@@ -1,3 +1,4 @@
+//DONE
 package  
 {
 	import net.flashpunk.Entity;
@@ -33,7 +34,11 @@ package
 			image.originY = 0;
 			image.x = -GLOW_OFFSET;
 			image.y = 0;	
-			setHitbox(image.width - 2*GLOW_OFFSET, image.height, image.originX, image.originY);				
+			setHitbox(image.width - 2 * GLOW_OFFSET, image.height, image.originX, image.originY);
+			trace("X: " + image.x + " Y: " + image.y); 
+			trace("Hit left: " + left + " Hit right: " + right);
+			trace("Hit top: " + top + " Hit bottom: " + bottom);
+			trace("Hit width: " + width + " Hit height: " + height);
 		}
 		
 		override public function added():void
