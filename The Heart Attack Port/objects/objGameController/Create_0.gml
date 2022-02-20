@@ -10,7 +10,7 @@ quakeDuration = 0.5;
 quakeIntensity = 0.5;
 //alarm[0] = quakeInterval; //quakeAlarm = new Alarm(quakeInterval, quakeScreen)
 
-if(TEST_MODE) {
+if(global.TEST_MODE) {
 	global.phase = 0;
 	global.dieTogether = false;
 	global.bothDead = false;

@@ -15,13 +15,13 @@ else if(keyboard_key_press(ord("Y"))) {
 }
 
 if(keyboard_key_press(vk_f2)) {
-	//global.americanController.heartController.tweenHeartRate(61, 1200);
-	//global.vietController.heartController.tweenHeartRate(61, 1200);
+	global.americanController.heartController.tweenHeartRate(61, 1200);
+	global.vietController.heartController.tweenHeartRate(61, 1200);
 }
 
 if(keyboard_key_press(vk_f4)) {
-	//global.americanController.heartController.tweenHeartRate(60, 5 * FP.assignedFrameRate);
-	//global.vietController.heartController.tweenHeartRate(60, 5 * FP.assignedFrameRate);
+	global.americanController.heartController.tweenHeartRate(60, 5 * room_speed);
+	global.vietController.heartController.tweenHeartRate(60, 5 * room_speed);
 }
 
 if(keyboard_key_press(vk_f1)) {
@@ -30,8 +30,8 @@ if(keyboard_key_press(vk_f1)) {
 }
 
 if(keyboard_key_press(vk_f10)) {
-	global.americanController.heartController.health = 0.2;
-	global.vietController.heartController.health = 0.2;
+	global.americanController.heartController.heartHealth = 0.2;
+	global.vietController.heartController.heartHealth = 0.2;
 }
 
 if(keyboard_key_press(vk_f11)) {
