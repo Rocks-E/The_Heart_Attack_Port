@@ -1,3 +1,4 @@
+//DONE
 package  
 {
 	import net.flashpunk.Entity;
@@ -12,6 +13,7 @@ package
 	 */
 	public class Heartbeat extends Entity
 	{
+		//DONE
 		public var heartController:HeartController;
 		public var direction:Boolean;
 		public var image:Image;
@@ -23,6 +25,7 @@ package
 		
 		public var paused:Boolean = false;
 		
+		//DONE
 		public function Heartbeat(x:Number = 0, y:Number = 0, image:Image = null, direction:Boolean = true) 
 		{
 			super(x, y, image);
@@ -37,11 +40,13 @@ package
 			setHitbox(image.scaledWidth, image.scaledHeight, image.originX, image.originY);				
 		}
 		
+		//DONE
 		override public function added():void
 		{
 			reset();
 		}
 		
+		//DONE
 		public function reset():void
 		{
 			direction = heartController.direction;
@@ -58,6 +63,7 @@ package
 			y = heartController.y + FP.halfHeight / 2
 		}
 		
+		//DONE
 		override public function update():void
 		{
 			//trace('heartbeat update');
@@ -82,6 +88,7 @@ package
 			super.update();
 		}
 		
+		//DONE
 		public function checkMissed():Boolean
 		{
 			if (hit || missed)
@@ -94,26 +101,31 @@ package
 				return false;
 		}
 		
+		//DONE
 		public function hitAction():void
 		{
 			
 		}
 		
+		//DONE
 		public function missedAction():void
 		{
 			
 		}
 		
+		//DONE
 		public function pause():void
 		{
 			this.paused = true;
 		}
 		
+		//DONE
 		public function unpause():void
 		{
 			this.paused = false;
 		}
 		
+		//DONE
 		public function fadeOut(duration:Number):void
 		{
 			//trace('heartbeat fade out');
@@ -123,6 +135,7 @@ package
 			fadeTween.tween(duration, Colors.WHITE, Colors.WHITE, 1, 0);
 		}
 		
+		//DONE
 		public function shrink():void
 		{
 			image.scaleX = 2;
@@ -134,6 +147,7 @@ package
 			setHitbox(image.scaledWidth, image.scaledHeight, image.originX, image.originY);		
 		}
 		
+		//DONE
 		public function checkOverlapHotZone():Boolean
 		{
 			if (x > heartController.hotZone.x + Global.HOT_ZONE_WIDTH)
@@ -144,6 +158,7 @@ package
 				return true;
 		}
 		
+		//DONE
 		public function checkOverlapForgivingHotZone():Boolean
 		{
 			if (x > heartController.hotZone.x + Global.HOT_ZONE_WIDTH + Global.HOT_ZONE_WIDTH * 0.4)
@@ -154,6 +169,7 @@ package
 				return true;
 		}		
 		
+		//DONE
 		public function offscreenAction():void
 		{
 			//trace('heart beat offscreen action');

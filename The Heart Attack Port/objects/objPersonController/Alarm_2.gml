@@ -1,0 +1,2 @@
+/// @description fadeInComplete
+self.fadeInComplete();
