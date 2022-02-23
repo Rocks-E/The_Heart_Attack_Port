@@ -1,12 +1,18 @@
 if(noone != self.backdrop) {
 	if(self.isFading) {
-		if(self.fadeInDuration > 0) {
-			self.backdrop.image_alpha += self.maxAlpha / self.fadeTweenDuration;
-			self.fadeInDuration--;
+		if(fadeDirection == 1)
+		{
+			self.backdrop.image_alpha += self.maxAlpha / self.fadeInDuration;
+			self.fadeTweenDuration--;
 		}
-		else if(self.fadeOutDuration > 0) {
-			self.backdrop.image_alpha -= self.maxAlpha / self.fadeTweenDuration;
-			self.fadeOutDuration--;
+		else if(fadeDirection == -1)
+		{
+			self.backdrop.image_alpha -= self.maxAlpha / self.fadeOutDuration;
+			self.fadeTweenDuration--;
+		}
+		else
+		{
+			//Literally how?	
 		}
 	}
 }

@@ -6,6 +6,7 @@ shouldFadeIn = false;
 backdrop = noone; //objMosaicImage
 fadeTweenDuration = 0; //ColorTween
 isFading = false;
+fadeDirection = 0;
 
 function construct(_source = noone, _x = 0, _y = 0, _shouldFadeIn = true, _fadeInDuration = 120, _fadeOutDuration = 120, _maxAlpha = 0, _flipped = false, _cellSize = 1) {
 	if(noone != _source) {
@@ -44,11 +45,13 @@ function reset(_source = noone, _x = 0, _y = 0, _shouldFadeIn = true, _fadeInDur
 function fadeIn() {
 	self.isFading = true;
 	self.fadeTweenDuration = self.fadeInDuration;
+	self.fadeDirection = 1;
 }
 
 function fadeOut() {
 	self.isFading = true;
 	self.fadeTweenDuration = self.fadeOutDuration;
+	self.fadeDirection = -1;
 }
 
 function removed() {
