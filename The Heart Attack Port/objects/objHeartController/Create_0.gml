@@ -24,6 +24,8 @@ pulseSpeedChange = 0;
 
 active = true;
 
+pausedBeatAlarm = -1;
+
 function construct(_personController, _x = 0, _y = 0, _hotZoneX = 100, _direction = true, _heartRate = 120, _pulseSpeed = 2) {
 	//super(x, y)
 	self.x = _x;
@@ -140,6 +142,9 @@ function pause() {
 	audio_stop_sound(self.heartSoundController.curBeatLoop);
 	self.hotZone.active = false;
 	
+	self.pausedBeatAlarm = self.alarm[0];
+	self.alarm[0] = -1;
+	
 	var heartBeats = self.getHeartbeats();
 	for(var c = 0; c < array_length(heartBeats); c++) {
 		heartBeats[c].pause();
@@ -151,6 +156,8 @@ function pause() {
 function unpause() {
 	self.active = true;
 	self.hotZone.active = true;
+	
+	self.alarm[0] = self.pausedBeatAlarm;
 	
 	if(global.CONSTANT_HEART_SOUND)
 		if(!audio_is_playing(self.heartSoundController.curBeatLoop)) self.heartSoundController.curBeatLoop = audio_play_sound_on(self.heartSoundController.beatLoop, snd_heart_beat_full, true, 1);

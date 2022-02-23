@@ -96,6 +96,7 @@
     {"id":{"name":"spr_B02","path":"sprites/spr_B02/spr_B02.yy",},"order":73,},
     {"id":{"name":"spr_A12","path":"sprites/spr_A12/spr_A12.yy",},"order":68,},
     {"id":{"name":"spr_Z100","path":"sprites/spr_Z100/spr_Z100.yy",},"order":97,},
+    {"id":{"name":"objTimedPhotoController","path":"objects/objTimedPhotoController/objTimedPhotoController.yy",},"order":30,},
     {"id":{"name":"spr_end_screen","path":"sprites/spr_end_screen/spr_end_screen.yy",},"order":5,},
     {"id":{"name":"spr_Y04","path":"sprites/spr_Y04/spr_Y04.yy",},"order":33,},
     {"id":{"name":"spr_Y12","path":"sprites/spr_Y12/spr_Y12.yy",},"order":41,},

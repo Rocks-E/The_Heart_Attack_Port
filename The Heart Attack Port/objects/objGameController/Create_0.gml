@@ -30,25 +30,24 @@ instance_create_depth(0, 0, 0, objGround).construct(0, 0, spr_ground);
 if(random(1) > 0.5) {
 	global.americanController = instance_create_depth(0, 0, 0, objAmericanController);
 	global.americanController.construct(true, global.INPUT_KEY_TOP);
-	global.americanController.added();
-
 	
 	global.vietController = instance_create_depth(0, 0, 0, objVietController);
 	global.vietController.construct(false, global.INPUT_KEY_BOTTOM);
-	global.vietController.added();
 	
 }
 else {
 	global.vietController = instance_create_depth(0, 0, 0, objVietController);
 	global.vietController.construct(true, global.INPUT_KEY_TOP);
-	global.vietController.added();
-
+	
 	global.americanController = instance_create_depth(0, 0, 0, objAmericanController);
 	global.americanController.construct(false, global.INPUT_KEY_BOTTOM);
-	global.americanController.added();
+	
 }
 
 global.vietController.markedForPause = true;
+
+global.americanController.added();
+global.vietController.added();
 
 if(!global.TEST_MODE) {
 	//room_instance_add(new objTutorial(global.americanController));
