@@ -33,7 +33,7 @@ function checkOverlapUpBeat() {
 						alarm[1] = 5 * room_speed; //FP.alarm(5 * FP.assignedFrameRate, bugFailure);
 					}
 				}
-						
+				
 				// Next photo
 				self.personController.photoController.nextPhoto();
 				if (noone != self.personController.oldPhotoController) self.personController.oldPhotoController.fadeOut();
