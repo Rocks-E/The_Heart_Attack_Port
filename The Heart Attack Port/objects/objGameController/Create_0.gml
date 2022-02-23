@@ -1,8 +1,6 @@
 ColorsInit(); //Initialize global colors
 GlobalInit(); //Initialize global vars/consts
 
-//heartPaused = false;
-
 randomize(); //Seed the random function
 
 quakeInterval = 3 * room_speed;
@@ -50,8 +48,6 @@ global.americanController.added();
 global.vietController.added();
 
 global.cheater = instance_create_depth(0, 0, 0, objCheater);
-
-//global.americanController.heartController.setHeartRatePulseSpeed(global.HEART_RATE_03 / 2, global.PULSE_SPEED_03 / 2);
 
 if(!global.TEST_MODE) {
 	//room_instance_add(new objTutorial(global.americanController));

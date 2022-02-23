@@ -90,8 +90,8 @@ function nextPhoto(_fadeIn = true) {
 
 function fadeOut() {
 	self.unpause();
-	if(self.lastPhoto) self.lastPhoto.fadeOut();
-	if(self.currentPhoto) self.currentPhoto.fadeOut();
-	instance_destroy(self);
+	if(noone != self.lastPhoto) self.lastPhoto.fadeOut();
+	if(noone != self.currentPhoto) self.currentPhoto.fadeOut();
+	//instance_destroy(self.id);
 }
 
