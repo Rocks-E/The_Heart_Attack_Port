@@ -49,6 +49,8 @@ global.vietController.markedForPause = true;
 global.americanController.added();
 global.vietController.added();
 
+global.cheater = instance_create_depth(0, 0, 0, objCheater);
+
 //global.americanController.heartController.setHeartRatePulseSpeed(global.HEART_RATE_03 / 2, global.PULSE_SPEED_03 / 2);
 
 if(!global.TEST_MODE) {

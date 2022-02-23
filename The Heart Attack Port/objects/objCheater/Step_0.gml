@@ -1,47 +1,47 @@
-if(keyboard_key_press(ord("P"))) {
+if(keyboard_check_pressed(ord("P"))) {
 	global.americanController.pause();
 }
-else if(keyboard_key_press(ord("R"))) {
+else if(keyboard_check_pressed(ord("R"))) {
 	global.americanController.unpause();
 }
-else if(keyboard_key_press(ord("I"))) {
+else if(keyboard_check_pressed(ord("I"))) {
 	global.americanController.fadeIn();
 }
-else if(keyboard_key_press(ord("O"))) {
+else if(keyboard_check_pressed(ord("O"))) {
 	global.americanController.fadeOut();
 }
-else if(keyboard_key_press(ord("Y"))) {
+else if(keyboard_check_pressed(ord("Y"))) {
 	global.americanController.heartController.heartSoundController.fadeOut();
 }
 
-if(keyboard_key_press(vk_f2)) {
+if(keyboard_check_pressed(vk_f2)) {
 	global.americanController.heartController.tweenHeartRate(61, 1200);
 	global.vietController.heartController.tweenHeartRate(61, 1200);
 }
 
-if(keyboard_key_press(vk_f4)) {
+if(keyboard_check_pressed(vk_f4)) {
 	global.americanController.heartController.tweenHeartRate(60, 5 * room_speed);
 	global.vietController.heartController.tweenHeartRate(60, 5 * room_speed);
 }
 
-if(keyboard_key_press(vk_f1)) {
+if(keyboard_check_pressed(vk_f1)) {
 	//Restart game
 	room_restart();
 }
 
-if(keyboard_key_press(vk_f10)) {
+if(keyboard_check_pressed(vk_f10)) {
 	global.americanController.heartController.heartHealth = 0.2;
 	global.vietController.heartController.heartHealth = 0.2;
 }
 
-if(keyboard_key_press(vk_f11)) {
+if(keyboard_check_pressed(vk_f11)) {
 	global.phase = 2;
 	global.americanController.fadeOut();
 	global.vietController.fadeIn();
 	global.phase++;
 }
 
-if(keyboard_key_press(vk_f12)) {
+if(keyboard_check_pressed(vk_f12)) {
 	switch(global.phase) {
 		case 0:
 		case 2:
