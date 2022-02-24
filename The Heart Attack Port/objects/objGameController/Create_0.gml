@@ -29,7 +29,7 @@ if(random(1) > 0.5) {
 	global.americanController = instance_create_depth(0, 0, 0, objAmericanController);
 	global.americanController.construct(true, global.INPUT_KEY_TOP);
 	
-	global.vietController = instance_create_depth(0, 0, 0, objVietController);
+	global.vietController = instance_create_depth(room_width, 0, 0, objVietController);
 	global.vietController.construct(false, global.INPUT_KEY_BOTTOM);
 	
 }
@@ -37,7 +37,7 @@ else {
 	global.vietController = instance_create_depth(0, 0, 0, objVietController);
 	global.vietController.construct(true, global.INPUT_KEY_TOP);
 	
-	global.americanController = instance_create_depth(0, 0, 0, objAmericanController);
+	global.americanController = instance_create_depth(room_width, 0, 0, objAmericanController);
 	global.americanController.construct(false, global.INPUT_KEY_BOTTOM);
 	
 }
