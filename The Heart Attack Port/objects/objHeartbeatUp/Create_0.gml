@@ -50,7 +50,7 @@ function missedAction() {
 	audio_play_sound_on(self.heartController.heartSoundController.sndMissed, snd_missed, false, 1);
 	
 	var tempMask = instance_create_depth(0, 0, 0, objRedMask);
-	tempMask.construct(self.heartController.x, self.heartController.y + room_height / 4);
+	tempMask.construct(0, self.heartController.y + room_height / 4);
 	tempMask.added();
 	
 	if(global.COMBINE_UP_DOWN_BEATS)
