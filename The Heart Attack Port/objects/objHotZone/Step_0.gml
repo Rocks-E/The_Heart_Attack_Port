@@ -1,12 +1,12 @@
 if(self.active) {
 	if(self.fading > 0) {
-		self.image_alpha += (1 / self.fadeTweenDuration) * self.MAX_ALPHA;
+		self.image_alpha += self.MAX_ALPHA / self.fadeTweenDuration;
 		if(self.image_alpha >= self.MAX_ALPHA) {
 			self.fading = 0;
 		}
 	}
 	else if(self.fading < 0) {
-		self.image_alpha -= (1 / self.fadeTweenDuration) * self.MAX_ALPHA;
+		self.image_alpha -= self.MAX_ALPHA / self.fadeTweenDuration;
 		if(self.image_alpha <= 0) {
 			self.fading = 0;	
 		}

@@ -24,6 +24,7 @@ function added() {
 }
 
 function fadeIn(_duration = 120) {
+	self.image_alpha = 0;
 	self.fading = 1;
 	self.fadeTweenDuration = _duration;
 }
