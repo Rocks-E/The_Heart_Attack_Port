@@ -1,65 +1,56 @@
-/// @description Insert description here
-// You can write your code in this editor
+var heartBeats = self.personController.heartController.getHeartbeats();
 
-heartBeats = personController.heartController.getHeartbeats()
+var c, h;
 
-for(h = 0; h < array_length(heartBeats);h++)
-{
-	if(checkTutorialHotzone(h) && pauseCounter = 0)
-	{
-		pauseCounter++
-		personController.pause()
-		if(Direction)
-		{
-			text01 = instance_create_depth(x,y,depth,objEntityFader)
-			text01.construct(t01p[0],t01p[1],spr_tutorial_text_01)
+for(c = 0; c < array_length(heartBeats); c++) {
+	h = heartBeats[c];
+	if(self.checkTutorialHotzone(h) && self.pauseCounter == 0) {
+		self.pauseCounter++;
+		self.personController.pause();
+		if(self.heartbeatDirection) {
+			self.text01 = instance_create_depth(self.x, self.y, self.depth, objEntityFader);
+			self.text01.construct(self.t01p[0], self.t01p[1], spr_tutorial_text_01);
 		}
-		else
-		{
-			text01 = instance_create_depth(x,y,depth,objEntityFader)
-			text01.construct(t01p[0],t01p[1],spr_tutorial_text_01b)
+		else {
+			self.text01 = instance_create_depth(self.x, self.y, self.depth, objEntityFader);
+			self.text01.construct(self.t01p[0], self.t01p[1], spr_tutorial_text_01b);
 		}
-		text01.fadeIn()
+		self.text01.fadeIn();
 			
 	}
-	else if(!global.COMBINE_UP_DOWN_BEATS && checkTutorialHotzone(h,global.heartbeatUpWidth) && pauseCounter == 2)
-	{
-		pauseCounter++
-		personController.pause()
-		if(Direction)
-		{
-			text02 = instance_create_depth(x,y,depth,objEntityFader)
-			text02.construct(t02p[0],t02p[1],spr_tutorial_text_02)
+	else if(!global.COMBINE_UP_DOWN_BEATS && self.checkTutorialHotzone(h, global.heartbeatUpWidth) && self.pauseCounter == 2) {
+		self.pauseCounter++;
+		self.personController.pause();
+		if(self.heartbeatDirection) {
+			self.text02 = instance_create_depth(self.x, self.y, self.depth, objEntityFader);
+			self.text02.construct(self.t02p[0], self.t02p[1], spr_tutorial_text_02);
 		}
-		else
-		{
-			text02 = instance_create_depth(x,y,depth,objEntityFader)
-			text02.construct(t02p[0],t02p[1],spr_tutorial_text_02b)
+		else {
+			self.text02 = instance_create_depth(self.x, self.y, self.depth, objEntityFader);
+			self.text02.construct(self.t02p[0], self.t02p[1], spr_tutorial_text_02b);
 		}
-		text02.fadeIn()
+		self.text02.fadeIn();
 	}
 }
 
-if(personController.personPaused && keyboard_check_pressed(personController.inputKey) && pauseCounter == 1)
-{
-	pauseCounter++
-	personController.unpause()
-	text01.fadeOut()
+if(self.personController.personPaused && keyboard_check_pressed(self.personController.inputKey) && self.pauseCounter == 1) {
+	self.pauseCounter++;
+	self.personController.unpause();
+	self.text01.fadeOut();
 	
-	if(!global.COMBINE_UP_DOWN_BEATS)
-	{
-		text03 = instance_create_depth(x,y,depth,objEntityFader)
-		text03.construct(t03p[0],t03p[1],spr_tutorial_text_03)
-		text03.fadeIn()
+	if(!global.COMBINE_UP_DOWN_BEATS) {
+		self.text03 = instance_create_depth(self.x, self.y, self.depth, objEntityFader);
+		self.text03.construct(self.t03p[0], self.t03p[1], spr_tutorial_text_03);
+		self.alarm[0] = 6 * room_speed;
+		self.text03.fadeIn();
 	}
 }
-else if(global.COMBINE_UP_DOWN_BEATS && personController.personPaused && keyboard_check_released(personController.inputKey) && pauseCounter == 3)
-{
-	pauseCounter++
-	personController.unpause()
-	text02.fadeOut()	
-	text03 = instance_create_depth(x,y,depth,objEntityFader)
-	text03.construct(t03p[0],t03p[1],spr_tutorial_text_03)
-	alarm[0] = room_speed * 6
-	text03.fadeIn()
+else if(global.COMBINE_UP_DOWN_BEATS && self.personController.personPaused && keyboard_check_released(self.personController.inputKey) && self.pauseCounter == 3) {
+	self.pauseCounter++;
+	self.personController.unpause();
+	self.text02.fadeOut();
+	self.text03 = instance_create_depth(self.x, self.y, self.depth, objEntityFader);
+	self.text03.construct(self.t03p[0], self.t03p[1], spr_tutorial_text_03);
+	self.alarm[0] = room_speed * 6;
+	self.text03.fadeIn();
 }

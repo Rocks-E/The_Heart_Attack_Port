@@ -20,6 +20,8 @@ if(global.TEST_MODE) {
 	global.quakeIntensity = 0.01;
 }
 
+global.startPixelating = true;
+global.pixelatePerPhoto = 5;
 
 instance_create_depth(0, 0, 0, objGround).construct(0, 0, spr_ground);
 //global.quake = instance_create_depth(0, 0, 0, objQuake);
@@ -50,6 +52,6 @@ global.vietController.added();
 global.cheater = instance_create_depth(0, 0, 0, objCheater);
 
 if(!global.TEST_MODE) {
-	//room_instance_add(new objTutorial(global.americanController));
-	//room_instance_add(new objTutorial(global.vietController));
+	instance_create_depth(0, 0, 0, objTutorial).construct(global.americanController);
+	instance_create_depth(0, 0, 0, objTutorial).construct(global.vietController);
 }

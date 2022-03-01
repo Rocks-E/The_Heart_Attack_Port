@@ -1,5 +1,3 @@
-mosaicFilter = fx_create("_filter_pixelate"); //Replace down/upscale?
-
 cellSize = 1;
 
 function construct(_source, _clipRect = noone, _cellSize = 1, _cache = false) {

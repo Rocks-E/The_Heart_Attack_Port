@@ -1,3 +1,2 @@
-/// @description Insert description here
-// You can write your code in this editor
-fadeText03()
+/// @description fadeText03()
+self.fadeText03();
