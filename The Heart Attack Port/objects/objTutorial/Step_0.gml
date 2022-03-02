@@ -34,7 +34,7 @@ for(c = 0; c < array_length(heartBeats); c++) {
 }
 
 if(self.personController.personPaused && keyboard_check_pressed(self.personController.inputKey) && self.pauseCounter == 1) {
-	self.pauseCounter++;
+	self.pauseCounter += 2;
 	self.personController.unpause();
 	self.text01.fadeOut();
 	
@@ -48,7 +48,7 @@ if(self.personController.personPaused && keyboard_check_pressed(self.personContr
 else if(global.COMBINE_UP_DOWN_BEATS && self.personController.personPaused && keyboard_check_released(self.personController.inputKey) && self.pauseCounter == 3) {
 	self.pauseCounter++;
 	self.personController.unpause();
-	self.text02.fadeOut();
+	//self.text02.fadeOut();
 	self.text03 = instance_create_depth(self.x, self.y, self.depth, objEntityFader);
 	self.text03.construct(self.t03p[0], self.t03p[1], spr_tutorial_text_03);
 	self.alarm[0] = room_speed * 6;
