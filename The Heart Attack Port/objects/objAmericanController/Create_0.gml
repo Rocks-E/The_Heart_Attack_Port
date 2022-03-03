@@ -32,7 +32,7 @@ function added() {
 	
 	//super
 	self.heartController = instance_create_depth(0, 0, 0, objHeartController);
-	self.heartController.construct(self.id, self.x, self.y, self.hotZoneX, self.isTop, HEART_RATE_01, PULSE_SPEED_01);
+	self.heartController.construct(self.id, self.x, self.y, self.hotZoneX, self.isTop, global.HEART_RATE_01, global.PULSE_SPEED_01);
 	self.heartController.added();
 	self.inputController = instance_create_depth(0, 0, 0, objInputController);
 	self.inputController.construct(self.inputKey, self.heartController);
