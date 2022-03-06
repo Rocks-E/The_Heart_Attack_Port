@@ -1,14 +1,18 @@
 if(global.americanController.dead || global.vietController.dead) {
 	if(!global.gameOver) {
 		global.gameOver = true;
-		if(abs(global.americanController.heartController.health - global.vietController.heartController.health) <= global.HEALTH_DIF_TO_DIE_TOGETHER) {
+		if(abs(global.americanController.heartController.heartHealth - global.vietController.heartController.heartHealth) <= global.HEALTH_DIF_TO_DIE_TOGETHER) {
 			global.bothDead = true;	
 		}
 		if(global.americanController.dead) {
-			//room_instance_add(room, 0, 0, new objGameOverSequence(global.americanController, global.vietController));
+			var gameOverTemp = instance_create_depth(0, 0, 0, objGameOverSequence);
+			gameOverTemp.construct(global.americanController, global.vietController);
+			gameOverTemp.added();
 		}
 		else {
-			//room_instance_add(room, 0, 0, new objGameOverSequence(global.americanController, global.vietController));	
+			var gameOverTemp = instance_create_depth(0, 0, 0, objGameOverSequence);
+			gameOverTemp.construct(global.vietController, global.americanController);
+			gameOverTemp.added();
 		}
 	}
 }

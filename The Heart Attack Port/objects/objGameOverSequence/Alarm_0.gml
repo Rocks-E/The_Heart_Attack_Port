@@ -1,0 +1,2 @@
+/// @description startSlideshow
+self.startSlideshow();

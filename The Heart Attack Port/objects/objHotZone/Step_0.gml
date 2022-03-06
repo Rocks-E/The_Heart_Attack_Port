@@ -8,7 +8,7 @@ if(self.active) {
 	else if(self.fading < 0) {
 		self.image_alpha -= self.MAX_ALPHA / self.fadeTweenDuration;
 		if(self.image_alpha <= 0) {
-			self.fading = 0;	
+			self.fading = 0;
 		}
 	}
 
