@@ -120,9 +120,11 @@ function added() {
 	var tempMask2 = instance_create_depth(0, 0, -200, objRedMask);
 	tempMask2.construct(self.dead.x, self.dead.y, true, self.RED_MASK_IN_DURATION, self.RED_MASK_OUT_DURATION, self.RED_MASK_STAY_DURATION, 1, true);
 	tempMask2.added();
+	show_message("Generate slideshow");
 	self.deadPhotocontroller = self.generateSlideshow(self.dead);	
 			
 	// Prime slideshow
+	show_message("Prime slideshow");
 	self.primeSlideshow();
 }
 

@@ -32,8 +32,6 @@ function construct(_personController) {
 }
 
 function fadeText03() {
-	//self.text03 = instance_create_depth(x,y,depth,objEntityFader);
-	//self.text03.construct();
 	self.text03.fadeOut(5 * room_speed);
 }
 

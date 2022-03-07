@@ -68,6 +68,7 @@ function nextPhoto(_fadeIn = true) {
 		self.pixelateCellSize += global.pixelatePerPhoto;
 	}
 	if(self.currentIndex < array_length(self.photoArray)) {
+		instance_destroy(self.lastPhoto);
 		self.lastPhoto = self.currentPhoto;
 		self.lastPhoto.fadeOut();
 		self.currentPhoto = instance_create_depth(0, 0, 0, objPhotoBackdrop);
@@ -78,6 +79,7 @@ function nextPhoto(_fadeIn = true) {
 		self.photosFinished = true;
 		self.currentIndex = 0;
 		if(self.loop) {
+			instance_destroy(self.lastPhoto);
 			self.lastPhoto = self.currentPhoto;
 			self.lastPhoto.fadeOut();
 			self.currentPhoto = instance_create_depth(0, 0, 0, objPhotoBackdrop);
@@ -92,6 +94,11 @@ function fadeOut() {
 	self.unpause();
 	if(noone != self.lastPhoto) self.lastPhoto.fadeOut();
 	if(noone != self.currentPhoto) self.currentPhoto.fadeOut();
-	//instance_destroy(self.id);
+	instance_destroy(self.id);
 }
 
+function destroy() {
+	if(noone != self.lastPhoto) instance_destroy(self.lastPhoto);
+	if(noone != self.currentPhoto) instance_destroy(self.currentPhoto);	
+	instance_destroy(self.id);
+}
