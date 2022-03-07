@@ -34,11 +34,14 @@ for(c = 0; c < array_length(heartBeats); c++) {
 }
 
 if(self.personController.personPaused && keyboard_check_pressed(self.personController.inputKey) && self.pauseCounter == 1) {
-	self.pauseCounter += 2;
+	self.pauseCounter++;
 	self.personController.unpause();
 	self.text01.fadeOut();
 	
-	if(!global.COMBINE_UP_DOWN_BEATS) {
+	//(!global.COMBINE_UP_DOWN_BEATS); Commented out because this does nothing in the original code
+	//The if was missing, leading to the current functionality
+	//In GMS2, this is a syntax error
+	if(true) {
 		self.text03 = instance_create_depth(self.x, self.y, self.depth, objEntityFader);
 		self.text03.construct(self.t03p[0], self.t03p[1], spr_tutorial_text_03);
 		self.alarm[0] = 6 * room_speed;

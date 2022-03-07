@@ -57,7 +57,7 @@ function checkOverlapDownBeat() {
 		d = heartbeatDownList[c];
 		if (d.heartController.id == self.heartController.id && d.checkOverlapHotZone()) {
 			d.hit = true;
-			d.image.color = global.PULSE_COLOR_HIT;
+			d.image_blend = global.PULSE_COLOR_HIT;
 		}
 	}				
 }

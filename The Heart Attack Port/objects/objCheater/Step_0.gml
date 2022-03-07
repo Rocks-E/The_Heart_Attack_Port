@@ -1,8 +1,12 @@
 if(keyboard_check_pressed(ord("P"))) {
 	global.americanController.pause();
+	global.vietController.pause();
 }
 else if(keyboard_check_pressed(ord("R"))) {
-	global.americanController.unpause();
+	if(noone == global.americanController.darkMask) 
+		global.americanController.unpause();
+	if(noone == global.vietController.darkMask)
+		global.vietController.unpause();
 }
 else if(keyboard_check_pressed(ord("I"))) {
 	global.americanController.fadeIn();
@@ -12,6 +16,11 @@ else if(keyboard_check_pressed(ord("O"))) {
 }
 else if(keyboard_check_pressed(ord("Y"))) {
 	global.americanController.heartController.heartSoundController.fadeOut();
+}
+
+if(keyboard_check_pressed(vk_f6)) {
+	global.americanController.heartController.tweenPulseSpeed(4, 5 * room_speed);
+	global.vietController.heartController.tweenPulseSpeed(4, 5 * room_speed);
 }
 
 if(keyboard_check_pressed(vk_f2)) {

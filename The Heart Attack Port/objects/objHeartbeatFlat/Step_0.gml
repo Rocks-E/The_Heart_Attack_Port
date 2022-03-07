@@ -15,5 +15,6 @@ if(self.fading) {
 	image_alpha -= 1 / self.fadingDuration;
 	if(image_alpha <= 0) {
 		self.fading = false;
+		instance_destroy(self.id);
 	}
 }
