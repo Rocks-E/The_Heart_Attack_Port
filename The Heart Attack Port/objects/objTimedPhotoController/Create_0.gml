@@ -1,81 +1,80 @@
-/// @description Insert description here
-// You can write your code in this editor
 event_inherited()
 
-
-
-function construct(photoArray, X = 0, Y = 0,displayTime = 300,startDelay = 300,fadeDuration = 120,maxAlpha = 1,flipped = false,pixelateCellSize = 1)
-{
+function construct(_photoArray, _x = 0, _y = 0, _displayTime = 300, _startDelay = 300, _fadeDuration = 120, _maxAlpha = 1, _flipped = false, _pixelateCellSize = 1) {
 	
-	//found this online to replicate a "super" call, requires further testing
-	object_get_parent(object_index).construct(photoArray,X,Y,displayTime,startDelay,loop,_fadeIn,maxAlpha,flipped)
-	self.fadeInDuration = fadeInDuration
-	self.fadeOutDuration = fadeOutDuration
-	self.pixelateCellSize = pixelateCellSize
+	//super
+	self.x = _x;
+	self.y = _y;
+	self.shouldFadeIn = false;
+	self.photoArray = _photoArray;
+	self.startDelay = _startDelay;
+	self.displayTime = _displayTime;
+	self.maxAlpha = _maxAlpha;
+	self.flipped = _flipped;
+	self.loop = false;
+	self.currentPhoto = instance_create_depth(0, 0, 0, objPhotoBackdrop);
+	self.currentPhoto.construct(_photoArray[self.currentIndex], _x, _y, true, 120, 120, _maxAlpha, _flipped);
+	//super end
 	
-	currentPhoto = instance_create_depth(x,y,depth,objPhotoBackdrop)
-	currentPhoto.construct(photoArray[currentIndex],x,y,false,fadeInDuration,fadeOutDuration,maxAlpha,flipped,floor(pixelateCellSize))
+	self.fadeInDuration = _fadeDuration
+	self.fadeOutDuration = _fadeDuration
+	self.pixelateCellSize = _pixelateCellSize
 	
-	
+	currentPhoto = instance_create_depth(0, 0, 100, objPhotoBackdrop);
+	currentPhoto.construct(_photoArray[self.currentIndex], _x, _y, false, _fadeDuration, _fadeDuration, _maxAlpha, _flipped, floor(_pixelateCellSize));
 	
 }
 
-function start()
-{
-		alarm[1] = displayTime * room_speed
-		//nextPhoto()
+function added() {
+	self.currentPhoto.added();
+	self.currentIndex++;
+	if(self.startDelay > 0) {
+		self.alarm[0] = startDelay;
+	}
+	else {
+		self.start();
+	}
 }
 
-function nextPhoto(fadeIn = true)
-{
-	if(global.startDepixelating && pixelateCellSize > 1)
-		pixelateCellSize -= global.depixelatePerPhoto
+
+function start() {
+		self.alarm[1] = self.displayTime;
+		self.nextPhoto();
+}
+
+function nextPhoto(_fadeIn = true) {
+	if(global.startDepixelating && self.pixelateCellSize > 1)
+		self.pixelateCellSize -= global.depixelatePerPhoto;
 		
-	if(pixelateCellSize < 0)
-		pixelateCellSize = 1;
+	if(self.pixelateCellSize < 0)
+		self.pixelateCellSize = 1;
 		
-	if(maxAlpha < 1)
-		maxAlpha += global.increaseAlphaAmount
+	if(self.maxAlpha < 1)
+		self.maxAlpha += global.increaseAlphaAmount;
 		
-	if(photosFinished && !loop)
-	{
-		return
+	if(self.photosFinished && !self.loop) {
+		return;
 	}
-	if(currentIndex < array_length(photoArray))
-	{
-		lastPhoto = currentPhoto
-		lastPhoto.fadeOut()
-		var temp = instance_create_depth(x,y,depth,objPhotoBackdrop)
-		temp.construct(photoArray[currentIndex],x,y,fadeIn,fadeInDuration,fadeOutDuration,maxAlpha,flipped,floor(pixelateCellSize))
+	if(self.currentIndex < array_length(self.photoArray)) {
+		self.lastPhoto = self.currentPhoto;
+		self.lastPhoto.fadeOut();
+		self.currentPhoto = instance_create_depth(0, 0, 100, objPhotoBackdrop);
+		self.currentPhoto.construct(self.photoArray[self.currentIndex], self.x, self.y, _fadeIn, self.fadeInDuration, self.fadeOutDuration, self.maxAlpha, self.flipped, floor(self.pixelateCellSize));
+		self.currentPhoto.added();
 	}
-	else
-	{
-		photosFinished = true;
-		currentIndex = 0;
-		if(loop)
-		{
-			lastPhoto = currentPhoto
-			lastPhoto.fadeOut()
-			var temp = instance_create_depth(x,y,depth,objPhotoBackdrop)
-			temp.construct(photoArray[currentIndex],x,y,fadeIn,_fadeInDuration,_fadeOutDuration,maxAlpha,flipped,floor(pixelateCellSize))
+	else {
+		self.photosFinished = true;
+		self.currentIndex = 0;
+		if(self.loop) {
+			self.lastPhoto = self.currentPhoto;
+			self.lastPhoto.fadeOut();
+			self.currentPhoto = instance_create_depth(0, 0, 100, objPhotoBackdrop);
+			self.currentPhoto.construct(self.photoArray[self.currentIndex], self.x, self.y, _fadeIn, self.fadeInDuration, self.fadeOutDuration, self.maxAlpha, self.flipped, floor(self.pixelateCellSize));
+			self.currentPhoto.added();
 		}
 	}
-	currentIndex++
-	alarm[1] = displayTime * room_speed
+	self.currentIndex++;
+	self.alarm[1] = self.displayTime;
 	
-}
-
-
-function added()
-{
-	currentIndex = image_index + 1
-	if(startDelay > 0)
-	{
-		alarm[0] = startDelay * room_speed
-	}
-	else
-	{
-		start()
-	}
 }
 

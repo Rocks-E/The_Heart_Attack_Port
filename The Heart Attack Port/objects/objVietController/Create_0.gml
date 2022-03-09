@@ -61,6 +61,7 @@ function fadeIn() {
 		case 0:
 			self.heartController.tweenHeartRate(global.HEART_RATE_02, self.heartController.heartRate * array_length(self.photoArray));
 			self.heartController.tweenPulseSpeed(global.PULSE_SPEED_02, self.heartController.heartRate * array_length(self.photoArray));
+			break;
 		case 2:
 			self.photoDisplayTime = global.PHOTO_DISPLAY_TIME_02;
 			self.photoArray = self.photoArray02;

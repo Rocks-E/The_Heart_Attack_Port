@@ -1,0 +1,2 @@
+/// @description goToGameOver
+self.goToGameOver();
