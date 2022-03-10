@@ -70,7 +70,7 @@ function pause(_makeDark = false) {
 	if(!self.personPaused) {
 		if(_makeDark) {
 			self.darkMask = instance_create_depth(0, 0, 0, objDarkMask);
-			if(os_type == os_windows)
+			if(os_browser == browser_not_a_browser)
 				self.darkMask.construct(0, self.y, false);
 			else
 				self.darkMask.construct(0, self.y + room_height / 4, false);
@@ -86,13 +86,13 @@ function pause(_makeDark = false) {
 
 function unpause() {
 	if(self.personPaused) {
-		if(noone != self.darkMask) {
+		if(instance_exists(self.darkMask)) {
 			instance_destroy(self.darkMask);
 			self.darkMask = noone;
 		}
 		self.heartController.unpause();
 		self.photoController.unpause();
-		if(noone != self.personImage) self.personImage.unpause();
+		if(instance_exists(self.personImage)) self.personImage.unpause();
 		self.personPaused = false;
 		self.active = true;
 	}
@@ -102,9 +102,9 @@ function fadeOut(_duration = 180) {
 	self.fadingOut = true;
 	self.inputController.active = false;
 	self.heartController.fadeOut(_duration);
-	if(noone != self.personImage) self.personImage.pause();
+	if(instance_exists(self.personImage)) self.personImage.pause();
 	self.darkMask = instance_create_depth(0, 0, 0, objDarkMask);
-	if(os_type == os_windows)
+	if(os_browser == browser_not_a_browser)
 		self.darkMask.construct(0, self.y, true, _duration, _duration);
 	else
 		self.darkMask.construct(0, self.y + room_height / 4, true, _duration, _duration);
@@ -128,7 +128,7 @@ function fadeIn() {
 	self.active = true;
 	self.inputController.active = true;
 	self.heartController.hotZone.fadeIn(ACTIVATE_DURATION);
-	if(noone != self.darkMask) {
+	if(instance_exists(self.darkMask)) {
 		alarm[2] = ACTIVATE_DURATION; //newPhaseReadyAlarm(ACTIVATE_DURATION, fadeInComplete)
 		self.darkMask.fadeOut(ACTIVATE_DURATION);
 	}

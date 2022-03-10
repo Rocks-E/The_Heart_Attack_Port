@@ -5,7 +5,7 @@ MAX_WAR_PHOTOS_TO_SHOW = 5;
 SKIP_EVERY_OTHER_BOOTCAMP_PHOTO = true;
 
 DARK_MASK_IN_DURATION = 8 * room_speed;
-RED_MASK_IN_DURATION = 8 * room_speed;
+RED_MASK_IN_DURATION = 3 * room_speed;
 RED_MASK_STAY_DURATION = 12 * room_speed;
 RED_MASK_OUT_DURATION = 15 * room_speed;
 FLAT_LINE_OUT_DURATION = 5 * room_speed;
@@ -80,24 +80,24 @@ function added() {
 		self.notDead.heartController.flatLine.construct(self.notDead.heartController);
 		self.notDead.heartController.flatLine.added();
 		self.notDead.heartController.flatLine.image_alpha = 1;
-				
+		
 		self.notDead.pause();
 		self.notDead.heartController.hotZone.active = true;
 		self.notDead.heartController.hotZone.fadeOut();
-		if (noone != self.notDead.heartController.flatLine) self.notDead.heartController.flatLine.fadeOut(FLAT_LINE_OUT_DURATION);
-		var tempMask = instance_create_depth(0, 0, -200, objRedMask);
-		tempMask.construct(self.notDead.x, self.notDead.y, true, self.RED_MASK_IN_DURATION, self.RED_MASK_OUT_DURATION, self.RED_MASK_STAY_DURATION, 1, true);
+		if (instance_exists(self.notDead.heartController.flatLine)) self.notDead.heartController.flatLine.fadeOut(FLAT_LINE_OUT_DURATION);
+		var tempMask = instance_create_depth(0, self.notDead.heartController.y, -200, objRedMask);
+		tempMask.construct(0, self.notDead.y, true, self.RED_MASK_IN_DURATION, self.RED_MASK_OUT_DURATION, self.RED_MASK_STAY_DURATION, 1, true);
 		tempMask.added();
 		self.notDeadPhotocontroller = self.generateSlideshow(self.notDead);
 	}
 	else if (self.dead.photoArrayNumber == 3) {
 		self.notDead.pause();
-		if (noone != self.notDead.darkMask) self.notDead.darkMask.fadeOut(self.RED_MASK_IN_DURATION);
+		if (instance_exists(self.notDead.darkMask)) self.notDead.darkMask.fadeOut(self.RED_MASK_IN_DURATION);
 		self.notDead.heartController.hotZone.active = true;
 		self.notDead.heartController.hotZone.fadeOut();
-		if (self.notDead.heartController.flatLine) self.notDead.heartController.flatLine.fadeOut(FLAT_LINE_OUT_DURATION);	
-		var tempMask = instance_create_depth(0, 0, -200, objRedMask);
-		tempMask.construct(self.notDead.x, self.notDead.y, true, self.RED_MASK_IN_DURATION, self.RED_MASK_OUT_DURATION, self.RED_MASK_STAY_DURATION, 1, true, global.BLACK);
+		if (instance_exists(self.notDead.heartController.flatLine)) self.notDead.heartController.flatLine.fadeOut(FLAT_LINE_OUT_DURATION);	
+		var tempMask = instance_create_depth(0, self.notDead.heartController.y, -200, objRedMask);
+		tempMask.construct(0, self.notDead.y, true, self.RED_MASK_IN_DURATION, self.RED_MASK_OUT_DURATION, self.RED_MASK_STAY_DURATION, 1, true, global.BLACK);
 		tempMask.added();
 		self.notDeadPhotocontroller = self.generateSlideshow(self.notDead);
 		self.notDead.heartController.fadeOut(self.RED_MASK_IN_DURATION);
@@ -107,18 +107,18 @@ function added() {
 		self.notDead.darkMask.fadeOut(self.RED_MASK_IN_DURATION);
 		self.notDead.heartController.hotZone.active = true;
 		self.notDead.heartController.hotZone.fadeOut();
-		if (noone != self.notDead.heartController.flatLine) self.notDead.heartController.flatLine.fadeOut(self.FLAT_LINE_OUT_DURATION);
-		var tempMask = instance_create_depth(0, 0, -200, objDarkMask);
-		tempMask.construct(self.notDead.x, self.notDead.y, true, self.RED_MASK_IN_DURATION, self.RED_MASK_OUT_DURATION, self.RED_MASK_STAY_DURATION, 1, true, global.BLACK);
+		if (instance_exists(self.notDead.heartController.flatLine)) self.notDead.heartController.flatLine.fadeOut(self.FLAT_LINE_OUT_DURATION);
+		var tempMask = instance_create_depth(0, self.notDead.heartController.y, -200, objDarkMask);
+		tempMask.construct(0, self.notDead.y, true, self.RED_MASK_IN_DURATION, self.RED_MASK_OUT_DURATION, self.RED_MASK_STAY_DURATION, 1, true, global.BLACK);
 		tempMask.added(); 
 		self.notDead.heartController.fadeOut(self.RED_MASK_IN_DURATION);				
 	}
 	self.dead.pause();
 	self.dead.heartController.hotZone.active = true;
 	self.dead.heartController.hotZone.fadeOut();
-	if (noone != self.dead.heartController.flatLine) self.dead.heartController.flatLine.fadeOut(self.FLAT_LINE_OUT_DURATION);
-	var tempMask2 = instance_create_depth(0, 0, -200, objRedMask);
-	tempMask2.construct(self.dead.x, self.dead.y, true, self.RED_MASK_IN_DURATION, self.RED_MASK_OUT_DURATION, self.RED_MASK_STAY_DURATION, 1, true);
+	if(instance_exists(self.dead.heartController.flatLine)) self.dead.heartController.flatLine.fadeOut(self.FLAT_LINE_OUT_DURATION);
+	var tempMask2 = instance_create_depth(0, self.dead.heartController.y, -200, objRedMask);
+	tempMask2.construct(0, self.dead.y, true, self.RED_MASK_IN_DURATION, self.RED_MASK_OUT_DURATION, self.RED_MASK_STAY_DURATION, 1, true);
 	tempMask2.added();
 	self.deadPhotocontroller = self.generateSlideshow(self.dead);	
 			

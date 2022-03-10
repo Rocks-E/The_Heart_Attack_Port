@@ -1,6 +1,6 @@
 function getInstancesOf(_objType){
 	
-	var inst_list;
+	var inst_list = array_create(instance_number(_objType), noone);
 	var c;
 	
 	for(c = 0; c < instance_number(_objType); c++) {

@@ -50,14 +50,20 @@ function missedAction() {
 	audio_play_sound_on(self.heartController.heartSoundController.sndMissed, snd_missed, false, 1);
 	
 	var tempMask = instance_create_depth(0, 0, 0, objRedMask);
-	tempMask.construct(0, self.heartController.y + room_height / 4);
+	if(os_browser == browser_not_a_browser) {
+		tempMask.construct(0, self.heartController.y);
+	}
+	else {
+		tempMask.construct(0, self.heartController.y + room_height / 4);
+	}
 	tempMask.added();
 	
 	if(global.COMBINE_UP_DOWN_BEATS)
-		self.pairedHeartbeatDown.image_blend = global.PULSE_COLOR_MISSED;
+		if(instance_exists(self.pairedHeartbeatDown))
+			self.pairedHeartbeatDown.image_blend = global.PULSE_COLOR_MISSED;
 		
 	if(global.dieTogether) {
-		if(self.heartController.personController.personType == "american")
+		if(self.heartController.personController.objType == "american")
 			global.vietController.heartController.loseHealth();	
 		else 
 			global.americanController.heartController.loseHealth();
