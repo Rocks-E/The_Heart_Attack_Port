@@ -101,6 +101,8 @@ function added() {
 		tempMask.added();
 		self.notDeadPhotocontroller = self.generateSlideshow(self.notDead);
 		self.notDead.heartController.fadeOut(self.RED_MASK_IN_DURATION);
+		self.notDead.photoController.currentPhoto.fadeOutDuration = self.RED_MASK_STAY_DURATION;
+		self.notDead.photoController.currentPhoto.fadeOut();
 	}
 	else {
 		self.notDead.pause();
@@ -111,7 +113,9 @@ function added() {
 		var tempMask = instance_create_depth(0, self.notDead.heartController.y, -200, objDarkMask);
 		tempMask.construct(0, self.notDead.y, true, self.RED_MASK_IN_DURATION, self.RED_MASK_OUT_DURATION, self.RED_MASK_STAY_DURATION, 1, true, global.BLACK);
 		tempMask.added(); 
-		self.notDead.heartController.fadeOut(self.RED_MASK_IN_DURATION);				
+		self.notDead.heartController.fadeOut(self.RED_MASK_IN_DURATION);
+		self.notDead.photoController.currentPhoto.fadeOutDuration = self.RED_MASK_STAY_DURATION;
+		self.notDead.photoController.fadeOut();
 	}
 	self.dead.pause();
 	self.dead.heartController.hotZone.active = true;
@@ -121,7 +125,10 @@ function added() {
 	tempMask2.construct(0, self.dead.y, true, self.RED_MASK_IN_DURATION, self.RED_MASK_OUT_DURATION, self.RED_MASK_STAY_DURATION, 1, true);
 	tempMask2.added();
 	self.deadPhotocontroller = self.generateSlideshow(self.dead);	
-			
+	
+	self.dead.photoController.currentPhoto.fadeOutDuration = self.RED_MASK_STAY_DURATION;
+	self.dead.photoController.currentPhoto.fadeOut();
+	
 	// Prime slideshow
 	self.primeSlideshow();
 }

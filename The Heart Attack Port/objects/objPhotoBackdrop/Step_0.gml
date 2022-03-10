@@ -6,8 +6,8 @@ if(noone != self.backdrop) {
 			self.backdrop.image_alpha += self.maxAlpha / self.fadeInDuration;
 			self.fadeTweenDuration--;
 			
-			if(self.backdrop.image_alpha > 1) {
-				self.backdrop.image_alpha = 1;
+			if(self.backdrop.image_alpha > self.maxAlpha) {
+				self.backdrop.image_alpha = self.maxAlpha;
 				self.fading = false;
 				self.fadeDirection = 0;
 			}
@@ -22,13 +22,6 @@ if(noone != self.backdrop) {
 				self.fading = false;
 				self.fadeDirection = 0;
 			}
-			
-			/*
-			if(self.fadeTweenDuration == 0) {
-				show_message("Destroy image " + string(self.backdrop));
-				instance_destroy(self.backdrop);	
-			}
-			*/
 			
 		}
 		
