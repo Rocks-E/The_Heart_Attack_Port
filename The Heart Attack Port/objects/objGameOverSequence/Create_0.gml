@@ -150,7 +150,7 @@ function generateSlideshow(_person) {
 	// Photo array 2
 	else if (_person.photoArrayNumber == 2) {
 		photoArray = _person.photoArray01;
-		for (i = 0; i < photoIndex; i++) {
+		for (i = 0; i < self.photoIndex; i++) {
 			if (self.SKIP_EVERY_OTHER_BOOTCAMP_PHOTO) {
 				if (j > 0)
 					array_push(photoArray, _person.photoArray02[i]);
@@ -217,19 +217,19 @@ function goToGameOver() {
 }
 
 function primeSlideshow() {
-	if(noone != self.notDeadPhotocontroller) {
-		if(noone != self.notDead.photoController) instance_destroy(self.notDead.photoController);
-		if(noone != self.notDead.oldPhotoController) instance_destroy(self.notDead.oldPhotoController);
+	if(instance_exists(self.notDeadPhotocontroller)) {
+		if(instance_exists(self.notDead.photoController)) instance_destroy(self.notDead.photoController);
+		if(instance_exists(self.notDead.oldPhotoController)) instance_destroy(self.notDead.oldPhotoController);
 		self.notDeadPhotocontroller.added(); //world.add(self.notDeadPhotocontroller)
 		self.notDeadPhotocontroller.pause();
 	}
-	if(noone != self.dead.photoController) instance_destroy(self.dead.photoController);
-	if(noone != self.dead.oldPhotoController) instance_destroy(self.dead.oldPhotoController);
+	if(instance_exists(self.dead.photoController)) instance_destroy(self.dead.photoController);
+	if(instance_exists(self.dead.oldPhotoController)) instance_destroy(self.dead.oldPhotoController);
 	self.deadPhotocontroller.added(); //world.add(self.deadPhotocontroller)
 	self.deadPhotocontroller.pause();
 }
 
 function startSlideshow() {
-	if(noone != self.notDeadPhotocontroller) self.notDeadPhotocontroller.unpause();
+	if(instance_exists(self.notDeadPhotocontroller)) self.notDeadPhotocontroller.unpause();
 	self.deadPhotocontroller.unpause();
 }

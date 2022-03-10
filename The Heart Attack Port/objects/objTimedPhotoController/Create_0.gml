@@ -56,9 +56,10 @@ function nextPhoto(_fadeIn = true) {
 		return;
 	}
 	if(self.currentIndex < array_length(self.photoArray)) {
+		instance_destroy(self.lastPhoto);	
 		self.lastPhoto = self.currentPhoto;
 		self.lastPhoto.fadeOut();
-		self.currentPhoto = instance_create_depth(0, 0, 100, objPhotoBackdrop);
+		self.currentPhoto = instance_create_depth(0, 0, 0, objPhotoBackdrop);
 		self.currentPhoto.construct(self.photoArray[self.currentIndex], self.x, self.y, _fadeIn, self.fadeInDuration, self.fadeOutDuration, self.maxAlpha, self.flipped, floor(self.pixelateCellSize));
 		self.currentPhoto.added();
 	}
@@ -66,9 +67,10 @@ function nextPhoto(_fadeIn = true) {
 		self.photosFinished = true;
 		self.currentIndex = 0;
 		if(self.loop) {
+			instance_destroy(self.lastPhoto);
 			self.lastPhoto = self.currentPhoto;
 			self.lastPhoto.fadeOut();
-			self.currentPhoto = instance_create_depth(0, 0, 100, objPhotoBackdrop);
+			self.currentPhoto = instance_create_depth(0, 0, 0, objPhotoBackdrop);
 			self.currentPhoto.construct(self.photoArray[self.currentIndex], self.x, self.y, _fadeIn, self.fadeInDuration, self.fadeOutDuration, self.maxAlpha, self.flipped, floor(self.pixelateCellSize));
 			self.currentPhoto.added();
 		}
