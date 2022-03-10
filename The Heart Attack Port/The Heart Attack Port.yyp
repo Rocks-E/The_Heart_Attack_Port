@@ -13,6 +13,7 @@
     {"id":{"name":"spr_Y06","path":"sprites/spr_Y06/spr_Y06.yy",},"order":35,},
     {"id":{"name":"snd_heartbeat_down","path":"sounds/snd_heartbeat_down/snd_heartbeat_down.yy",},"order":5,},
     {"id":{"name":"spr_tutorial_text_03","path":"sprites/spr_tutorial_text_03/spr_tutorial_text_03.yy",},"order":10,},
+    {"id":{"name":"rmGameStart","path":"rooms/rmGameStart/rmGameStart.yy",},"order":2,},
     {"id":{"name":"spr_Z050","path":"sprites/spr_Z050/spr_Z050.yy",},"order":93,},
     {"id":{"name":"spr_X070","path":"sprites/spr_X070/spr_X070.yy",},"order":107,},
     {"id":{"name":"objDarkMask","path":"objects/objDarkMask/objDarkMask.yy",},"order":1,},
@@ -54,6 +55,7 @@
     {"id":{"name":"objInputController","path":"objects/objInputController/objInputController.yy",},"order":19,},
     {"id":{"name":"spr_Y11","path":"sprites/spr_Y11/spr_Y11.yy",},"order":40,},
     {"id":{"name":"spr_Z030","path":"sprites/spr_Z030/spr_Z030.yy",},"order":90,},
+    {"id":{"name":"objGameStart","path":"objects/objGameStart/objGameStart.yy",},"order":31,},
     {"id":{"name":"objHeartbeatFlat","path":"objects/objHeartbeatFlat/objHeartbeatFlat.yy",},"order":23,},
     {"id":{"name":"spr_Z120","path":"sprites/spr_Z120/spr_Z120.yy",},"order":100,},
     {"id":{"name":"objHeartbeat","path":"objects/objHeartbeat/objHeartbeat.yy",},"order":26,},
@@ -153,6 +155,7 @@
     "children": [],
   },
   "RoomOrderNodes": [
+    {"roomId":{"name":"rmGameStart","path":"rooms/rmGameStart/rmGameStart.yy",},},
     {"roomId":{"name":"rmGame","path":"rooms/rmGame/rmGame.yy",},},
     {"roomId":{"name":"rmGameOver","path":"rooms/rmGameOver/rmGameOver.yy",},},
   ],
