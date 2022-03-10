@@ -33,9 +33,9 @@ function hitAction() {
 		self.pairedHeartbeatDown.image_blend = global.PULSE_COLOR_HIT;
 		
 	if(global.quakeScreenOnBeat) {
-		//global.quake.start(global.quakeIntensity, global.quakeDuration);
-		//global.quakeIntensity += global.quakeIntensityIncreaseBy;
-		//global.quakeDuration += global.quakeDurationIncreaseBy;
+		global.quake.start(global.quakeIntensity, global.quakeDuration);
+		global.quakeIntensity += global.quakeIntensityIncreaseBy;
+		global.quakeDuration += global.quakeDurationIncreaseBy;
 	}
 	
 }
