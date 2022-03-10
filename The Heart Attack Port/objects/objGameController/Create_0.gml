@@ -6,6 +6,8 @@ randomize(); //Seed the random function
 quakeInterval = 3 * room_speed;
 quakeDuration = 0.5;
 quakeIntensity = 0.5;
+
+//NOTE: I think this line is unneeded, but ill leave it just in case
 //alarm[0] = quakeInterval; //quakeAlarm = new Alarm(quakeInterval, quakeScreen)
 
 if(global.TEST_MODE) {
@@ -24,7 +26,7 @@ global.startPixelating = true;
 global.pixelatePerPhoto = 5;
 
 instance_create_depth(0, 0, 0, objGround).construct(0, 0, spr_ground);
-//global.quake = instance_create_depth(0, 0, 0, objQuake);
+global.quake = instance_create_depth(0, 0, 0, objQuake);
 //global.soundController = instance_create_depth(0, 0, 0, objSoundController);
 
 if(random(1) > 0.5) {
