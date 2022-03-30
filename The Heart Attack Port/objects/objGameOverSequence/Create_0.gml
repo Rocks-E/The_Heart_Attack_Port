@@ -11,9 +11,9 @@ RED_MASK_STAY_DURATION = 12 * room_speed;
 RED_MASK_OUT_DURATION = 15 * room_speed;
 FLAT_LINE_OUT_DURATION = 5 * room_speed;
 HOT_ZONE_OUT_DURATION = 5 * room_speed;	
-SOUND_OUT_DURATION = 8 * room_speed;	
+SOUND_OUT_DURATION = 8;		// Audio times are not framerate dependent.
 MUSIC_START_TIME = 15 * room_speed;		
-MUSIC_IN_DURATION = 20 * room_speed;	
+MUSIC_IN_DURATION = 20;		// Audio times are not framerate dependent.	
 SLIDE_SHOW_START_TIME = 20 * room_speed;
 
 dead = noone; //objPersonController
@@ -50,7 +50,7 @@ function added() {
 	// Play flatline sound
 	audio_emitter_gain(self.sndFlatline, 0.2);
 	self.curSndFlatline = audio_play_sound_on(self.sndFlatline, snd_flatline_20s, false, 1);
-	audio_sound_gain(self.curSndFlatline, 0, self.SOUND_OUT_DURATION);
+	audio_sound_gain(self.curSndFlatline, 0, self.SOUND_OUT_DURATION * 1000);	// audio_sound_gain time is in ms
 			
 	// Music
 	// Decide here whether to use Fitzgerald track and Vietnamese music track,
@@ -145,7 +145,8 @@ function added() {
 
 function startMusic() {
 	self.curMusic = audio_play_sound_on(self.music, self.musicTrack, false, 1);
-	audio_sound_gain(self.curMusic, 0.75, self.MUSIC_IN_DURATION);
+	audio_sound_gain(self.curMusic, 0, 0);								// Need to start music at 0 gain.
+	audio_sound_gain(self.curMusic, 0.75, self.MUSIC_IN_DURATION*1000);	// audio_sound_gain time is in ms
 	alarm[2] = self.musicDuration; //goToGameOver on complete
 }
 
