@@ -204,7 +204,7 @@ function generateSlideshow(_person) {
 				
 		// Push index
 		array_push(photoArray, _person.photoArray03[_person.photoController.currentIndex - 1]);
-	}			
+	}
 			
 	// Reverse the array
 	photoArray = reverseArray(photoArray);

@@ -12,14 +12,16 @@ function getInstancesOf(_objType){
 }
 
 function reverseArray(_arr) {
-
-	var c;
-	var result = array_create(array_length(_arr));
 	
-	for(c = array_length(_arr) - 1; c > -1; c--) {
-		result[array_length(_arr) - 1 - c] = _arr[c];
+	var result = array_create(0);
+	
+	var arrCopy = array_create(0);
+	array_copy(arrCopy, 0, _arr, 0, array_length(_arr));
+	
+	while(array_length(arrCopy) > 0) {
+		array_push(result, array_pop(arrCopy));
 	}
 	
-	return _arr;
+	return result;
 
 }
