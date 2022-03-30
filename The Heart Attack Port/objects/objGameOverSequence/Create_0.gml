@@ -7,6 +7,7 @@ SKIP_EVERY_OTHER_BOOTCAMP_PHOTO = true;
 DARK_MASK_IN_DURATION = 8 * room_speed;
 RED_MASK_IN_DURATION = 3 * room_speed;
 RED_MASK_STAY_DURATION = 12 * room_speed;
+// if (global.TEST_END_SEQUENCE) RED_MASK_STAY_DURATION = 3 * room_speed;
 RED_MASK_OUT_DURATION = 15 * room_speed;
 FLAT_LINE_OUT_DURATION = 5 * room_speed;
 HOT_ZONE_OUT_DURATION = 5 * room_speed;	
@@ -72,6 +73,7 @@ function added() {
 	// Fade everything in/out
 	// Die together
 	if (global.bothDead) {
+		show_debug_message("Game over: both are dead.");
 	//if (true)
 		// Make notdead flatline
 		var heartBeats = self.notDead.heartController.getHeartbeats();
@@ -93,8 +95,11 @@ function added() {
 		tempMask.construct(0, self.notDead.y, true, self.RED_MASK_IN_DURATION, self.RED_MASK_OUT_DURATION, self.RED_MASK_STAY_DURATION, 1, true);
 		tempMask.added();
 		self.notDeadPhotocontroller = self.generateSlideshow(self.notDead);
-	}
+		self.notDead.heartController.fadeOut(self.RED_MASK_IN_DURATION);
+		self.notDead.photoController.currentPhoto.fadeOutDuration = self.RED_MASK_STAY_DURATION;
+		self.notDead.photoController.currentPhoto.fadeOut();}
 	else if (self.dead.photoArrayNumber == 3) {
+		show_debug_message("Game over: one is dead and dead.photoArrayNumber == 3");
 		self.notDead.pause();
 		if (instance_exists(self.notDead.darkMask)) self.notDead.darkMask.fadeOut(self.RED_MASK_IN_DURATION);
 		self.notDead.heartController.hotZone.active = true;
@@ -109,13 +114,14 @@ function added() {
 		self.notDead.photoController.currentPhoto.fadeOut();
 	}
 	else {
+		show_debug_message("Game over: one is dead and dead.photoArrayNumber != 3");
 		self.notDead.pause();
-		self.notDead.darkMask.fadeOut(self.RED_MASK_IN_DURATION);
+		if (instance_exists(self.notDead.darkMask)) self.notDead.darkMask.fadeOut(self.RED_MASK_IN_DURATION);
 		self.notDead.heartController.hotZone.active = true;
 		self.notDead.heartController.hotZone.fadeOut();
 		if (instance_exists(self.notDead.heartController.flatLine)) self.notDead.heartController.flatLine.fadeOut(self.FLAT_LINE_OUT_DURATION);
 		var tempMask = instance_create_depth(0, self.notDead.heartController.y, -200, objDarkMask);
-		tempMask.construct(0, self.notDead.y, true, self.RED_MASK_IN_DURATION, self.RED_MASK_OUT_DURATION, self.RED_MASK_STAY_DURATION, 1, true, global.BLACK);
+		tempMask.construct(0, self.notDead.y, true, self.RED_MASK_IN_DURATION, self.RED_MASK_OUT_DURATION, 1, true);
 		tempMask.added(); 
 		self.notDead.heartController.fadeOut(self.RED_MASK_IN_DURATION);
 		self.notDead.photoController.currentPhoto.fadeOutDuration = self.RED_MASK_STAY_DURATION;

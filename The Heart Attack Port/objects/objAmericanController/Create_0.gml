@@ -46,7 +46,7 @@ function added() {
 	
 	// Jump immediately to end sequence for testing.
 	if (global.TEST_END_SEQUENCE) {
-		heartController.health = 0;
+		heartController.heartHealth = 0;
 		dead = true;
 		photoArrayNumber = 3;
 	}			
