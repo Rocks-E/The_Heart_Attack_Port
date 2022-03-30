@@ -63,6 +63,7 @@ function added() {
 	// 	self.musicDuration = self.VIET_MUSIC_DURATION;
 	// }
 	self.musicTrack = snd_fitzgerald_bones_and_skin;
+	self.musicDuration = self.AMERICAN_MUSIC_DURATION;
 	alarm[1] = self.MUSIC_START_TIME;
 			
 	// Slideshow alarm
