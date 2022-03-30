@@ -15,6 +15,7 @@
     {"id":{"name":"spr_tutorial_text_03","path":"sprites/spr_tutorial_text_03/spr_tutorial_text_03.yy",},"order":10,},
     {"id":{"name":"rmGameStart","path":"rooms/rmGameStart/rmGameStart.yy",},"order":2,},
     {"id":{"name":"spr_Z050","path":"sprites/spr_Z050/spr_Z050.yy",},"order":93,},
+    {"id":{"name":"objCamera","path":"objects/objCamera/objCamera.yy",},"order":32,},
     {"id":{"name":"spr_X070","path":"sprites/spr_X070/spr_X070.yy",},"order":107,},
     {"id":{"name":"objDarkMask","path":"objects/objDarkMask/objDarkMask.yy",},"order":1,},
     {"id":{"name":"objCheater","path":"objects/objCheater/objCheater.yy",},"order":6,},

@@ -59,3 +59,6 @@ if(!global.TEST_MODE) {
 	instance_create_depth(0, 0, 0, objTutorial).construct(global.americanController);
 	instance_create_depth(0, 0, 0, objTutorial).construct(global.vietController);
 }
+
+// Camera
+instance_create_depth(0,0, -1, objCamera);
