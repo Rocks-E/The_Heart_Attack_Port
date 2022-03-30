@@ -61,4 +61,4 @@ if(!global.TEST_MODE) {
 }
 
 // Camera
-instance_create_depth(0,0, -1, objCamera);
+instance_create_depth(0,0, 1, objCamera);

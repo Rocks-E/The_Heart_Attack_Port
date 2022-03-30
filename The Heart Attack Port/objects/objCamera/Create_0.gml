@@ -1,3 +1,5 @@
+OUTSIDE_ROOM_COLOR = c_black;
+
 // Basic camera controller that utilizes a single viewport and view. 
 // See https://forum.yoyogames.com/index.php?threads/guide-meet-the-new-camera-system.12269/
 // and https://maddestudiosgames.com/gms2-meet-the-camera-system/
@@ -30,14 +32,14 @@ function canvas_fullscreen(w, h) {
 	// Tall.
 	if (global.aspect_ratio < aspect_default)
 	{
-	  view_height = view_height_default;
-	  view_width = (view_height * global.aspect_ratio);	
+		view_width = view_width_default;	
+		view_height = (view_width / global.aspect_ratio);		
 	}
 	// Wide. 
 	else
 	{
-		view_width = view_width_default;	
-		view_height = (view_width / global.aspect_ratio);
+	  view_height = view_height_default;
+	  view_width = (view_height * global.aspect_ratio);	
 	}
 
 	// Set GUI scale depending on window size.
@@ -62,12 +64,29 @@ function canvas_fullscreen(w, h) {
 	if (application_surface_is_enabled()) {
 		surface_resize(application_surface, global.browser_width_hdpi, global.browser_height_hdpi);
 	}
+	
+	// Center room in view.
+	var xdif = view_width - room_width;
+	var ydif = view_height - room_height;
+	x = -xdif/2;
+	y = -ydif/2;	
+	camera_set_view_pos(view_camera[target_view], x, y);		
+	show_debug_message("x: " + string(x));
+	show_debug_message("y: " + string(y));	
+	show_debug_message("global.browser_width_hdpi: " + string(global.browser_width_hdpi));
+	show_debug_message("room_width: " + string(room_width));
+	show_debug_message("room_height: " + string(room_height));		
+	show_debug_message("view_width: " + string(view_width));
+	show_debug_message("view_height: " + string(view_height));		
+	show_debug_message("view_wport: " + string(view_wport[target_view]));	
+	show_debug_message("gui_width: " + string(global.gui_width));	
+	show_debug_message("gui_height: " + string(global.gui_height));		
+	show_debug_message("application surface width: " + string(surface_get_width(application_surface)));	
 
 	// set canvas size to page pixel size.
 	// Uncomment if browser_hdpi extension is available.
 	// See https://yellowafterlife.itch.io/gamemaker-html5-hdpi-support	
 	// browser_stretch_canvas(w, h);
-
 	show_debug_message("window resized");
 }
 
@@ -93,27 +112,12 @@ camera = camera_create_view(0, 0, view_width, view_height, 0, -1, -1, -1, 0, 0);
 // Set target view to use our camera.
 view_set_camera(target_view, camera);
 
-// Choose object to follow.
-if (instance_exists(noone)) {
-	show_debug_message("follow true");
-	follow = oPlayer;
-	x = follow.x;
-	y = follow.y;
-}
-else {
-	show_debug_message("follow false");
-	follow = noone;
-	x = view_width / 2;
-	y = view_height / 2;
-}
-x_to = x;
-y_to = y;
-
-// Set camera movement characteristics.
-// camera_movement_lag determines how long it takes camera to catch up to objects it is following.
-// camera_movement_precision determines pixel precision of camera movement.
-camera_movement_lag = 1;
-camera_movement_precision = 0.01;
+// Center in screen.
+//follow = noone;
+//x = global.browser_width_hdpi / 2;
+//y = global.browser_height_hdpi / 2;
+//x_to = x; 
+//y_to = y;
 
 // Don't change anything below.
 last_browser_width = browser_width;
