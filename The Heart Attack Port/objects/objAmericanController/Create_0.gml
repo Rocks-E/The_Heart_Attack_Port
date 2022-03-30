@@ -44,6 +44,12 @@ function added() {
 	self.heartController.tweenHeartRate(global.HEART_RATE_02, self.heartController.heartRate * array_length(self.photoArray));
 	self.heartController.tweenPulseSpeed(global.PULSE_SPEED_02, self.heartController.heartRate * array_length(self.photoArray));
 	
+	// Jump immediately to end sequence for testing.
+	if (global.TEST_END_SEQUENCE) {
+		heartController.health = 0;
+		dead = true;
+		photoArrayNumber = 3;
+	}			
 }
 
 function fadeIn() {

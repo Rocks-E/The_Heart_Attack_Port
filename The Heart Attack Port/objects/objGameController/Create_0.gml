@@ -46,7 +46,9 @@ else {
 	
 }
 
-global.vietController.markedForPause = true;
+if (!global.TEST_END_SEQUENCE) {
+	global.vietController.markedForPause = true;
+}
 
 global.americanController.added();
 global.vietController.added();

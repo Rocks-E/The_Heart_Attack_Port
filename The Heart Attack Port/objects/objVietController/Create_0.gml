@@ -38,7 +38,13 @@ function added() {
 	self.inputController.construct(self.inputKey, self.heartController);
 	self.inputController.added();	
 	//super end
-
+	
+	// Jump immediately to end sequence for testing.
+	if (global.TEST_END_SEQUENCE) {
+		heartController.health = 0;
+		dead = true;
+		photoArrayNumber = 3;
+	}				
 }
 
 function fadeIn() {

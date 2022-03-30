@@ -2,6 +2,7 @@
 
 function GlobalInit() {
 	global.TEST_MODE = false;
+	global.TEST_END_SEQUENCE = false;	// Jump immediately to end sequence, for testing.
 	global.SUCCESS_COUNT = 0;
 	global.FAILURE_COUNT = 0;
 
