@@ -52,14 +52,17 @@ function added() {
 	audio_sound_gain(self.curSndFlatline, 0, self.SOUND_OUT_DURATION);
 			
 	// Music
-	if ((!global.bothDead && self.dead.objType == "american") || (global.bothDead && random(1) > 0.5)) {
-		self.musicTrack = snd_fitzgerald_bones_and_skin;
-		self.musicDuration = self.AMERICAN_MUSIC_DURATION;
-	}
-	else {
-		self.musicTrack = snd_ngay_do_xa_roi_shorter;
-		self.musicDuration = self.VIET_MUSIC_DURATION;
-	}
+	// Decide here whether to use Fitzgerald track and Vietnamese music track,
+	// or just Fitzgerald.
+	// if ((!global.bothDead && self.dead.objType == "american") || (global.bothDead && random(1) > 0.5)) {
+	// 	self.musicTrack = snd_fitzgerald_bones_and_skin;
+	// 	self.musicDuration = self.AMERICAN_MUSIC_DURATION;
+	// }
+	// else {
+	// 	self.musicTrack = snd_ngay_do_xa_roi_shorter;
+	// 	self.musicDuration = self.VIET_MUSIC_DURATION;
+	// }
+	self.musicTrack = snd_fitzgerald_bones_and_skin;
 	alarm[1] = self.MUSIC_START_TIME;
 			
 	// Slideshow alarm
