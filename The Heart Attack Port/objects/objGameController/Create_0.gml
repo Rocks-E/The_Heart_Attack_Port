@@ -22,9 +22,6 @@ if(global.TEST_MODE) {
 	global.quakeIntensity = 0.01;
 }
 
-global.startPixelating = true;
-global.pixelatePerPhoto = 5;
-
 instance_create_depth(0, 0, 0, objGround).construct(0, 0, spr_ground);
 global.quake = instance_create_depth(0, 0, 0, objQuake);
 //global.soundController = instance_create_depth(0, 0, 0, objSoundController);
