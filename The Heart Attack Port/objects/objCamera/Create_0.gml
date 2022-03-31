@@ -1,4 +1,5 @@
 OUTSIDE_ROOM_COLOR = c_black;
+OUTSIDE_ROOM_BUFFER = 100;	// Buffer to account for potential camera shake.
 
 // Basic camera controller that utilizes a single viewport and view. 
 // See https://forum.yoyogames.com/index.php?threads/guide-meet-the-new-camera-system.12269/

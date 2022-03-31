@@ -3,7 +3,8 @@
 intensity = 0;
 timer = 0;
 
-spr_layer_id = layer_get_id("Sprites");
+//spr_layer_id = layer_get_id("Sprites");
+
 
 function start(_intensity = 0.5, _duration = 0.5) {
 	self.stop();
@@ -12,7 +13,7 @@ function start(_intensity = 0.5, _duration = 0.5) {
 }
 
 function stop() {
-	camera_set_view_pos(view_camera[0], 0, 0);
+	camera_set_view_pos(view_camera[0], objCamera.x, objCamera.y);
 	self.intensity = 0;
 	self.timer = 0;
 }
