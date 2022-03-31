@@ -214,7 +214,9 @@ function generateSlideshow(_person) {
 		}
 				
 		// Push index
-		array_push(photoArray, _person.photoArray03[_person.photoController.currentIndex - 1]);
+		if (_person.photoController.currentIndex > 0) {
+			array_push(photoArray, _person.photoArray03[_person.photoController.currentIndex - 1]);
+		} 
 	}
 			
 	// Reverse the array
