@@ -1,6 +1,7 @@
 event_inherited()
 
 function construct(_photoArray, _x = 0, _y = 0, _displayTime = 300, _startDelay = 300, _fadeDuration = 120, _maxAlpha = 1, _flipped = false, _pixelateCellSize = 1) {
+	show_debug_message("oTimedPhotoController construct() _pixelateCellSize: " + string(_pixelateCellSize));
 	
 	//super
 	self.x = _x;
@@ -12,17 +13,16 @@ function construct(_photoArray, _x = 0, _y = 0, _displayTime = 300, _startDelay 
 	self.maxAlpha = _maxAlpha;
 	self.flipped = _flipped;
 	self.loop = false;
-	self.currentPhoto = instance_create_depth(0, 0, 0, objPhotoBackdrop);
-	self.currentPhoto.construct(_photoArray[self.currentIndex], _x, _y, true, 120, 120, _maxAlpha, _flipped);
+	//self.currentPhoto = instance_create_depth(0, 0, 0, objPhotoBackdrop);
+	//self.currentPhoto.construct(_photoArray[self.currentIndex], _x, _y, true, 120, 120, _maxAlpha, _flipped);
 	//super end
 	
 	self.fadeInDuration = _fadeDuration
 	self.fadeOutDuration = _fadeDuration
 	self.pixelateCellSize = _pixelateCellSize
 	
-	currentPhoto = instance_create_depth(0, 0, 100, objPhotoBackdrop);
-	currentPhoto.construct(_photoArray[self.currentIndex], _x, _y, false, _fadeDuration, _fadeDuration, _maxAlpha, _flipped, floor(_pixelateCellSize));
-	
+	self.currentPhoto = instance_create_depth(0, 0, 100, objPhotoBackdrop);
+	self.currentPhoto.construct(_photoArray[self.currentIndex], _x, _y, false, _fadeDuration, _fadeDuration, _maxAlpha, _flipped, floor(_pixelateCellSize));
 }
 
 function added() {
