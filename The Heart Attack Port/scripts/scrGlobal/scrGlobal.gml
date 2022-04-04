@@ -30,20 +30,36 @@ function GlobalInit() {
 	// Constants - heart controller
 	global.STARTING_HEALTH = 1;
 	global.LOSE_HEALTH_AMOUNT = 0.1
-	global.HEALTH_DIF_TO_DIE_TOGETHER = 0.3;
-
-	global.HEART_RATE_01 = (5 * global.FRAME_RATE);
-	global.PULSE_SPEED_01 = 1;
-
-	global.HEART_RATE_02 = (3 * global.FRAME_RATE);
-	global.PULSE_SPEED_02 = 1.5;
-
-	global.HEART_RATE_03 = (2 * global.FRAME_RATE);
-	global.PULSE_SPEED_03 = 2;
-
-	global.FINAL_HEART_RATE_TWEEN_DURATION = (60 * global.FRAME_RATE);
-	global.HEART_RATE_04 = (0.2 * global.FRAME_RATE);
-	global.PULSE_SPEED_04 = 8;
+	global.HEALTH_DIF_TO_DIE_TOGETHER = 0.3;	
+	if (global.TEST_MODE) {
+		// Make heartbeats come faster in test mode.
+		global.HEART_RATE_01 = (1 * global.FRAME_RATE);
+		global.PULSE_SPEED_01 = 5;
+	
+		global.HEART_RATE_02 = (1 * global.FRAME_RATE);
+		global.PULSE_SPEED_02 = 5;
+	
+		global.HEART_RATE_03 = (1 * global.FRAME_RATE);
+		global.PULSE_SPEED_03 = 5;
+	
+		global.FINAL_HEART_RATE_TWEEN_DURATION = (60 * global.FRAME_RATE);
+		global.HEART_RATE_04 = (0.2 * global.FRAME_RATE);
+		global.PULSE_SPEED_04 = 8;		
+	}	
+	else {
+		global.HEART_RATE_01 = (5 * global.FRAME_RATE);
+		global.PULSE_SPEED_01 = 1;
+	
+		global.HEART_RATE_02 = (3 * global.FRAME_RATE);
+		global.PULSE_SPEED_02 = 1.5;
+	
+		global.HEART_RATE_03 = (2 * global.FRAME_RATE);
+		global.PULSE_SPEED_03 = 2;
+	
+		global.FINAL_HEART_RATE_TWEEN_DURATION = (60 * global.FRAME_RATE);
+		global.HEART_RATE_04 = (0.2 * global.FRAME_RATE);
+		global.PULSE_SPEED_04 = 8;
+	}
 
 	// Photo display times - no longer used.
 	global.PHOTO_DISPLAY_TIME_01 = (3 * global.FRAME_RATE);
