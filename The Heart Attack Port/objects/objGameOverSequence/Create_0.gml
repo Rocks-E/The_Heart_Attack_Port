@@ -215,6 +215,10 @@ function generateSlideshow(_person) {
 		if (_person.photoController.currentIndex > 0) {
 			array_push(photoArray, _person.photoArray03[_person.photoController.currentIndex - 1]);
 		} 
+		else {
+			show_debug_message("_person.photoController.currentIndex == 0, so just pushing current index rather than index-1.")
+			array_push(photoArray, _person.photoArray03[_person.photoController.currentIndex]);
+		}
 	}
 			
 	// Reverse the array
