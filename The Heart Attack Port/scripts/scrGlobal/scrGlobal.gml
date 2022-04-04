@@ -28,11 +28,12 @@ function GlobalInit() {
 
 
 	// Constants - heart controller
-	global.STARTING_HEALTH = 1;
-	global.LOSE_HEALTH_AMOUNT = 0.1
-	global.HEALTH_DIF_TO_DIE_TOGETHER = 0.3;	
 	if (global.TEST_MODE) {
-		// Make heartbeats come faster in test mode.
+		// Make heartbeats come faster in test mode.		
+		global.STARTING_HEALTH = 1;
+		global.LOSE_HEALTH_AMOUNT = 0.4;
+		global.HEALTH_DIF_TO_DIE_TOGETHER = 0.5;		
+		
 		global.HEART_RATE_01 = (1 * global.FRAME_RATE);
 		global.PULSE_SPEED_01 = 5;
 	
@@ -47,6 +48,10 @@ function GlobalInit() {
 		global.PULSE_SPEED_04 = 8;		
 	}	
 	else {
+		global.STARTING_HEALTH = 1;
+		global.LOSE_HEALTH_AMOUNT = 0.1
+		global.HEALTH_DIF_TO_DIE_TOGETHER = 0.3;		
+		
 		global.HEART_RATE_01 = (5 * global.FRAME_RATE);
 		global.PULSE_SPEED_01 = 1;
 	
