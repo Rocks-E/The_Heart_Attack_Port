@@ -1,7 +1,7 @@
 cellSize = 1;
 
 function construct(_source, _clipRect = noone, _cellSize = 1, _cache = false) {
-	show_debug_message("objMosaicImage construct _cellSize: " + string(_cellSize));		
+	//show_debug_message("objMosaicImage construct _cellSize: " + string(_cellSize));		
 	/* Original AS3 source - unneeded
 	if(!_cache) {
 		_source = self.getBitmap(_source);

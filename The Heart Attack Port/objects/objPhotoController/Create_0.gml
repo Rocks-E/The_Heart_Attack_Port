@@ -16,6 +16,7 @@ lastPhoto = noone; //objPhotoBackdrop
 //alarm[1] = -1; //startAlarm
 
 shouldFadeIn = false;
+shouldFadeOut = false;
 
 fadeInDuration = 120;
 fadeOutDuration = 120;
@@ -91,6 +92,7 @@ function nextPhoto(_fadeIn = true) {
 }
 
 function fadeOut() {
+	self.shouldFadeOut = true;
 	self.unpause();
 	// Photo fade out instructions here are redundant, since this happens in destroy event.
 	//if(instance_exists(self.lastPhoto)) self.lastPhoto.fadeOut();
