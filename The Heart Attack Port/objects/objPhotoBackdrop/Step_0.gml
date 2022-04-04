@@ -21,6 +21,7 @@ if(noone != self.backdrop) {
 				self.backdrop.image_alpha = 0;
 				self.fading = false;
 				self.fadeDirection = 0;
+				with (self) instance_destroy();
 			}
 			
 		}

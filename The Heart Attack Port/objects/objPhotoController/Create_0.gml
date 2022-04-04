@@ -45,14 +45,14 @@ function added() {
 }
 
 function unpause() {
-	if(noone != self.lastPhoto) self.lastPhoto.active = true;
-	if(noone != self.currentPhoto) self.currentPhoto.active = true;
+	if(instance_exists(self.lastPhoto)) self.lastPhoto.active = true;
+	if(instance_exists(self.currentPhoto)) self.currentPhoto.active = true;
 	self.active = true;
 }
 
 function pause() {
-	if(noone != self.lastPhoto) self.lastPhoto.active = false;
-	if(noone != self.currentPhoto) self.currentPhoto.active = false;
+	if(instance_exists(self.lastPhoto)) self.lastPhoto.active = false;
+	if(instance_exists(self.currentPhoto)) self.currentPhoto.active = false;
 	self.active = false;
 }
 
@@ -92,13 +92,8 @@ function nextPhoto(_fadeIn = true) {
 
 function fadeOut() {
 	self.unpause();
-	if(noone != self.lastPhoto) self.lastPhoto.fadeOut();
-	if(noone != self.currentPhoto) self.currentPhoto.fadeOut();
-	instance_destroy(self.id);
-}
-
-function destroy() {
-	if(noone != self.lastPhoto) instance_destroy(self.lastPhoto);
-	if(noone != self.currentPhoto) instance_destroy(self.currentPhoto);	
+	// Photo fade out instructions here are redundant, since this happens in destroy event.
+	//if(instance_exists(self.lastPhoto)) self.lastPhoto.fadeOut();
+	//if(instance_exists(self.currentPhoto)) self.currentPhoto.fadeOut();
 	instance_destroy(self.id);
 }
