@@ -96,8 +96,7 @@ function added() {
 		tempMask.added();
 		self.notDeadPhotocontroller = self.generateSlideshow(self.notDead);
 		self.notDead.heartController.fadeOut(self.RED_MASK_IN_DURATION);
-		self.notDead.photoController.currentPhoto.fadeOutDuration = self.RED_MASK_STAY_DURATION;
-		self.notDead.photoController.currentPhoto.fadeOut();}
+	}
 	else if (self.dead.photoArrayNumber == 3) {
 		show_debug_message("Game over: one is dead and dead.photoArrayNumber == 3");
 		self.notDead.pause();
@@ -110,8 +109,6 @@ function added() {
 		tempMask.added();
 		self.notDeadPhotocontroller = self.generateSlideshow(self.notDead);
 		self.notDead.heartController.fadeOut(self.RED_MASK_IN_DURATION);
-		self.notDead.photoController.currentPhoto.fadeOutDuration = self.RED_MASK_STAY_DURATION;
-		self.notDead.photoController.currentPhoto.fadeOut();
 	}
 	else {
 		show_debug_message("Game over: one is dead and dead.photoArrayNumber != 3");
@@ -124,8 +121,6 @@ function added() {
 		tempMask.construct(0, self.notDead.y, true, self.RED_MASK_IN_DURATION, self.RED_MASK_OUT_DURATION, 1, true);
 		tempMask.added(); 
 		self.notDead.heartController.fadeOut(self.RED_MASK_IN_DURATION);
-		self.notDead.photoController.currentPhoto.fadeOutDuration = self.RED_MASK_STAY_DURATION;
-		self.notDead.photoController.fadeOut();
 	}
 	self.dead.pause();
 	self.dead.heartController.hotZone.active = true;
@@ -135,9 +130,6 @@ function added() {
 	tempMask2.construct(0, self.dead.y, true, self.RED_MASK_IN_DURATION, self.RED_MASK_OUT_DURATION, self.RED_MASK_STAY_DURATION, 1, true);
 	tempMask2.added();
 	self.deadPhotocontroller = self.generateSlideshow(self.dead);	
-	
-	self.dead.photoController.currentPhoto.fadeOutDuration = self.RED_MASK_STAY_DURATION;
-	self.dead.photoController.currentPhoto.fadeOut();
 	
 	// Prime slideshow
 	self.primeSlideshow();
@@ -152,6 +144,10 @@ function startMusic() {
 
 function generateSlideshow(_person) {
 	var photoArray = array_create(0);
+	show_debug_message("global phase: " + string(global.phase));
+	show_debug_message("current index: " + string(photoIndex));
+	show_debug_message("finished: " + string(_person.photoController.photosFinished));	
+	
 	
 	// Pack first array
 	//photoArray = person.photoArray01
@@ -160,7 +156,9 @@ function generateSlideshow(_person) {
 	var j = 1;
 	// Photo array 1
 	if (_person.photoArrayNumber == 1) {
+		show_debug_message("yes array == 1");
 		for (i = 0; i < self.photoIndex; i++) {
+			show_debug_message("phot: " + string(_person.photoArray01[i]));
 			array_push(photoArray, _person.photoArray01[i]);
 		}
 	}
