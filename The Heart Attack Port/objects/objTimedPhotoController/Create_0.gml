@@ -21,7 +21,7 @@ function construct(_photoArray, _x = 0, _y = 0, _displayTime = 300, _startDelay 
 	self.fadeOutDuration = _fadeDuration
 	self.pixelateCellSize = _pixelateCellSize
 	
-	self.currentPhoto = instance_create_depth(0, 0, 100, objPhotoBackdrop);
+	self.currentPhoto = instance_create_depth(0, 0, 0, objPhotoBackdrop);
 	self.currentPhoto.construct(_photoArray[self.currentIndex], _x, _y, false, _fadeDuration, _fadeDuration, _maxAlpha, _flipped, floor(_pixelateCellSize));
 }
 
