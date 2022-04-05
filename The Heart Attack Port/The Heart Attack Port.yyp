@@ -114,6 +114,7 @@
     {"id":{"name":"spr_A07","path":"sprites/spr_A07/spr_A07.yy",},"order":63,},
     {"id":{"name":"rmGameOver_Original","path":"rooms/rmGameOver_Original/rmGameOver_Original.yy",},"order":1,},
     {"id":{"name":"spr_X080","path":"sprites/spr_X080/spr_X080.yy",},"order":108,},
+    {"id":{"name":"objFadeOutGame","path":"objects/objFadeOutGame/objFadeOutGame.yy",},"order":36,},
     {"id":{"name":"spr_Y02","path":"sprites/spr_Y02/spr_Y02.yy",},"order":31,},
     {"id":{"name":"spr_A08","path":"sprites/spr_A08/spr_A08.yy",},"order":64,},
     {"id":{"name":"objGameController","path":"objects/objGameController/objGameController.yy",},"order":2,},

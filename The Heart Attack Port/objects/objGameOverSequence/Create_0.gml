@@ -234,8 +234,10 @@ function generateSlideshow(_person) {
 	return returnController;
 }
 
-function goToGameOver() {
-	room_goto(rmGameOver);	
+function goToGameOver()  {
+	// Change here from AS3 source: fade out instead of just going to roomm.
+	//room_goto(rmGameOver);
+	instance_create_depth(0,0,0,objFadeOutGame);
 }
 
 function primeSlideshow() {
