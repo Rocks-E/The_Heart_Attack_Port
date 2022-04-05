@@ -38,9 +38,9 @@ draw_text_transformed(xx, yy, title, h1_size * global.gui_scale, h1_size * globa
 //draw_set_font(fntVerdana);
 yy += string_h + vs;
 if (global.browser_width_hdpi < 600)
-	var byline = "A game poem by \nJordan Magnuson";
+	var byline = "A " + string(global.THING_NAME) + " by \nJordan Magnuson";
 else
-	var byline = "A game poem by Jordan Magnuson";
+	var byline = "A " + string(global.THING_NAME) + " by Jordan Magnuson";
 draw_text_transformed(xx, yy, byline, h3_size * global.gui_scale, h3_size * global.gui_scale, 0);
 
 // By line 2

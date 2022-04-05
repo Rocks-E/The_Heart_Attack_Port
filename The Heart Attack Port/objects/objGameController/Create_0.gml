@@ -1,6 +1,8 @@
 ColorsInit(); //Initialize global colors
 GlobalInit(); //Initialize global vars/consts
 
+window_set_cursor(cr_none); // Hide the cursor.
+
 randomize(); //Seed the random function
 
 quakeInterval = 3 * room_speed;
