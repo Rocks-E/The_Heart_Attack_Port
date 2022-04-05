@@ -71,13 +71,13 @@ function resize_title_screen() {
 	//show_debug_message("global.gui_scale:" + string(global.gui_scale));	
 }
 
-// Set cursor.
-window_set_cursor(cr_handpoint);
-
 // If this is not a browser, skip the title screen completely.
 if (os_browser == browser_not_a_browser) {
 	room_goto(rmGame);
 }
+
+// Set cursor.
+window_set_cursor(cr_handpoint);
 
 surf_start_button = 0;
 spr_start_button = 0;
