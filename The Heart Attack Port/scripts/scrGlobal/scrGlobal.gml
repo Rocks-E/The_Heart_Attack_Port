@@ -3,6 +3,7 @@
 function GlobalInit() {
 	global.TEST_MODE = false;
 	global.TEST_END_SEQUENCE = false;	// Jump immediately to end sequence, for testing.
+	global.DEBUG = global.TEST_MODE;
 	global.SUCCESS_COUNT = 0;
 	global.FAILURE_COUNT = 0;
 
@@ -104,4 +105,15 @@ function GlobalInit() {
 	global.americanController = noone;
 	global.vietController = noone;
 	global.soundController = noone;
+	
+	// Is this a touch device?
+	switch (os_type) {
+		case os_ios:
+		case os_android:
+			global.is_touch_device = true;
+			break;
+		default:
+			global.is_touch_device = false;
+			break;
+	}	
 }

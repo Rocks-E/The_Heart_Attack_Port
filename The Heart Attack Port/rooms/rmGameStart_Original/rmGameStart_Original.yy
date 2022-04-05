@@ -23,7 +23,7 @@
   "creationCodeFile": "",
   "inheritCode": false,
   "instanceCreationOrder": [
-    {"name":"inst_48E4046D","path":"rooms/rmGameStart/rmGameStart.yy",},
+    {"name":"inst_48E4046D","path":"rooms/rmGameStart_Original/rmGameStart_Original.yy",},
   ],
   "inheritCreationOrder": false,
   "sequenceId": null,
@@ -51,7 +51,7 @@
     "path": "folders/Rooms.yy",
   },
   "resourceVersion": "1.0",
-  "name": "rmGameStart",
+  "name": "rmGameStart_Original",
   "tags": [],
   "resourceType": "GMRoom",
 }
