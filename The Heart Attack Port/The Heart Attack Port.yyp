@@ -7,6 +7,7 @@
     {"id":{"name":"spr_X065","path":"sprites/spr_X065/spr_X065.yy",},"order":106,},
     {"id":{"name":"spr_white_pixel","path":"sprites/spr_white_pixel/spr_white_pixel.yy",},"order":21,},
     {"id":{"name":"objFlatLine","path":"objects/objFlatLine/objFlatLine.yy",},"order":9,},
+    {"id":{"name":"ImageLoadBar","path":"extensions/ImageLoadBar/ImageLoadBar.yy",},"order":1,},
     {"id":{"name":"objEntityFader","path":"objects/objEntityFader/objEntityFader.yy",},"order":8,},
     {"id":{"name":"objMosaicImage","path":"objects/objMosaicImage/objMosaicImage.yy",},"order":28,},
     {"id":{"name":"spr_Z020","path":"sprites/spr_Z020/spr_Z020.yy",},"order":88,},

@@ -9,7 +9,7 @@
   "option_html5_display_cursor": true,
   "option_html5_localrunalert": true,
   "option_html5_index": "custom index.html",
-  "option_html5_loadingbar": "Use Default",
+  "option_html5_loadingbar": "ImageLoadBar_hook",
   "option_html5_jsprepend": "",
   "option_html5_icon": "${base_options_dir}/html5/fav.ico",
   "option_html5_allow_fullscreen": true,
