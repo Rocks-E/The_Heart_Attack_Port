@@ -1,7 +1,7 @@
 #macro ELAPSED (delta_time / 1000000)
 
 function GlobalInit() {
-	global.THING_NAME = "game poem"; // or "notgame" - what the game refers to itself as.
+	global.THING_NAME = "notgame/game poem"; // or "notgame" - what the game refers to itself as.
 	
 	global.TEST_MODE = false;
 	global.TEST_END_SEQUENCE = false;	// Jump immediately to end sequence, for testing.

@@ -37,24 +37,24 @@ draw_text_transformed(xx, yy, title, h1_size * global.gui_scale, h1_size * globa
 // By line
 //draw_set_font(fntVerdana);
 yy += string_h + vs;
-if (global.browser_width_hdpi < 600)
-	var byline = "A " + string(global.THING_NAME) + " by \nJordan Magnuson";
+if (global.browser_width_hdpi < 750)
+	var byline = "A " + string(global.THING_NAME) + "\nby Jordan Magnuson";
 else
 	var byline = "A " + string(global.THING_NAME) + " by Jordan Magnuson";
 draw_text_transformed(xx, yy, byline, h3_size * global.gui_scale, h3_size * global.gui_scale, 0);
 
 // By line 2
 yy += 24*global.gui_scale;
-var byline2 = "Music by Fitzgerald";
+var byline2 = "Hanoi, 2011";
 draw_text_transformed(xx, yy, byline2, h3_size * global.gui_scale, h3_size * global.gui_scale, 0);
 
 // Instructions
 yy += 32*global.gui_scale;
-draw_set_color(c_yellow);
+draw_set_color(c_white);
 if (global.browser_width_hdpi < 600)
-	var instructions = ""
+	var instructions = "Music by Fitzgerald";
 else
-	var instructions = ""
+	var instructions = "Music by Fitzgerald";
 draw_text_transformed(xx, yy, instructions, h3_size * global.gui_scale, h3_size * global.gui_scale, 0);
 draw_set_color(c_white);
 
@@ -72,7 +72,9 @@ if (!spr_start_button) {
 	if (global.is_touch_device) {
 		start_text = "TOUCH TO START";
 	}
+	draw_set_color(c_yellow);
 	draw_text_transformed(xx, yy, start_text, global.gui_scale*h2_size, global.gui_scale*h2_size, 0);	
+	draw_set_color(c_white);
 	string_w = global.gui_scale*h2_size * string_width(start_text);
 	string_h = global.gui_scale*h2_size * string_height(start_text);	
 	yy += string_h;
