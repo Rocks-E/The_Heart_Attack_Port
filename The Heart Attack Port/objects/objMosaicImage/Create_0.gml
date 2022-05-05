@@ -39,9 +39,9 @@ function downScale() {
 	var surf;
 	surf = surface_create(sprite_width/self.cellSize, sprite_height/self.cellSize);
 	surface_set_target(surf);
-	draw_clear_alpha(c_white, 0);
+	draw_clear_alpha(c_white, 1);
 	draw_sprite_ext(sprite_index, image_index, 0, 0, 1/self.cellSize, 1/self.cellSize, 0, c_white, image_alpha);
-	var spr_custom = sprite_create_from_surface(surf, 0, 0, surface_get_width(surf), surface_get_height(surf), true, false, 0, 0);
+	var spr_custom = sprite_create_from_surface(surf, 0, 0, surface_get_width(surf), surface_get_height(surf), false, false, 0, 0);
 	surface_reset_target();
 	surface_free(surf);
 	self.sprite_index = spr_custom;	
@@ -52,9 +52,9 @@ function upScale() {
 	var surf;
 	surf = surface_create(sprite_width*self.cellSize, sprite_height*self.cellSize);
 	surface_set_target(surf);
-	draw_clear_alpha(c_white, 0);
+	draw_clear_alpha(c_white, 1);
 	draw_sprite_ext(sprite_index, image_index, 0, 0, self.cellSize, self.cellSize, 0, c_white, image_alpha);
-	var spr_custom = sprite_create_from_surface(surf, 0, 0, surface_get_width(surf), surface_get_height(surf), true, false, 0, 0);
+	var spr_custom = sprite_create_from_surface(surf, 0, 0, surface_get_width(surf), surface_get_height(surf), false, false, 0, 0);
 	surface_reset_target();
 	surface_free(surf);
 	self.sprite_index = spr_custom;	
