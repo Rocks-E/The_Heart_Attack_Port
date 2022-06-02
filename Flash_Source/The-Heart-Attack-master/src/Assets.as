@@ -11,14 +11,14 @@ package
 		[Embed(source = '../assets/hotzone.png')] public static const HOTZONE:Class;
 		[Embed(source = '../assets/hearbeat_up.png')] public static const HEARTBEAT_UP:Class;
 		[Embed(source = '../assets/heartbeat_down.png')] public static const HEARTBEAT_DOWN:Class;
-		[Embed(source = '../assets/ground.png')] public static const GROUND:Class; //Added
+		[Embed(source = '../assets/ground.png')] public static const GROUND:Class;
 		[Embed(source = '../assets/tutorial_text_01.png')] public static const TUT_TEXT_01:Class;
 		[Embed(source = '../assets/tutorial_text_02.png')] public static const TUT_TEXT_02:Class;
 		[Embed(source = '../assets/tutorial_text_01b.png')] public static const TUT_TEXT_01b:Class;
 		[Embed(source = '../assets/tutorial_text_02b.png')] public static const TUT_TEXT_02b:Class;		
 		[Embed(source = '../assets/tutorial_text_03.png')] public static const TUT_TEXT_03:Class;
-		[Embed(source = '../assets/man_walking.png')] public static const MAN_WALKING:Class; //Not needed
-		[Embed(source = '../assets/boy_walking.png')] public static const BOY_WALKING:Class; //Not needed
+		[Embed(source = '../assets/man_walking.png')] public static const MAN_WALKING:Class;
+		[Embed(source = '../assets/boy_walking.png')] public static const BOY_WALKING:Class;
 		[Embed(source = '../assets/clouds.jpg')] public static const CLOUDS:Class;
 		[Embed(source = '../assets/block_mask.jpg')] public static const BLOCK_MASK:Class;
 		[Embed(source = '../assets/block_mask_black.jpg')] public static const BLOCK_MASK_BLACK:Class;

@@ -1,4 +1,3 @@
-//DONE
 package  
 {
 	import net.flashpunk.Entity;
@@ -10,8 +9,7 @@ package
 	 * @author Jordan Magnuson
 	 */
 	public class HeartSoundController extends Entity
-	{
-		//DONE
+	{	
 		public var heartController:HeartController;
 		public var beatLoop:Sfx = new Sfx(Assets.SND_BEAT_LOOP);
 		public var fader:SfxFader;
@@ -25,13 +23,11 @@ package
 		public var sndBeat03:Sfx = new Sfx(Assets.SND_BEAT_LOOP);
 		public var sndBeat04:Sfx = new Sfx(Assets.SND_BEAT_LOOP);
 		
-		//DONE
 		public function HeartSoundController(heartController:HeartController) 
 		{
 			this.heartController = heartController;
 		}
 		
-		//DONE
 		override public function added():void
 		{
 			if (Global.CONSTANT_HEART_SOUND)
@@ -50,7 +46,6 @@ package
 			super.update();
 		}
 		
-		//DONE
 		public function playHeartbeat(volume:Number = 1):void
 		{
 			if (!sndBeat01.playing)
@@ -63,7 +58,6 @@ package
 				sndBeat04.play(volume);		
 		}
 		
-		//DONE
 		public function stopHeartbeat():void
 		{
 			if (sndBeat01.playing)
@@ -76,14 +70,12 @@ package
 				sndBeat04.play();		
 		}		
 		
-		//DONE
 		public function updateVolume(newVolume:Number = 1):void
 		{
 			if (Global.CONSTANT_HEART_SOUND)
 				beatLoop.volume = newVolume;
 		}
 		
-		//DONE
 		public function fadeIn(duration:Number = 180):void
 		{
 			if (Global.CONSTANT_HEART_SOUND)
@@ -95,7 +87,6 @@ package
 			}
 		}
 		
-		//DONE
 		public function fadeOut(duration:Number = 180):void
 		{
 			trace('sound controller fade out');

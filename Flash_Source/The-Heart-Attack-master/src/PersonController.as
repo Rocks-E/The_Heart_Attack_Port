@@ -55,7 +55,7 @@ package
 		public var markedForPause:Boolean = false;
 		public var darkMask:DarkMask;
 		
-		//DONE
+		
 		public function PersonController(isTop:Boolean, inputKey:int) 
 		{
 			this.inputKey = inputKey;
