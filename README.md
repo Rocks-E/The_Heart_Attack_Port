@@ -15,7 +15,7 @@ https://gms.yoyogames.com/GameMakerStudio-Installer-2022.1.1.610.exe
 
 See https://gms.yoyogames.com/ReleaseNotes.html
 
-GameMaker Studio port by Jordan Magnuson, Jeffry Robbins, and Julius McWilliams.
+GameMaker Studio port by Jordan Magnuson, Roxy Robbins, and Julius McWilliams.
 
 
 ------------------------------------------------------------------------
